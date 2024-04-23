@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jolly Uniforms || Quality Uniforms in Kenya</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="styles.css" />
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="images/icon.png">
+</head>
+<style>
+    /* Style card container */
+    .card {
+        margin-bottom: 7px;
+        /* Add space between cards */
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        /* Add shadow effect */
+        transition: box-shadow 0.3s ease;
+        /* Add transition for hover effect */
+        display: flex;
+        /* Use flexbox */
+        /* max-lines: 1; */
+
+    }
+
+    .card:hover {
+        transform: scale(1.1);
+        /* Increase the size of the card on hover */
+        transition: transform 0.3s ease;
+        /* Add smooth transition effect */
+    }
+
+    /* Style card image */
+    .card-img-top {
+        width: 100%;
+        /* Ensure image fills its container */
+        height: 200px;
+        /* Maintain aspect ratio */
+        object-fit: cover;
+        /* Crop the image to cover its container */
+        border-top-left-radius: 0.25rem;
+        /* Add rounded corners to top left */
+        border-top-right-radius: 0.25rem;
+        /* Add rounded corners to top right */
+
+    }
+
+    /* Style card body */
+    .card-body {
+        padding: 1.0rem;
+        /* Add padding inside card body */
+
+    }
+
+    .card-title-box {
+        overflow: hidden;
+        white-space: nowrap;
+        /* Prevent text from wrapping */
+        text-overflow: ellipsis;
+        /* Display an ellipsis (...) to indicate text overflow */
+
+    }
+
+    /* Style card title */
+    .card-title {
+        font-size: 0.9rem;
+        /* Change font size of the title */
+        color: #333;
+        /* Change text color */
+    }
+
+
+    /* Style card text */
+    .card-text {
+        font-size: 0.8rem;
+        /* Change font size of the text */
+        color: #666;
+        /* Change text color */
+    }
+
+
+    /* Style card button */
+    .btn-primary {
+        background-color: #007bff;
+        /* Change button background color */
+        color: #fff;
+        /* Change button text color */
+        border: none;
+        /* Remove button border */
+        padding: 0.5rem 1rem;
+        /* Add padding to button */
+    }
+
+    /* Change button color on hover */
+    .btn-primary:hover {
+        background-color: #0056b3;
+        transition: transform 0.3s ease;
+    }
+
+    .navbar-brand img {
+        width: 20px;
+        /* Set the width of the logo */
+        height: auto;
+        /* Maintain aspect ratio */
+    }
+
+    .footer {
+        background-color: #a7a6a6;
+        padding: 20px 0;
+    }
+
+    .custom-bg-blue {
+        background-color: rgb(12, 12, 48);
+    }
+
+
+    .footer h6 {
+        color: white;
+    }
+
+
+    .footer ul {
+        list-style-type: none;
+        padding: 0;
+    }
+
+    .footer ul li {
+        margin-bottom: 10px;
+    }
+
+    .footer ul li a {
+        color: #8b8989;
+        text-decoration: none;
+    }
+
+    .footer p {
+        color: #a7a6a6;
+        text-decoration: none;
+    }
+
+    .footer ul li a:hover {
+        color: #6b6969;
+    }
+
+    /* Add styles for the loader */
+.loader {
+    display: none; /* Initially hide the loader */
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 9999;
+    width: 50px;
+    height: 50px;
+}
+
+/* Add a class to hide the content */
+.hidden {
+    display: none;
+}
+
+    /* Loader Animation */
+    @keyframes spin {
+        0% {
+            transform: rotate(0deg);
+        }
+
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+
+
+    /* Add a black background color to the top navigation bar */
+    .topnav {
+        overflow: hidden;
+        background-color: #211c4d;
+    }
+
+    /* Style the links inside the navigation bar */
+    .topnav a {
+        float: left;
+        display: block;
+        color: black;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+        font-size: 17px;
+    }
+
+    /* Change the color of links on hover */
+    .topnav a:hover {
+        background-color: #ddd;
+        color: black;
+    }
+
+    /* Style the "active" element to highlight the current page */
+    .topnav a.active {
+        background-color: #2196F3;
+        color: white;
+    }
+
+    /* Style the search box inside the navigation bar */
+    .topnav input[type=text] {
+        float: right;
+        padding: 6px;
+        border: none;
+        margin-top: 8px;
+        margin-right: 16px;
+        font-size: 17px;
+    }
+
+    /* When the screen is less than 600px wide, stack the links and the search field vertically instead of horizontally */
+    @media screen and (max-width: 600px) {
+
+        .topnav a,
+        .topnav input[type=text] {
+            float: none;
+            display: block;
+            text-align: left;
+            width: 100%;
+            margin: 0;
+            padding: 14px;
+        }
+
+        .topnav input[type=text] {
+            border: 1px solid #ccc;
+        }
+    }
+</style>
+
+<body>
+    <!-- Navbar -->
+    <nav id="navbar" class="navbar navbar-expand-lg navbar-light bg-gray" style="display: none;"> <!-- Change bg-blue to bg-primary for blue background -->
+        <a class="navbar-brand" href="#">
+            <img src="images/icon.png" alt="Logo" style="width: 50px; height: auto;">
+            Jolly Uniforms
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Products</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Contact</a>
+                </li>
+                <input type="text" placeholder="Search..">
+            </ul>
+        </div>
+    </nav>
+
+    <img id="loader" class="loader" src="images/shopping.gif" alt="Loading...">
+
+    <!-- Main Content -->
+    <div id="main-content" class="container mt-5 hidden">
+        <h5>School Uniforms</h5>
+        <!-- Product Display Section -->
+        <div id="product-list" class="row mt-4"></div>
+    </div>
+
+    <!-- Bootstrap JS and jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.5/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.5/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.5/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.5/firebase-database-compat.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+        integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEX6fBZlO1bKjqB5IQ2h50aDki2S3Sqw3q6b"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+        integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8sh+Wy/T8xKZ5tiEAPD+JX/WfS7GVI5u6dHvcC"
+        crossorigin="anonymous"></script>
+    <!-- Your custom JavaScript -->
+    <script src="script.js"></script>
+    <footer id="footer" class="footer custom-bg-blue hidden">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <h6>About</h6>
+                    <ul>                
+                        <p>We are one stop all uniforms store with over a decade experience in service delivery</p>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h6>OUR BRANCHES/STORES</h6>
+                    <ul>
+                        <li><a href="#">Roret Branch</a></li>
+                        <li><a href="#">Kapsuser Branch</a></li>
+                        <li><a href="#">Kericho Town Branch</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h6>Contact Us</h6>
+                    <p>123 Street Name, City, Country</p>
+                    <p>Email: info@example.com</p>
+                    <p>Phone: +1234567890</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+
+</body>
+
+</html>
