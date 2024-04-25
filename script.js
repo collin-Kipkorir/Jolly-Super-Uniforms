@@ -17,7 +17,41 @@ const database = firebase.database();
 // Fetch products from Firebase
 const productsRef = database.ref('products');
 
+// Get the navbar-toggler element
+const navbarToggler = document.getElementById('navbar-toggler');
 
+// Add an event listener to detect when the navbar is opened
+navbarToggler.addEventListener('click', function () {
+    // Hide the navbar-toggler-icon after it has been clicked
+    this.style.display = 'none';
+});
+
+window.addEventListener('DOMContentLoaded', checkWidth);
+window.addEventListener('resize', checkWidth);
+
+function checkWidth() {
+    // Get the viewport width
+    var viewportWidth = window.innerWidth || document.documentElement.clientWidth;
+
+    // Check if viewport width is less than or equal to 767px (mobile view)
+    if (viewportWidth <= 767) {
+        // Add sticky class to the navbar
+        document.getElementById('navbar').classList.add('sticky');
+    } else {
+        // Remove sticky class from the navbar
+        document.getElementById('navbar').classList.remove('sticky');
+    }
+}
+
+function showDropdown() {
+    document.getElementById("navbarDropdown").setAttribute("aria-expanded", "true");
+    document.getElementById("dropdownMenu").classList.add("show");
+  }
+
+  function hideDropdown() {
+    document.getElementById("navbarDropdown").setAttribute("aria-expanded", "false");
+    document.getElementById("dropdownMenu").classList.remove("show");
+  }
 /// Function to show loader and hide content
 function showLoader() {
     document.getElementById('loader').style.display = 'block';
@@ -50,6 +84,7 @@ function showFooter() {
 // Call the function to display loader when the page starts loading
 showLoader();
 hideNavbar();
+
 
 function displayProducts() {
     const productList = document.getElementById('product-list');
@@ -90,10 +125,12 @@ function displayProducts() {
                                     </a>                
                                 </span> <!-- Cart Icon -->
                                 <span class="ml-2 whatsapp-icon">
-                                    <a href="whatsapp-url">
-                                        <img src="images/whatsapp.png" alt="WhatsApp Logo" style="height: 25px;" class="whatsapp-img">
-                                    </a>
-                                </span> <!-- WhatsApp Logo -->
+                                <a href="whatsapp://send?phone=+254723914386&text=Hello%20I%20would%20like%20to%20chat">
+                                    <img src="images/whatsapp.png" alt="WhatsApp Logo" style="height: 25px;" class="whatsapp-img">
+                                </a>
+                            </span> <!-- WhatsApp Logo -->
+                            
+                            
                             </div>
                         </div>
                     </div>
@@ -104,13 +141,12 @@ function displayProducts() {
         } else {
             console.log("No data available");
         }
-    }).catch((error) => {
-        console.error("Error fetching products: ", error);
-    });
+    })
+    
 }
 
 // Call the function to display products when the page loads
 window.onload = () => {
     displayProducts();
-   
+
 };

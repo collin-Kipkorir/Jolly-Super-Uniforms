@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jolly Uniforms || Quality Uniforms in Kenya</title>
+    <title>Jolly Uniforms || Quality Uniforms in Kericho</title>
 
     <!-- Bootstrap CSS -->
     <link href="styles.css" />
@@ -16,6 +16,23 @@
     <link rel="icon" type="image/png" href="images/icon.png">
 </head>
 <style>
+
+    .custom-navbar-bg {
+        background-color: rgb(221, 219, 219);
+        /* Change to the desired color */
+    }
+
+    .dropdown-menu {
+        transition: opacity 0.3s ease-in-out;
+        opacity: 0;
+        pointer-events: none;
+    }
+
+    .dropdown-menu.show {
+        opacity: 1;
+        pointer-events: auto;
+    }
+
     /* Style card container */
     .card {
         margin-bottom: 7px;
@@ -150,21 +167,22 @@
     }
 
     /* Add styles for the loader */
-.loader {
-    display: none; /* Initially hide the loader */
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 9999;
-    width: 50px;
-    height: 50px;
-}
+    .loader {
+        display: none;
+        /* Initially hide the loader */
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 9999;
+        width: 50px;
+        height: 50px;
+    }
 
-/* Add a class to hide the content */
-.hidden {
-    display: none;
-}
+    /* Add a class to hide the content */
+    .hidden {
+        display: none;
+    }
 
     /* Loader Animation */
     @keyframes spin {
@@ -177,101 +195,75 @@
         }
     }
 
-
-    /* Add a black background color to the top navigation bar */
-    .topnav {
-        overflow: hidden;
-        background-color: #211c4d;
-    }
-
-    /* Style the links inside the navigation bar */
-    .topnav a {
-        float: left;
+    /* Optionally, you can also hide the navbar-toggler-icon by default */
+    .navbar-toggler {
         display: block;
-        color: black;
-        text-align: center;
-        padding: 14px 16px;
-        text-decoration: none;
-        font-size: 17px;
+        /* Ensure the button is initially visible */
     }
-
-    /* Change the color of links on hover */
-    .topnav a:hover {
-        background-color: #ddd;
-        color: black;
-    }
-
-    /* Style the "active" element to highlight the current page */
-    .topnav a.active {
-        background-color: #2196F3;
-        color: white;
-    }
-
-    /* Style the search box inside the navigation bar */
-    .topnav input[type=text] {
-        float: right;
-        padding: 6px;
-        border: none;
-        margin-top: 8px;
-        margin-right: 16px;
-        font-size: 17px;
-    }
-
-    /* When the screen is less than 600px wide, stack the links and the search field vertically instead of horizontally */
-    @media screen and (max-width: 600px) {
-
-        .topnav a,
-        .topnav input[type=text] {
-            float: none;
-            display: block;
-            text-align: left;
+    @media (max-width: 767px) {
+        #navbar.sticky {
+            position: fixed;
+            top: 0;
             width: 100%;
-            margin: 0;
-            padding: 14px;
+            z-index: 1000;
+            background-color: #fff; /* Add your desired background color */
         }
 
-        .topnav input[type=text] {
-            border: 1px solid #ccc;
+        #navbar.sticky .navbar-brand {
+            margin-right: 0; /* Adjust as needed */
         }
     }
 </style>
 
 <body>
-    <!-- Navbar -->
-    <nav id="navbar" class="navbar navbar-expand-lg navbar-light bg-gray" style="display: none;"> <!-- Change bg-blue to bg-primary for blue background -->
-        <a class="navbar-brand" href="#">
-            <img src="images/icon.png" alt="Logo" style="width: 50px; height: auto;">
-            Jolly Uniforms
-        </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <nav id="navbar" class="navbar navbar-expand-lg navbar-light custom-navbar-bg">
+        <div class="collapse navbar-collapse justify-content-between align-items-center" id="navbarSupportedContent">
+            <div class="navbar-brand">
+                <img src="images/icon.png" alt="Logo" style="width: 50px; height: auto; margin-right: 10px;">
+                Jolly Uniforms
+            </div>
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <input class="form-control" type="text" placeholder="Search.." aria-label="Search">
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html" style="padding-right: 20px;">Products</a>
+                </li>
+                <li class="nav-item">
+                    <div class="dropdown" onmouseover="showDropdown()" onmouseout="hideDropdown()">
+                        <a class="nav-link" href="#" id="navbarDropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                            Our Branches
+                        </a>
+                        <div class="dropdown-menu" id="dropdownMenu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="#">Roret Branch</a>
+                            <a class="dropdown-item" href="#">Kapsuser Branch</a>
+                            <a class="dropdown-item" href="#">Kericho Town Branch</a>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+            <div class="navbar-nav">
+                <a class="nav-item nav-link" href="#" style="padding-right: 20px;">
+                    <i class="fas fa-shopping-cart" style="color: blue;"></i> <!-- Assuming you have Font Awesome for cart icon -->
+                </a>
+            </div>
+        </div>
+        <button id="navbar-toggler" class="navbar-toggler" type="button" data-toggle="collapse"
+                data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Products</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Contact</a>
-                </li>
-                <input type="text" placeholder="Search..">
-            </ul>
-        </div>
     </nav>
 
     <img id="loader" class="loader" src="images/shopping.gif" alt="Loading...">
 
     <!-- Main Content -->
-    <div id="main-content" class="container mt-5 hidden">
+    <div id="main-content" style = "padding-top: 20px;" class="container mt-5 hidden">
         <h5>School Uniforms</h5>
         <!-- Product Display Section -->
         <div id="product-list" class="row mt-4"></div>
     </div>
+    
 
     <!-- Bootstrap JS and jQuery -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
@@ -303,7 +295,7 @@
             <div class="row">
                 <div class="col-md-4">
                     <h6>About</h6>
-                    <ul>                
+                    <ul>
                         <p>We are one stop all uniforms store with over a decade experience in service delivery</p>
                     </ul>
                 </div>
@@ -317,14 +309,14 @@
                 </div>
                 <div class="col-md-4">
                     <h6>Contact Us</h6>
-                    <p>123 Street Name, City, Country</p>
-                    <p>Email: info@example.com</p>
+                    <p>Tengecha Lane, Kericho, Kenya</p>
+                    <p>Email: info@jollyuniforms.com</p>
                     <p>Phone: +1234567890</p>
                 </div>
             </div>
         </div>
     </footer>
-    
+
 
 </body>
 
