@@ -121,7 +121,7 @@ function displayProducts() {
                             <div class="d-flex justify-content-between align-items-end mt-auto">
                                 <span class="cart-icon">
                                     <!-- Add event listener to cart icon -->
-                                    <a href="#" style="margin-right: 10px;" data-toggle="modal" data-target="#itemDetailsModal" onclick="addItemToCart(${JSON.stringify(childData)})">
+                                    <a href="#" style="margin-right: 10px;">
                                         <img src="images/addcart.png" alt="Add Cart" style="height: 25px;" class="cart-img">
                                     </a>
                                 </span> <!-- Cart Icon -->
