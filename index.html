@@ -16,8 +16,7 @@
     <link rel="icon" type="image/png" href="images/icon.png">
 </head>
 <style>
-
-    .custom-navbar-bg {
+.custom-navbar-bg {
         background-color: rgb(221, 219, 219);
         /* Change to the desired color */
     }
@@ -44,6 +43,7 @@
         display: flex;
         /* Use flexbox */
         /* max-lines: 1; */
+        background-color: white;
 
     }
 
@@ -72,6 +72,7 @@
     /* Style card body */
     .card-body {
         padding: 1.0rem;
+      
         /* Add padding inside card body */
 
     }
@@ -214,15 +215,14 @@
         }
     }
 </style>
-
 <body>
     <nav id="navbar" class="navbar navbar-expand-lg navbar-light custom-navbar-bg">
         <div class="collapse navbar-collapse justify-content-between align-items-center" id="navbarSupportedContent">
-            <div class="navbar-brand">
-                <img src="images/icon.png" alt="Logo" style="width: 50px; height: auto; margin-right: 10px;">
-                Jolly Uniforms
+            <div class="navbar-brand" style="font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;">
+                <img src="images/icon.png"  alt="Logo" style="width: 50px; height: auto; margin-right: 10px; border-color: #f39111;">
+                JOLLY UNIFORMS
             </div>
-            <ul class="navbar-nav">
+            <ul class="navbar-nav flex-grow-1"> <!-- Added flex-grow-1 class -->
                 <li class="nav-item">
                     <input class="form-control" type="text" placeholder="Search.." aria-label="Search">
                 </li>
@@ -237,12 +237,12 @@
                         <div class="dropdown-menu" id="dropdownMenu" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item" href="#">Roret Branch</a>
                             <a class="dropdown-item" href="#">Kapsuser Branch</a>
-                            <a class="dropdown-item" href="#">Kericho Town Branch</a>
+                            <a class="dropdown-item" href="index.html">Kericho Town Branch</a>
                         </div>
                     </div>
                 </li>
             </ul>
-            <div class="navbar-nav">
+            <div class="navbar-nav ml-auto" style="height: 30px;"> <!-- Added ml-auto class -->
                 <a class="nav-item nav-link" href="#" style="padding-right: 20px;">
                     <i class="fas fa-shopping-cart" style="color: blue;"></i> <!-- Assuming you have Font Awesome for cart icon -->
                 </a>
@@ -254,11 +254,37 @@
             <span class="navbar-toggler-icon"></span>
         </button>
     </nav>
+    
+<!-- Modal -->
+<div class="modal fade" id="itemDetailsModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Product Details</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div>
+                    <img id="modal-product-image" src="" class="img-fluid" alt="Product Image">
+                </div>
+                <div>
+                    <h5 id="modal-product-name"></h5>
+                    <p id="modal-product-description"></p>
+                    <p id="modal-product-price"></p>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</div>
+
 
     <img id="loader" class="loader" src="images/shopping.gif" alt="Loading...">
 
     <!-- Main Content -->
-    <div id="main-content" style = "padding-top: 20px;" class="container mt-5 hidden">
+    <div id="main-content" style = "padding-top: 10px;  font-size: medium; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;" class="container mt-5 hidden" >
         <h5>School Uniforms</h5>
         <!-- Product Display Section -->
         <div id="product-list" class="row mt-4"></div>
@@ -304,7 +330,7 @@
                     <ul>
                         <li><a href="#">Roret Branch</a></li>
                         <li><a href="#">Kapsuser Branch</a></li>
-                        <li><a href="#">Kericho Town Branch</a></li>
+                        <li><a href="index.html">Kericho Town Branch</a></li>
                     </ul>
                 </div>
                 <div class="col-md-4">
