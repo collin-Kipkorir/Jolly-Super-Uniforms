@@ -16,7 +16,7 @@
     <link rel="icon" type="image/png" href="images/icon.png">
 </head>
 <style>
-.custom-navbar-bg {
+    .custom-navbar-bg {
         background-color: rgb(221, 219, 219);
         /* Change to the desired color */
     }
@@ -72,7 +72,7 @@
     /* Style card body */
     .card-body {
         padding: 1.0rem;
-      
+
         /* Add padding inside card body */
 
     }
@@ -201,25 +201,71 @@
         display: block;
         /* Ensure the button is initially visible */
     }
+
+    /* Default styling for modal body */
+    .modal-body {
+       display: flex;
+       flex-direction: row;
+       
+    
+    }
+    #modal-product-image {
+            height: 250px;
+            margin-right: 5em;
+            /* Adjust margin between image and body */
+        }
+
     @media (max-width: 767px) {
         #navbar.sticky {
             position: fixed;
             top: 0;
             width: 100%;
             z-index: 1000;
-            background-color: #fff; /* Add your desired background color */
+            background-color: #fff;
+            /* Add your desired background color */
         }
 
         #navbar.sticky .navbar-brand {
-            margin-right: 0; /* Adjust as needed */
+            margin-right: 0;
+            /* Adjust as needed */
         }
+
+        .desktop-view {
+            display: none;
+        }
+
+        .mobile-view {
+            display: block;
+        }
+
+        .modal-body {
+            
+        display: flex;
+        flex-direction: column;
+                
+        }
+
+        #modal-product-image-container {
+            margin-right: 2em;
+            
+            /* Adjust margin between image and body */
+        }
+        #modal-product-image {
+            display: flex;
+    margin: 0 auto; /* Center the image horizontally */
+    align-self: center; /* Align vertically */
+    /* Adjust other styles as needed */
+}
+
     }
 </style>
+
 <body>
     <nav id="navbar" class="navbar navbar-expand-lg navbar-light custom-navbar-bg">
         <div class="collapse navbar-collapse justify-content-between align-items-center" id="navbarSupportedContent">
             <div class="navbar-brand" style="font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;">
-                <img src="images/icon.png"  alt="Logo" style="width: 50px; height: auto; margin-right: 10px; border-color: #f39111;">
+                <img src="images/icon.png" alt="Logo"
+                    style="width: 50px; height: auto; margin-right: 10px; border-color: #f39111;">
                 JOLLY UNIFORMS
             </div>
             <ul class="navbar-nav flex-grow-1"> <!-- Added flex-grow-1 class -->
@@ -231,7 +277,8 @@
                 </li>
                 <li class="nav-item">
                     <div class="dropdown" onmouseover="showDropdown()" onmouseout="hideDropdown()">
-                        <a class="nav-link" href="#" id="navbarDropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                        <a class="nav-link" href="#" id="navbarDropdown" role="button" aria-haspopup="true"
+                            aria-expanded="false">
                             Our Branches
                         </a>
                         <div class="dropdown-menu" id="dropdownMenu" aria-labelledby="navbarDropdown">
@@ -244,52 +291,58 @@
             </ul>
             <div class="navbar-nav ml-auto" style="height: 30px;"> <!-- Added ml-auto class -->
                 <a class="nav-item nav-link" href="#" style="padding-right: 20px;">
-                    <i class="fas fa-shopping-cart" style="color: blue;"></i> <!-- Assuming you have Font Awesome for cart icon -->
+                    <i class="fas fa-shopping-cart" style="color: blue;"></i>
+                    <!-- Assuming you have Font Awesome for cart icon -->
                 </a>
             </div>
         </div>
         <button id="navbar-toggler" class="navbar-toggler" type="button" data-toggle="collapse"
-                data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                aria-label="Toggle navigation">
+            data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+            aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
     </nav>
-    
-<!-- Modal -->
-<div class="modal fade" id="itemDetailsModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 id="modal-product-name"></h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body" style="display: flex; flex-direction: row; ">
-                <div>
-                    <img id="modal-product-image" src="" class="img-fluid" alt="Product Image" style="height: 250px;">
+
+    <!-- Modal -->
+    <div class="modal fade" id="itemDetailsModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 id="modal-product-name"></h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
                 </div>
-                <div style="margin-left: 3em;">
+                <div class="modal-body">
+                    <!-- Product Image -->
+                    <div id="modal-product-image-container">
+                        <img id="modal-product-image" src="" class="img-fluid" alt="Product Image">
+                    </div>
+                    
+                    <!-- Product Details -->
+                    <div id="modal-product-body">
+                        <p id="modal-product-description"></p>
+                        <p id="modal-product-price"></p>
+                    </div>
+                </div>
                 
-                    <p id="modal-product-description"></p>
-                    <p id="modal-product-price"></p>
-                </div>
+
             </div>
-            
         </div>
     </div>
-</div>
 
 
     <img id="loader" class="loader" src="images/shopping.gif" alt="Loading...">
 
     <!-- Main Content -->
-    <div id="main-content" style = "padding-top: 10px;  font-size: medium; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;" class="container mt-5 hidden" >
-        <h5>School Uniforms</h5>
+    <div id="main-content"
+        style="padding-top: 10px;  font-size: medium; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;"
+        class="container mt-5 hidden">
+        <h5>School Uniform</h5>
         <!-- Product Display Section -->
         <div id="product-list" class="row mt-4"></div>
     </div>
-    
+
 
     <!-- Bootstrap JS and jQuery -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
