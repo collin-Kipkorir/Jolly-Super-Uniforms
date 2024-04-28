@@ -128,6 +128,14 @@
         height: auto;
         /* Maintain aspect ratio */
     }
+    #navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+         
+            /* Add your desired background color */
+        }
 
     .footer {
         background-color: #a7a6a6;
@@ -204,16 +212,17 @@
 
     /* Default styling for modal body */
     .modal-body {
-       display: flex;
-       flex-direction: row;
-       
-    
+        display: flex;
+        flex-direction: row;
+
+
     }
+
     #modal-product-image {
-            height: 250px;
-            margin-right: 5em;
-            /* Adjust margin between image and body */
-        }
+        height: 250px;
+        margin-right: 5em;
+        /* Adjust margin between image and body */
+    }
 
     @media (max-width: 767px) {
         #navbar.sticky {
@@ -239,29 +248,32 @@
         }
 
         .modal-body {
-            
-        display: flex;
-        flex-direction: column;
-                
+
+            display: flex;
+            flex-direction: column;
+
         }
 
         #modal-product-image-container {
             margin-right: 2em;
-            
+
             /* Adjust margin between image and body */
         }
+
         #modal-product-image {
             display: flex;
-    margin: 0 auto; /* Center the image horizontally */
-    align-self: center; /* Align vertically */
-    /* Adjust other styles as needed */
-}
+            margin: 0 auto;
+            /* Center the image horizontally */
+            align-self: center;
+            /* Align vertically */
+            /* Adjust other styles as needed */
+        }
 
     }
 </style>
 
 <body>
-    <nav id="navbar" class="navbar navbar-expand-lg navbar-light custom-navbar-bg">
+    <nav id="navbar" class="navbar navbar-expand-lg navbar-light" style="background-color: aliceblue;">
         <div class="collapse navbar-collapse justify-content-between align-items-center" id="navbarSupportedContent">
             <div class="navbar-brand" style="font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;">
                 <img src="images/icon.png" alt="Logo"
@@ -379,7 +391,7 @@
                     </ul>
                 </div>
                 <div class="col-md-4">
-                    <h6>OUR BRANCHES/STORES</h6>
+                    <h6>Our Branches/ Stores</h6>
                     <ul>
                         <li><a href="#">Roret Branch</a></li>
                         <li><a href="#">Kapsuser Branch</a></li>
