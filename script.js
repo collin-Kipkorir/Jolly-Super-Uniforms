@@ -52,6 +52,7 @@ function hideDropdown() {
     document.getElementById("navbarDropdown").setAttribute("aria-expanded", "false");
     document.getElementById("dropdownMenu").classList.remove("show");
 }
+
 /// Function to show loader and hide content
 function showLoader() {
     document.getElementById('loader').style.display = 'block';
@@ -63,6 +64,7 @@ function hideLoader() {
     document.getElementById('loader').style.display = 'none';
     document.getElementById('main-content').classList.remove('hidden');
 }
+
 // Function to hide the navbar
 function hideNavbar() {
     document.getElementById('navbar').style.display = 'none';
@@ -72,6 +74,7 @@ function hideNavbar() {
 function showNavbar() {
     document.getElementById('navbar').style.display = 'block';
 }
+
 // Function to hide the footer
 function hideFooter() {
     document.getElementById('footer').classList.add('hidden');
@@ -81,6 +84,7 @@ function hideFooter() {
 function showFooter() {
     document.getElementById('footer').classList.remove('hidden');
 }
+
 // Call the function to display loader when the page starts loading
 showLoader();
 hideNavbar();
@@ -105,7 +109,7 @@ function displayProducts() {
                 showNavbar();
                 // Create product card for each product
                 const productCard = document.createElement('div');
-                productCard.classList.add('col-md-3', 'product-card'); // Add product-card class
+                productCard.classList.add('col-6', 'col-md-3', 'product-card'); // Add responsive classes for mobile and desktop view
                 productCard.innerHTML = `
                 <div class="card mb-4 shadow-sm">
                     <div class="d-flex justify-content-center">
@@ -117,7 +121,7 @@ function displayProducts() {
                         <div class="card-title-box"><h6 class="card-title">${childData.name}</h6></div>
                         <!-- <p class="card-text">${childData.description}</p> -->
                         <div class="d-flex justify-content-between align-items-end mt-auto">
-                            <p class="card-text"><span style="color: red; font-size: 15px; font-weight: bold;">From Kshs. ${childData.price}</span></p> <!-- Apply styling to price text -->
+                           <div> <p class="card-text"><span style="color: red; font-size: 15px; font-weight: bold;">From Kshs. ${childData.price}</span></p></div> <!-- Apply styling to price text -->
                             <div class="d-flex justify-content-between align-items-end mt-auto">
                                 <span class="cart-icon">
                                     <!-- Add event listener to cart icon -->
@@ -179,7 +183,6 @@ function logProductID(productId) {
     // Retrieve product details by ID
     getProductDetails(productId);
 }
-
 
 // Call the function to display products when the page loads
 window.onload = () => {
