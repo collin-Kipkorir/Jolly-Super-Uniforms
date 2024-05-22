@@ -190,12 +190,34 @@ function getProductDetails(productId) {
     });
 }
 
+
+
 // Function to log product ID when item image is clicked and retrieve product details
 function logProductID(productId) {
     console.log("Product ID:", productId);
     // Retrieve product details by ID
     getProductDetails(productId);
 }
+// Event listener for the WhatsApp button to dynamically construct the URL with product details
+document.getElementById('whatsapp-button').addEventListener('click', function(event) {
+    event.preventDefault(); // Prevent the default link behavior
+
+    const productImage = document.getElementById('modal-product-image').src;
+    const productDescription = document.getElementById('modal-product-description').textContent;
+    const productPrice = document.getElementById('modal-product-price').textContent;
+    const selectedSize = document.getElementById('product-size').value;
+    const quantity = document.getElementById('product-quantity').value;
+
+    const message = `Hello, I would like to inquire about your product:
+Description: ${productDescription}
+Price: ${productPrice}
+Size: ${selectedSize}
+Quantity: ${quantity}
+Image: ${productImage}`;
+
+    const whatsappUrl = `https://wa.me/254723914386?text=${encodeURIComponent(message)}`;
+    window.open(whatsappUrl, '_blank');
+});
 
 
 // Call the function to display products when the page loads
