@@ -213,7 +213,7 @@ ${productDescription}
 Price: ${productPrice}
 Size: ${selectedSize}
 Quantity: ${quantity}
-Image: ${productImage}`;
+${productImage}`;
 
     const whatsappUrl = `https://wa.me/254723914386?text=${encodeURIComponent(message)}`;
     window.open(whatsappUrl, '_blank');
