@@ -146,25 +146,46 @@ function displayProducts() {
         console.error("Error fetching products: ", error);
     });
 }
-
 // Function to retrieve product details by ID
 function getProductDetails(productId) {
     const productRef = firebase.database().ref('products/' + productId);
     productRef.once('value').then((snapshot) => {
         if (snapshot.exists()) {
             const productData = snapshot.val();
+            
             // Populate modal with product details
             const modalProductImage = document.getElementById('modal-product-image');
             const modalProductName = document.getElementById('modal-product-name');
             const modalProductDescription = document.getElementById('modal-product-description');
             const modalProductPrice = document.getElementById('modal-product-price');
+            const modalProductSpecs = document.getElementById('modal-product-specs');
+            const modalProductReviewsList = document.getElementById('modal-product-reviews-list');
             
             // Check if modal elements exist before setting their properties
-            if (modalProductImage && modalProductName && modalProductDescription && modalProductPrice) {
+            if (modalProductImage && modalProductName && modalProductDescription && modalProductPrice && modalProductSpecs && modalProductReviewsList) {
                 modalProductImage.src = productData.image;
                 modalProductName.textContent = productData.name;
                 modalProductDescription.textContent = productData.description;
                 modalProductPrice.textContent = `From Kshs. ${productData.price}`;
+                
+                // Set product specifications
+                if (productData.specifications) {
+                    modalProductSpecs.textContent = productData.specifications;
+                } else {
+                    modalProductSpecs.textContent = 'No specifications available';
+                }
+                
+                // Set product reviews
+                if (productData.reviews) {
+                    modalProductReviewsList.innerHTML = ''; // Clear previous reviews
+                    productData.reviews.forEach(review => {
+                        const reviewItem = document.createElement('li');
+                        reviewItem.textContent = review;
+                        modalProductReviewsList.appendChild(reviewItem);
+                    });
+                } else {
+                    modalProductReviewsList.innerHTML = '<li>No reviews available</li>';
+                }
             } else {
                 console.error("One or more modal elements not found.");
             }
