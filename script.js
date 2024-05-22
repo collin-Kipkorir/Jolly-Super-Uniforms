@@ -152,7 +152,6 @@ function getProductDetails(productId) {
     productRef.once('value').then((snapshot) => {
         if (snapshot.exists()) {
             const productData = snapshot.val();
-            
             // Populate modal with product details
             const modalProductImage = document.getElementById('modal-product-image');
             const modalProductName = document.getElementById('modal-product-name');
@@ -167,24 +166,18 @@ function getProductDetails(productId) {
                 modalProductName.textContent = productData.name;
                 modalProductDescription.textContent = productData.description;
                 modalProductPrice.textContent = `From Kshs. ${productData.price}`;
+                modalProductSpecs.textContent = productData.specifications || "No specifications available.";
                 
-                // Set product specifications
-                if (productData.specifications) {
-                    modalProductSpecs.textContent = productData.specifications;
-                } else {
-                    modalProductSpecs.textContent = 'No specifications available';
-                }
-                
-                // Set product reviews
-                if (productData.reviews) {
-                    modalProductReviewsList.innerHTML = ''; // Clear previous reviews
+                // Populate reviews
+                modalProductReviewsList.innerHTML = ''; // Clear existing reviews
+                if (productData.reviews && productData.reviews.length > 0) {
                     productData.reviews.forEach(review => {
                         const reviewItem = document.createElement('li');
                         reviewItem.textContent = review;
                         modalProductReviewsList.appendChild(reviewItem);
                     });
                 } else {
-                    modalProductReviewsList.innerHTML = '<li>No reviews available</li>';
+                    modalProductReviewsList.innerHTML = '<li>No reviews available.</li>';
                 }
             } else {
                 console.error("One or more modal elements not found.");
@@ -203,6 +196,7 @@ function logProductID(productId) {
     // Retrieve product details by ID
     getProductDetails(productId);
 }
+
 
 // Call the function to display products when the page loads
 window.onload = () => {
