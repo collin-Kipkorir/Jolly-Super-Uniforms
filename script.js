@@ -159,7 +159,7 @@ function getProductDetails(productId) {
             const modalProductPrice = document.getElementById('modal-product-price');
             const modalProductSpecs = document.getElementById('modal-product-specs');
             const modalProductReviewsList = document.getElementById('modal-product-reviews-list');
-            
+
             // Check if modal elements exist before setting their properties
             if (modalProductImage && modalProductName && modalProductDescription && modalProductPrice && modalProductSpecs && modalProductReviewsList) {
                 modalProductImage.src = productData.image;
@@ -167,7 +167,7 @@ function getProductDetails(productId) {
                 modalProductDescription.textContent = productData.description;
                 modalProductPrice.textContent = `From Kshs. ${productData.price}`;
                 modalProductSpecs.textContent = productData.specifications || "No specifications available.";
-                
+
                 // Populate reviews
                 modalProductReviewsList.innerHTML = ''; // Clear existing reviews
                 if (productData.reviews && productData.reviews.length > 0) {
@@ -199,7 +199,7 @@ function logProductID(productId) {
     getProductDetails(productId);
 }
 // Event listener for the WhatsApp button to dynamically construct the URL with product details
-document.getElementById('whatsapp-button').addEventListener('click', function(event) {
+document.getElementById('whatsapp-button').addEventListener('click', function (event) {
     event.preventDefault(); // Prevent the default link behavior
 
     const productImage = document.getElementById('modal-product-image').src;
@@ -209,7 +209,7 @@ document.getElementById('whatsapp-button').addEventListener('click', function(ev
     const quantity = document.getElementById('product-quantity').value;
 
     const message = `Hello, I would like to inquire about your product:
-Description: ${productDescription}
+${productDescription}
 Price: ${productPrice}
 Size: ${selectedSize}
 Quantity: ${quantity}
