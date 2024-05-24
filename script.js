@@ -88,7 +88,30 @@ function showFooter() {
 // Call the function to display loader when the page starts loading
 showLoader();
 hideNavbar();
+// Get the review form element
+const reviewForm = document.getElementById('review-form');
 
+// Add event listener for form submission
+reviewForm.addEventListener('submit', function(event) {
+    event.preventDefault(); // Prevent the default form submission
+
+    const reviewText = document.getElementById('review-text').value;
+    const productId = document.getElementById('modal-product-id').value; // Retrieve the current product ID
+
+    if (reviewText && productId) {
+        const reviewRef = database.ref('products/' + productId + '/reviews');
+        reviewRef.push(reviewText)
+            .then(() => {
+                alert('Review submitted successfully!');
+                document.getElementById('review-text').value = ''; // Clear the textarea
+                loadProductReviews(productId); // Reload the reviews
+            })
+            .catch(error => {
+                console.error('Error submitting review: ', error);
+                alert('Failed to submit review. Please try again.');
+            });
+    }
+});
 // Modify the displayProducts function to pass product_id to addItemToCart function
 function displayProducts() {
     const productList = document.getElementById('product-list');
@@ -146,6 +169,7 @@ function displayProducts() {
         console.error("Error fetching products: ", error);
     });
 }
+// Function to retrieve product details by ID
 function getProductDetails(productId) {
     const productRef = firebase.database().ref('products/' + productId);
     productRef.once('value').then((snapshot) => {
@@ -158,38 +182,19 @@ function getProductDetails(productId) {
             const modalProductPrice = document.getElementById('modal-product-price');
             const modalProductSpecs = document.getElementById('modal-product-specs');
             const modalProductReviewsList = document.getElementById('modal-product-reviews-list');
+            const modalProductId = document.getElementById('modal-product-id'); // Get the hidden input field
 
             // Check if modal elements exist before setting their properties
-            if (modalProductImage && modalProductName && modalProductDescription && modalProductPrice && modalProductSpecs && modalProductReviewsList) {
+            if (modalProductImage && modalProductName && modalProductDescription && modalProductPrice && modalProductSpecs && modalProductReviewsList && modalProductId) {
                 modalProductImage.src = productData.image;
                 modalProductName.textContent = productData.name;
                 modalProductDescription.textContent = productData.description;
                 modalProductPrice.textContent = `From Kshs. ${productData.price}`;
-
-                // Populate specifications
-                if (productData.specifications) {
-                    if (Array.isArray(productData.specifications)) {
-                        modalProductSpecs.innerHTML = productData.specifications.map(spec => `<li>${spec}</li>`).join('');
-                    } else if (typeof productData.specifications === 'object') {
-                        modalProductSpecs.innerHTML = Object.entries(productData.specifications).map(([key, value]) => `<li><strong>${key}:</strong> ${value}</li>`).join('');
-                    } else {
-                        modalProductSpecs.textContent = "No specifications available.";
-                    }
-                } else {
-                    modalProductSpecs.textContent = "No specifications available.";
-                }
+                modalProductSpecs.textContent = productData.specifications || "No specifications available.";
+                modalProductId.value = productId; // Set the product ID in the hidden input field
 
                 // Populate reviews
-                modalProductReviewsList.innerHTML = ''; // Clear existing reviews
-                if (productData.reviews && productData.reviews.length > 0) {
-                    productData.reviews.forEach(review => {
-                        const reviewItem = document.createElement('li');
-                        reviewItem.textContent = review;
-                        modalProductReviewsList.appendChild(reviewItem);
-                    });
-                } else {
-                    modalProductReviewsList.innerHTML = '<li>No reviews available.</li>';
-                }
+                loadProductReviews(productId);
             } else {
                 console.error("One or more modal elements not found.");
             }
@@ -200,29 +205,27 @@ function getProductDetails(productId) {
         console.error("Error fetching product details: ", error);
     });
 }
-document.getElementById('review-form').addEventListener('submit', function(event) {
-    event.preventDefault(); // Prevent default form submission
 
-    const reviewText = document.getElementById('review-text').value;
-    const productId = currentProductId; // This should be the ID of the currently viewed product
-
-    if (reviewText && productId) {
-        // Push the new review to Firebase
-        const reviewsRef = firebase.database().ref(`products/${productId}/reviews`);
-        reviewsRef.push(reviewText).then(() => {
-            // Clear the review text area
-            document.getElementById('review-text').value = '';
-            // Optionally, you can re-fetch the product details to update the reviews list
-            getProductDetails(productId);
-        }).catch((error) => {
-            console.error("Error adding review: ", error);
-        });
-    } else {
-        console.error("Review text or product ID is missing.");
-    }
-});
-
-
+// Function to load product reviews
+function loadProductReviews(productId) {
+    const reviewsRef = database.ref('products/' + productId + '/reviews');
+    const modalProductReviewsList = document.getElementById('modal-product-reviews-list');
+    reviewsRef.once('value').then((snapshot) => {
+        modalProductReviewsList.innerHTML = ''; // Clear existing reviews
+        if (snapshot.exists()) {
+            snapshot.forEach((childSnapshot) => {
+                const review = childSnapshot.val();
+                const reviewItem = document.createElement('li');
+                reviewItem.textContent = review;
+                modalProductReviewsList.appendChild(reviewItem);
+            });
+        } else {
+            modalProductReviewsList.innerHTML = '<li>No reviews available.</li>';
+        }
+    }).catch((error) => {
+        console.error("Error fetching reviews: ", error);
+    });
+}
 // Function to log product ID when item image is clicked and retrieve product details
 function logProductID(productId) {
     console.log("Product ID:", productId);
