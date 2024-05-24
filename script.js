@@ -193,8 +193,17 @@ function getProductDetails(productId) {
                 modalProductSpecs.textContent = productData.specifications || "No specifications available.";
                 modalProductId.value = productId; // Set the product ID in the hidden input field
 
+               
                 // Populate reviews
                 loadProductReviews(productId);
+
+                 // Populate specifications
+                 if (productData.specifications) {
+                    modalProductSpecs.innerHTML = Object.entries(productData.specifications).map(([key, value]) => `<li><strong>${key}:</strong> ${value}</li>`).join('');
+                } else {
+                    modalProductSpecs.innerHTML = "<p>No specifications available.</p>";
+                }
+
             } else {
                 console.error("One or more modal elements not found.");
             }
