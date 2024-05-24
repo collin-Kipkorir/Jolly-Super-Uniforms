@@ -95,14 +95,21 @@ const reviewForm = document.getElementById('review-form');
 reviewForm.addEventListener('submit', function(event) {
     event.preventDefault(); // Prevent the default form submission
 
+    const reviewName = document.getElementById('review-name').value;
     const reviewText = document.getElementById('review-text').value;
     const productId = document.getElementById('modal-product-id').value; // Retrieve the current product ID
 
-    if (reviewText && productId) {
+    if (reviewName && reviewText && productId) {
         const reviewRef = database.ref('products/' + productId + '/reviews');
-        reviewRef.push(reviewText)
+        const newReview = {
+            name: reviewName,
+            text: reviewText,
+            timestamp: firebase.database.ServerValue.TIMESTAMP // Add a timestamp
+        };
+        reviewRef.push(newReview)
             .then(() => {
                 alert('Review submitted successfully!');
+                document.getElementById('review-name').value = ''; // Clear the name input
                 document.getElementById('review-text').value = ''; // Clear the textarea
                 loadProductReviews(productId); // Reload the reviews
             })
@@ -112,6 +119,7 @@ reviewForm.addEventListener('submit', function(event) {
             });
     }
 });
+
 // Modify the displayProducts function to pass product_id to addItemToCart function
 function displayProducts() {
     const productList = document.getElementById('product-list');
@@ -214,7 +222,6 @@ function getProductDetails(productId) {
         console.error("Error fetching product details: ", error);
     });
 }
-
 // Function to load product reviews
 function loadProductReviews(productId) {
     const reviewsRef = database.ref('products/' + productId + '/reviews');
@@ -225,7 +232,7 @@ function loadProductReviews(productId) {
             snapshot.forEach((childSnapshot) => {
                 const review = childSnapshot.val();
                 const reviewItem = document.createElement('li');
-                reviewItem.textContent = review;
+                reviewItem.innerHTML = `<strong>${review.name}</strong>: ${review.text} <br><small>${new Date(review.timestamp).toLocaleString()}</small>`;
                 modalProductReviewsList.appendChild(reviewItem);
             });
         } else {
@@ -235,6 +242,7 @@ function loadProductReviews(productId) {
         console.error("Error fetching reviews: ", error);
     });
 }
+
 // Function to log product ID when item image is clicked and retrieve product details
 function logProductID(productId) {
     console.log("Product ID:", productId);
