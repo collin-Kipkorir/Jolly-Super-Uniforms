@@ -28,6 +28,22 @@ navbarToggler.addEventListener('click', function () {
 
 window.addEventListener('DOMContentLoaded', checkWidth);
 window.addEventListener('resize', checkWidth);
+$(document).ready(function() {
+    $('#itemDetailsModal').modal({
+        backdrop: 'static',
+        keyboard: false
+    });
+
+    $('#modal-close-button').on('click', function() {
+        $('#itemDetailsModal').modal('hide');
+    });
+
+    $('#itemDetailsModal').on('hide.bs.modal', function (e) {
+        if (!confirm("Are you sure you want to close the modal?")) {
+            e.preventDefault();
+        }
+    });
+});
 
 function checkWidth() {
     // Get the viewport width
@@ -120,6 +136,15 @@ reviewForm.addEventListener('submit', function(event) {
     }
 });
 
+// Function to shuffle an array using the Fisher-Yates shuffle algorithm
+function shuffleArray(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+    }
+    return array;
+}
+
 // Modify the displayProducts function to pass product_id to addItemToCart function
 function displayProducts() {
     const productList = document.getElementById('product-list');
@@ -133,8 +158,12 @@ function displayProducts() {
                 const childData = childSnapshot.val();
                 childDataArray.push({ key: childSnapshot.key, ...childData }); // Push each product into the array with its key
             });
+
+            // Shuffle the array of child data
+            const shuffledChildDataArray = shuffleArray(childDataArray);
+
             // Loop through the array of child data
-            childDataArray.forEach((childData) => {
+            shuffledChildDataArray.forEach((childData) => {
                 hideLoader();
                 showFooter();
                 showNavbar();
@@ -177,6 +206,7 @@ function displayProducts() {
         console.error("Error fetching products: ", error);
     });
 }
+
 // Function to retrieve product details by ID
 function getProductDetails(productId) {
     const productRef = firebase.database().ref('products/' + productId);
