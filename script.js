@@ -146,7 +146,6 @@ function displayProducts() {
         console.error("Error fetching products: ", error);
     });
 }
-// Function to retrieve product details by ID
 function getProductDetails(productId) {
     const productRef = firebase.database().ref('products/' + productId);
     productRef.once('value').then((snapshot) => {
@@ -166,7 +165,19 @@ function getProductDetails(productId) {
                 modalProductName.textContent = productData.name;
                 modalProductDescription.textContent = productData.description;
                 modalProductPrice.textContent = `From Kshs. ${productData.price}`;
-                modalProductSpecs.textContent = productData.specifications || "No specifications available.";
+
+                // Populate specifications
+                if (productData.specifications) {
+                    if (Array.isArray(productData.specifications)) {
+                        modalProductSpecs.innerHTML = productData.specifications.map(spec => `<li>${spec}</li>`).join('');
+                    } else if (typeof productData.specifications === 'object') {
+                        modalProductSpecs.innerHTML = Object.entries(productData.specifications).map(([key, value]) => `<li><strong>${key}:</strong> ${value}</li>`).join('');
+                    } else {
+                        modalProductSpecs.textContent = "No specifications available.";
+                    }
+                } else {
+                    modalProductSpecs.textContent = "No specifications available.";
+                }
 
                 // Populate reviews
                 modalProductReviewsList.innerHTML = ''; // Clear existing reviews
@@ -189,7 +200,27 @@ function getProductDetails(productId) {
         console.error("Error fetching product details: ", error);
     });
 }
+document.getElementById('review-form').addEventListener('submit', function(event) {
+    event.preventDefault(); // Prevent default form submission
 
+    const reviewText = document.getElementById('review-text').value;
+    const productId = currentProductId; // This should be the ID of the currently viewed product
+
+    if (reviewText && productId) {
+        // Push the new review to Firebase
+        const reviewsRef = firebase.database().ref(`products/${productId}/reviews`);
+        reviewsRef.push(reviewText).then(() => {
+            // Clear the review text area
+            document.getElementById('review-text').value = '';
+            // Optionally, you can re-fetch the product details to update the reviews list
+            getProductDetails(productId);
+        }).catch((error) => {
+            console.error("Error adding review: ", error);
+        });
+    } else {
+        console.error("Review text or product ID is missing.");
+    }
+});
 
 
 // Function to log product ID when item image is clicked and retrieve product details
@@ -208,12 +239,12 @@ document.getElementById('whatsapp-button').addEventListener('click', function (e
     const selectedSize = document.getElementById('product-size').value;
     const quantity = document.getElementById('product-quantity').value;
 
-    const message = `Hello, I would like to inquire about your product:
-${productDescription}
-Price: ${productPrice}
-Size: ${selectedSize}
-Quantity: ${quantity}
-${productImage}`;
+    const message = `Hello, I would like to inquire about :
+    ${productDescription}
+    Price: ${productPrice}
+    Size: ${selectedSize}
+    Quantity: ${quantity}
+    ${productImage}`;
 
     const whatsappUrl = `https://wa.me/254723914386?text=${encodeURIComponent(message)}`;
     window.open(whatsappUrl, '_blank');
