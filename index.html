@@ -287,27 +287,34 @@
             /* Align vertically */
             /* Adjust other styles as needed */
         }
+
         .form-group {
-    width: 100%; /* Full width for consistent margins */
-    max-width: 500px; /* Adjust this value as needed */
-    margin: 10px 0; /* Equal margin for top and bottom */
-}
+            width: 100%;
+            /* Full width for consistent margins */
+            max-width: 500px;
+            /* Adjust this value as needed */
+            margin: 10px 0;
+            /* Equal margin for top and bottom */
+        }
 
-.textarea-margin {
-    margin-top: 10px;
-    margin-bottom: 10px;
-}
+        .textarea-margin {
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
 
-.button-container {
-    display: flex;
-    justify-content: center; /* Center the button horizontally */
-    width: 100%;
-}
+        .button-container {
+            display: flex;
+            justify-content: center;
+            /* Center the button horizontally */
+            width: 100%;
+        }
 
-.submit-review-button {
-    margin-top: 20px; /* Adjust the margin as needed */
-    margin-bottom: 20px; /* Adjust the margin as needed */
-}
+        .submit-review-button {
+            margin-top: 20px;
+            /* Adjust the margin as needed */
+            margin-bottom: 20px;
+            /* Adjust the margin as needed */
+        }
 
     }
 
@@ -323,34 +330,40 @@
         margin-bottom: 20px;
         /* Adjust the margin as needed */
     }
+
     .form-centered {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
 
-.form-group {
-    width: 100%; /* Full width for consistent margins */
-    max-width: 500px; /* Adjust this value as needed */
-    margin: 10px 0; /* Equal margin for top and bottom */
-}
+    .form-group {
+        width: 100%;
+        /* Full width for consistent margins */
+        max-width: 500px;
+        /* Adjust this value as needed */
+        margin: 10px 0;
+        /* Equal margin for top and bottom */
+    }
 
-.textarea-margin {
-    margin-top: 10px;
-    margin-bottom: 10px;
-}
+    .textarea-margin {
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
 
-.button-container {
-    display: flex;
-    justify-content: center; /* Center the button horizontally */
-    width: 100%;
-}
+    .button-container {
+        display: flex;
+        justify-content: center;
+        /* Center the button horizontally */
+        width: 100%;
+    }
 
-.submit-review-button {
-    margin-top: 20px; /* Adjust the margin as needed */
-    margin-bottom: 20px; /* Adjust the margin as needed */
-}
-
+    .submit-review-button {
+        margin-top: 20px;
+        /* Adjust the margin as needed */
+        margin-bottom: 20px;
+        /* Adjust the margin as needed */
+    }
 </style>
 
 <body>
@@ -383,9 +396,10 @@
                 </li>
             </ul>
             <div class="navbar-nav ml-auto" style="height: 30px;"> <!-- Added ml-auto class -->
-                <a class="nav-item nav-link" href="#" style="padding-right: 20px;">
+
+                <a class="nav-item nav-link" href="#" data-toggle="modal" data-target="#cartModal"
+                    style="padding-right: 20px;">
                     <i class="fas fa-shopping-cart" style="color: blue;"></i>
-                    <!-- Assuming you have Font Awesome for cart icon -->
                 </a>
             </div>
         </div>
@@ -451,9 +465,13 @@
                             <!-- Add to Cart and Inquire on WhatsApp Buttons -->
                             <div class="d-flex justify-content-center mt-3">
                                 <button id="add-to-cart-button" class="btn btn-primary mx-2">Add to Cart</button>
-                                <a href="whatsapp://send?phone=+254723914386&text=Hello%20I%20would%20like%20to%20inquire%20about%20your%20product"
+                                <a href="whatsapp://send?phone=+254723914386&text=Hello%20I%20would%20like%20to%20inquire%20about%20"
                                     class="btn btn-success mx-2" id="whatsapp-button">Inquire on WhatsApp</a>
                             </div>
+
+                            <!-- Hidden input for storing product ID -->
+                            <input type="hidden" id="modal-product-id">
+
 
                         </div>
 
@@ -498,14 +516,15 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="review-text">Comment:</label>
-                                    <textarea id="review-text" class="form-control textarea-margin" rows="3" required></textarea>
+                                    <textarea id="review-text" class="form-control textarea-margin" rows="3"
+                                        required></textarea>
                                 </div>
                                 <div class="button-container">
                                     <button type="submit" class="btn btn-primary submit-review-button">Submit</button>
                                 </div>
                             </form>
                         </div>
-                        
+
                     </div>
 
 
@@ -514,6 +533,26 @@
         </div>
     </div>
 
+    <!-- Cart Modal -->
+    <div class="modal fade" id="cartModal" tabindex="-1" aria-labelledby="cartModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="cartModalLabel">Your Cart</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <ul id="cart-items-list" class="list-unstyled"></ul>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Checkout</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <img id="loader" class="loader" src="images/shopping.gif" alt="Loading...">
 

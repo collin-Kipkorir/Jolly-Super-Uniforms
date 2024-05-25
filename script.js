@@ -145,7 +145,21 @@ function shuffleArray(array) {
     return array;
 }
 
-// Modify the displayProducts function to pass product_id to addItemToCart function
+function openWhatsAppChat(imageUrl, description, price) {
+    // Construct the WhatsApp message including the image URL
+    const message = `Hello, I would like to inquire about:
+    ${description}
+    Price: ${price}
+    ${imageUrl}`;
+
+    // Construct the WhatsApp URL with the message
+    const whatsappUrl = `https://wa.me/254723914386?text=${encodeURIComponent(message)}`;
+
+    // Open the WhatsApp chat with the message included
+    window.open(whatsappUrl, '_blank');
+}
+
+
 function displayProducts() {
     const productList = document.getElementById('product-list');
 
@@ -173,7 +187,7 @@ function displayProducts() {
                 productCard.innerHTML = `
                 <div class="card mb-4 shadow-sm">
                     <div class="d-flex justify-content-center">
-                        <a href="#" onclick="logProductID('${childData.key}')" data-toggle="modal" data-target="#itemDetailsModal">
+                        <a href="#" onclick="openWhatsAppChat('${childData.image}', '${childData.description}', '${childData.price}')"> <!-- Modified WhatsApp onclick -->
                             <img src="${childData.image}" class="card-img-top" alt="${childData.name}" style="height: 200px; object-fit: contain;"> <!-- Set fixed height and object-fit -->
                         </a>
                     </div>
@@ -190,7 +204,7 @@ function displayProducts() {
                             </a>
                         </span> <!-- Cart Icon -->
                         <span class="ml-2 whatsapp-icon">
-                            <a href="whatsapp://send?phone=+254723914386&text=Hello%20I%20would%20like%20to%20chat">
+                            <a href="#" onclick="openWhatsAppChat('${childData.image}', '${childData.description}', '${childData.price}')"> <!-- Modified WhatsApp onclick -->
                                 <img src="images/whatsapp.png" alt="WhatsApp Logo" style="height: 25px;" class="whatsapp-img">
                             </a>
                         </span> <!-- WhatsApp Logo -->
@@ -206,6 +220,8 @@ function displayProducts() {
         console.error("Error fetching products: ", error);
     });
 }
+
+
 
 // Function to retrieve product details by ID
 function getProductDetails(productId) {
