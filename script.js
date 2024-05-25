@@ -145,21 +145,7 @@ function shuffleArray(array) {
     return array;
 }
 
-function openWhatsAppChat(imageUrl, description, price) {
-    // Construct the WhatsApp message including the image URL
-    const message = `Hello, I would like to inquire about:
-    ${description}
-    Price: ${price}
-    ${imageUrl}`;
-
-    // Construct the WhatsApp URL with the message
-    const whatsappUrl = `https://wa.me/254723914386?text=${encodeURIComponent(message)}`;
-
-    // Open the WhatsApp chat with the message included
-    window.open(whatsappUrl, '_blank');
-}
-
-
+// Modify the displayProducts function to pass product details to WhatsApp chat
 function displayProducts() {
     const productList = document.getElementById('product-list');
 
@@ -187,7 +173,7 @@ function displayProducts() {
                 productCard.innerHTML = `
                 <div class="card mb-4 shadow-sm">
                     <div class="d-flex justify-content-center">
-                        <a href="#" onclick="openWhatsAppChat('${childData.image}', '${childData.description}', '${childData.price}')"> <!-- Modified WhatsApp onclick -->
+                        <a href="#" onclick="logProductID('${childData.key}')" data-toggle="modal" data-target="#itemDetailsModal">
                             <img src="${childData.image}" class="card-img-top" alt="${childData.name}" style="height: 200px; object-fit: contain;"> <!-- Set fixed height and object-fit -->
                         </a>
                     </div>
@@ -197,18 +183,19 @@ function displayProducts() {
                         <div> <p class="card-text"><span style="color: red; font-size: 14px; font-weight: bold;">From Kshs. ${childData.price}</span></p></div> <!-- Apply styling to price text -->
 
                         <div class="d-flex justify-content-end align-items-end mt-auto" style="margin-top: auto;">
-                        <span class="cart-icon">
-                            <!-- Add event listener to cart icon -->
-                            <a href="add to cart" style="margin-right: 10px;">
-                                <img src="images/addcart.png" alt="Add Cart" style="height: 25px;" class="cart-img">
-                            </a>
-                        </span> <!-- Cart Icon -->
-                        <span class="ml-2 whatsapp-icon">
-                            <a href="#" onclick="openWhatsAppChat('${childData.image}', '${childData.description}', '${childData.price}')"> <!-- Modified WhatsApp onclick -->
-                                <img src="images/whatsapp.png" alt="WhatsApp Logo" style="height: 25px;" class="whatsapp-img">
-                            </a>
-                        </span> <!-- WhatsApp Logo -->
-                    </div>
+                            <span class="cart-icon">
+                                <!-- Add event listener to cart icon -->
+                                <a href="add to cart" style="margin-right: 10px;">
+                                    <img src="images/addcart.png" alt="Add Cart" style="height: 25px;" class="cart-img">
+                                </a>
+                            </span> <!-- Cart Icon -->
+                            <span class="ml-2 whatsapp-icon">
+                                <!-- Add event listener to WhatsApp icon -->
+                                <a href="#" onclick="openWhatsAppChat('${childData.image}', '${childData.description}', '${childData.price}')">
+                                    <img src="images/whatsapp.png" alt="WhatsApp Logo" style="height: 25px;" class="whatsapp-img">
+                                </a>
+                            </span> <!-- WhatsApp Logo -->
+                        </div>
                     </div>
                 </div>`;
                 productList.appendChild(productCard);
@@ -221,6 +208,18 @@ function displayProducts() {
     });
 }
 
+// Function to open WhatsApp chat with product details
+function openWhatsAppChat(image, description, price) {
+    event.preventDefault(); // Prevent the default link behavior
+
+    const message = `Hello, I would like to inquire about:
+    ${description}
+    Price: ${price}
+    ${image}`;
+
+    const whatsappUrl = `https://wa.me/254723914386?text=${encodeURIComponent(message)}`;
+    window.open(whatsappUrl, '_blank');
+}
 
 
 // Function to retrieve product details by ID
