@@ -6,19 +6,46 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jolly Uniforms || Quality Uniforms in Kericho</title>
 
-    <!-- Bootstrap CSS -->
-    <link href="styles.css" />
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-
+      <!-- Bootstrap CSS -->
+      <link href="styles.css" />
+      <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+      <!-- Font Awesome -->
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="images/icon.png">
 </head>
 <style>
-    .custom-navbar-bg {
+ .custom-navbar-bg {
         background-color: rgb(221, 219, 219);
-        /* Change to the desired color */
+    }
+
+    .navbar-brand {
+        display: flex;
+        align-items: center;
+        font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    }
+
+    .navbar-brand img {
+        width: 50px;
+        height: auto;
+        margin-right: 10px;
+        border-color: #f39111;
+    }
+
+    .navbar-nav.ml-auto {
+        height: 30px;
+    }
+
+    .nav-item input {
+        margin-right: 10px;
+    }
+
+    @media (max-width: 767px) {
+        .navbar-brand {
+            justify-content: start;
+            width: 100%;
+        }
     }
 
     .dropdown-menu {
@@ -368,12 +395,18 @@
 
 <body>
     <nav id="navbar" class="navbar navbar-expand-lg navbar-light" style="background-color: aliceblue;">
-        <div class="collapse navbar-collapse justify-content-between align-items-center" id="navbarSupportedContent">
-            <div class="navbar-brand" style="font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;">
-                <img src="images/icon.png" alt="Logo"
-                    style="width: 50px; height: auto; margin-right: 10px; border-color: #f39111;">
+        <div class="d-flex align-items-center">
+            <button id="navbar-toggler" class="navbar-toggler" type="button" data-toggle="collapse"
+                data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="navbar-brand ml-2">
+                <img src="images/icon.png" alt="Logo">
                 JOLLY UNIFORMS
             </div>
+        </div>
+        <div class="collapse navbar-collapse justify-content-between align-items-center" id="navbarSupportedContent">
             <ul class="navbar-nav flex-grow-1 justify-content-center">
                 <li class="nav-item">
                     <input class="form-control" type="text" placeholder="Search.." aria-label="Search">
@@ -395,19 +428,13 @@
                     </div>
                 </li>
             </ul>
-            <div class="navbar-nav ml-auto" style="height: 30px;"> <!-- Added ml-auto class -->
-
+            <div class="navbar-nav ml-auto">
                 <a class="nav-item nav-link" href="#" data-toggle="modal" data-target="#cartModal"
                     style="padding-right: 20px;">
                     <i class="fas fa-shopping-cart" style="color: blue;"></i>
                 </a>
             </div>
         </div>
-        <button id="navbar-toggler" class="navbar-toggler" type="button" data-toggle="collapse"
-            data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-            aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
     </nav>
     <!-- Main Content -->
     <div id="main-content"
@@ -575,6 +602,10 @@
     </div>
 </div>
 
+ <!-- Bootstrap JS and jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
     <!-- Bootstrap JS and jQuery -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
