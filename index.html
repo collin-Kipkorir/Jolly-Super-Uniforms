@@ -17,7 +17,7 @@
     
 </head>
 <style>
- .custom-navbar-bg {
+     .custom-navbar-bg {
         background-color: rgb(27, 135, 197);
     }
 
@@ -33,7 +33,6 @@
         height: auto;
         margin-right: 10px;
         border-color: #f39111;
-    
     }
 
     .navbar-nav.ml-auto {
@@ -44,21 +43,30 @@
         margin-right: 10px;
     }
 
-
     #navbar {
         position: fixed;
         top: 0;
         width: 100%;
         z-index: 1000;
-
-        /* Add your desired background color */
     }
-
 
     @media (max-width: 767px) {
         .navbar-brand {
             justify-content: start;
             width: 100%;
+        }
+
+        .desktop-view {
+            display: none;
+        }
+
+        .mobile-view {
+            display: block;
+            text-align: start;
+        }
+
+        .navbar-collapse {
+            text-align: start;
         }
     }
 
@@ -73,58 +81,35 @@
         pointer-events: auto;
     }
 
-    /* Style card container */
     .card {
         margin-bottom: 7px;
-        /* Add space between cards */
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        /* Add shadow effect */
         transition: box-shadow 0.3s ease;
-        /* Add transition for hover effect */
         display: flex;
-        /* Use flexbox */
-        /* max-lines: 1; */
         background-color: white;
-
     }
 
     .card:hover {
         transform: scale(1.1);
-        /* Increase the size of the card on hover */
         transition: transform 0.3s ease;
-        /* Add smooth transition effect */
     }
 
-    /* Style card image */
     .card-img-top {
         width: 100%;
-        /* Ensure image fills its container */
         height: 200px;
-        /* Maintain aspect ratio */
         object-fit: cover;
-        /* Crop the image to cover its container */
         border-top-left-radius: 0.25rem;
-        /* Add rounded corners to top left */
         border-top-right-radius: 0.25rem;
-        /* Add rounded corners to top right */
-
     }
 
-    /* Style card body */
     .card-body {
         padding: 1.0rem;
-
-        /* Add padding inside card body */
-
     }
 
     .card-title-box {
         overflow: hidden;
         white-space: nowrap;
-        /* Prevent text from wrapping */
         text-overflow: ellipsis;
-        /* Display an ellipsis (...) to indicate text overflow */
-
     }
 
     .textarea-margin {
@@ -133,43 +118,28 @@
         margin-right: 10px;
     }
 
-    /* Style card title */
     .card-title {
         font-size: 0.9rem;
-        /* Change font size of the title */
         color: #333;
-        /* Change text color */
     }
 
-
-    /* Style card text */
     .card-text {
         font-size: 0.8rem;
-        /* Change font size of the text */
         color: #666;
-        /* Change text color */
     }
 
-
-    /* Style card button */
     .btn-primary {
         background-color: #007bff;
-        /* Change button background color */
         color: #fff;
-        /* Change button text color */
         border: none;
-        /* Remove button border */
         padding: 0.5rem 1rem;
-        /* Add padding to button */
     }
 
-    /* Change button color on hover */
     .btn-primary:hover {
         background-color: #0056b3;
         transition: transform 0.3s ease;
     }
 
-   
     .footer {
         background-color: #a7a6a6;
         padding: 20px 0;
@@ -179,11 +149,9 @@
         background-color: rgb(12, 12, 48);
     }
 
-
     .footer h6 {
         color: white;
     }
-
 
     .footer ul {
         list-style-type: none;
@@ -208,10 +176,8 @@
         color: #6b6969;
     }
 
-    /* Add styles for the loader */
     .loader {
         display: none;
-        /* Initially hide the loader */
         position: fixed;
         top: 50%;
         left: 50%;
@@ -221,12 +187,10 @@
         height: 50px;
     }
 
-    /* Add a class to hide the content */
     .hidden {
         display: none;
     }
 
-    /* Loader Animation */
     @keyframes spin {
         0% {
             transform: rotate(0deg);
@@ -237,34 +201,25 @@
         }
     }
 
-    /* Optionally, you can also hide the navbar-toggler-icon by default */
     .navbar-toggler {
         display: block;
-        /* Ensure the button is initially visible */
     }
 
-    /* Default styling for modal body */
     .modal-body {
         display: flex;
         flex-direction: row;
-
-
     }
 
     #modal-product-image {
         height: 250px;
         margin-right: 5em;
-        /* Adjust margin between image and body */
     }
 
-
-    /* Adjust spacing between tab content and header */
     .tab-content {
         margin-top: 0.1rem;
         margin-left: 1rem;
     }
 
-    /* Ensure modal content is properly aligned */
     .modal-body .row {
         align-items: flex-start;
     }
@@ -276,51 +231,31 @@
             width: 100%;
             z-index: 1000;
             background-color: #fff;
-            /* Add your desired background color */
         }
 
         #navbar.sticky .navbar-brand {
             margin-right: 0;
-            /* Adjust as needed */
-        }
-
-        .desktop-view {
-            display: none;
-        }
-
-        .mobile-view {
-            display: block;
         }
 
         .modal-body {
-
             display: flex;
             flex-direction: column;
-
         }
 
         #modal-product-image-container {
             margin-right: 2em;
-
-            /* Adjust margin between image and body */
         }
 
         #modal-product-image {
             display: flex;
             margin: 0 auto;
-            /* Center the image horizontally */
             align-self: center;
-            /* Align vertically */
-            /* Adjust other styles as needed */
         }
 
         .form-group {
             width: 100%;
-            /* Full width for consistent margins */
             max-width: 500px;
-            /* Adjust this value as needed */
             margin: 10px 0;
-            /* Equal margin for top and bottom */
         }
 
         .textarea-margin {
@@ -331,30 +266,24 @@
         .button-container {
             display: flex;
             justify-content: center;
-            /* Center the button horizontally */
             width: 100%;
         }
 
         .submit-review-button {
             margin-top: 20px;
-            /* Adjust the margin as needed */
             margin-bottom: 20px;
-            /* Adjust the margin as needed */
         }
-
     }
 
     .button-container {
         display: flex;
         justify-content: center;
-        /* Center the button horizontally */
+        width: 100%;
     }
 
     .submit-review-button {
         margin-top: 20px;
-        /* Adjust the margin as needed */
         margin-bottom: 20px;
-        /* Adjust the margin as needed */
     }
 
     .form-centered {
@@ -365,11 +294,8 @@
 
     .form-group {
         width: 100%;
-        /* Full width for consistent margins */
         max-width: 500px;
-        /* Adjust this value as needed */
         margin: 10px 0;
-        /* Equal margin for top and bottom */
     }
 
     .textarea-margin {
@@ -380,29 +306,28 @@
     .button-container {
         display: flex;
         justify-content: center;
-        /* Center the button horizontally */
         width: 100%;
     }
 
     .submit-review-button {
         margin-top: 20px;
-        /* Adjust the margin as needed */
         margin-bottom: 20px;
-        /* Adjust the margin as needed */
     }
 </style>
 
 <body>
-    <nav id="navbar" class="navbar navbar-expand-lg navbar-light" style="background-color: aliceblue;">
-        <div class="d-flex align-items-center">
-            <button id="navbar-toggler" class="navbar-toggler" type="button" data-toggle="collapse"
-                data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="navbar-brand ml-2">
-                <img src="images/icon.png" alt="Logo">
-                JOLLY UNIFORMS
+    <nav id="navbar" class="navbar navbar-expand-lg navbar-light custom-navbar-bg">
+        <div class="d-flex align-items-center w-100 justify-content-between">
+            <div class="d-flex align-items-center">
+                <button id="navbar-toggler" class="navbar-toggler" type="button" data-toggle="collapse"
+                    data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-brand ml-2">
+                    <img src="images/icon.png" alt="Logo">
+                    JOLLY UNIFORMS
+                </div>
             </div>
             <div class="navbar-nav ml-auto">
                 <a class="nav-item nav-link" href="#" data-toggle="modal" data-target="#cartModal"
@@ -410,39 +335,38 @@
                     <i class="fas fa-shopping-cart" style="color: blue;"></i>
                 </a>
             </div>
+            
         </div>
-        <div>
-            <div class="nav-item">
-                <input class="form-control" type="text" placeholder="Search.." aria-label="Search">
-            </div>
+        <div class="nav-item mb-2 mb-lg-0" style="margin-top: 10px;">
+            <input class="form-control" type="text" placeholder="Search.." aria-label="Search">
         </div>
-        
         <div class="collapse navbar-collapse justify-content-between align-items-center" id="navbarSupportedContent">
-            <ul class="navbar-nav flex-grow-1 justify-content-center">
+            <div class="d-flex flex-column flex-lg-row w-100">
                 
-                <li class="nav-item">
-                    <a class="nav-link" href="index.html" style="padding-right: 20px;">Products</a>
-                </li>
-                <li class="nav-item">
-                    <div class="dropdown" onmouseover="showDropdown()" onmouseout="hideDropdown()">
-                        <a class="nav-link" href="#" id="navbarDropdown" role="button" aria-haspopup="true"
-                            aria-expanded="false">
-                            Our Branches
-                        </a>
-                        <div class="dropdown-menu" id="dropdownMenu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="#">Roret Branch</a>
-                            <a class="dropdown-item" href="#">Kapsuser Branch</a>
-                            <a class="dropdown-item" href="index.html">Kericho Town Branch</a>
+                <ul class="navbar-nav flex-grow-1 justify-content-center">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html" style="padding-right: 20px;">Products</a>
+                    </li>
+                    <li class="nav-item">
+                        <div class="dropdown" onmouseover="showDropdown()" onmouseout="hideDropdown()">
+                            <a class="nav-link" href="#" id="navbarDropdown" role="button" aria-haspopup="true"
+                                aria-expanded="false">
+                                Our Branches
+                            </a>
+                            <div class="dropdown-menu" id="dropdownMenu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="#">Roret Branch</a>
+                                <a class="dropdown-item" href="#">Kapsuser Branch</a>
+                                <a class="dropdown-item" href="index.html">Kericho Town Branch</a>
+                            </div>
                         </div>
-                    </div>
-                </li>
-            </ul>
-           
+                    </li>
+                </ul>
+            </div>
         </div>
     </nav>
     <!-- Main Content -->
     <div id="main-content"
-        style="padding-top: 10px;  font-size: medium; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;"
+        style="padding-top: 20px;  font-size: medium; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;"
         class="container mt-5 hidden">
         <h5>School Uniform</h5>
         <!-- Product Display Section -->
