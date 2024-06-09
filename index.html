@@ -14,10 +14,11 @@
   
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="images/icon.png">
+    
 </head>
 <style>
  .custom-navbar-bg {
-        background-color: rgb(221, 219, 219);
+        background-color: rgb(27, 135, 197);
     }
 
     .navbar-brand {
@@ -27,10 +28,11 @@
     }
 
     .navbar-brand img {
-        width: 50px;
+        width: 30px;
         height: auto;
         margin-right: 10px;
         border-color: #f39111;
+    
     }
 
     .navbar-nav.ml-auto {
@@ -40,6 +42,17 @@
     .nav-item input {
         margin-right: 10px;
     }
+
+
+    #navbar {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        z-index: 1000;
+
+        /* Add your desired background color */
+    }
+
 
     @media (max-width: 767px) {
         .navbar-brand {
@@ -155,22 +168,7 @@
         transition: transform 0.3s ease;
     }
 
-    .navbar-brand img {
-        width: 20px;
-        /* Set the width of the logo */
-        height: auto;
-        /* Maintain aspect ratio */
-    }
-
-    #navbar {
-        position: fixed;
-        top: 0;
-        width: 100%;
-        z-index: 1000;
-
-        /* Add your desired background color */
-    }
-
+   
     .footer {
         background-color: #a7a6a6;
         padding: 20px 0;
