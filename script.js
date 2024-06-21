@@ -171,7 +171,7 @@ function displayProducts() {
                 const productCard = document.createElement('div');
                 productCard.classList.add('col-6', 'col-md-3', 'product-card'); // Add responsive classes for mobile and desktop view
                 productCard.innerHTML = `
-                <div class="card mb-4 shadow-sm">
+                <div class="card mb-4 shadow-sm product-card"> <!-- Add product-card class -->
                     <div class="d-flex justify-content-center">
                         <a href="#" onclick="logProductID('${childData.key}')" data-toggle="modal" data-target="#itemDetailsModal">
                             <img src="${childData.image}" class="card-img-top" alt="${childData.name}" style="height: 200px; object-fit: contain;"> <!-- Set fixed height and object-fit -->
@@ -181,7 +181,7 @@ function displayProducts() {
                     <div class="card-body d-flex flex-column">
                         <div class="card-title-box"><h6 class="card-title">${childData.name}</h6></div>
                         <div> <p class="card-text"><span style="color: red; font-size: 14px; font-weight: bold;">From Kshs. ${childData.price}</span></p></div> <!-- Apply styling to price text -->
-
+            
                         <div class="d-flex justify-content-end align-items-end mt-auto" style="margin-top: auto;">
                             <span class="cart-icon">
                                 <!-- Add event listener to cart icon -->
@@ -200,6 +200,7 @@ function displayProducts() {
                 </div>`;
                 productList.appendChild(productCard);
             });
+            
         } else {
             console.log("No data available");
         }
@@ -320,3 +321,12 @@ document.getElementById('whatsapp-button').addEventListener('click', function (e
 window.onload = () => {
     displayProducts();
 };
+
+// Get the navbar-brand element
+const navbarBrand = document.querySelector('.navbar-brand.ml-2');
+
+// Add an event listener to detect when the navbar is opened
+navbarToggler.addEventListener('click', function () {
+    // Toggle the hidden class on the navbar-brand element
+    navbarBrand.classList.toggle('hidden');
+});
