@@ -7,14 +7,12 @@
     <title>Jolly Uniforms || Quality Uniforms in Kericho</title>
 
     <!-- Bootstrap CSS -->
-    <link href="styles.css" />
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="images/icon.png">
-
 </head>
 <style>
     .scale-down {
@@ -264,6 +262,7 @@
             display: flex;
             margin: 0 auto;
             align-self: center;
+            min-width: 200px;
         }
 
         .form-group {
@@ -362,10 +361,10 @@
         /* Change the border color on focus */
         box-shadow: 0 2px 8px rgba(0, 123, 255, 0.25);
     }
-    .hidden {
-    display: none !important;
-}
 
+    .hidden {
+        display: none !important;
+    }
 </style>
 
 <body>
@@ -373,7 +372,7 @@
         style="background-color: rgb(12, 12, 48)">
         <div class="d-flex align-items-center w-100 justify-content-between">
             <div class="d-flex align-items-center w-100">
-            
+
                 <button id="navbar-toggler" class="navbar-toggler" type="button" data-toggle="collapse"
                     data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                     aria-label="Toggle navigation" style="background-color: #fff;">
@@ -427,127 +426,85 @@
     <div id="main-content"
         style="padding-top: 20px;  font-size: medium; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;"
         class="container mt-5 hidden">
-
         <h5>School Uniform</h5>
         <!-- Product Display Section -->
         <div id="product-list" class="row mt-4"></div>
     </div>
-    <!-- Modal -->
-    <div class="modal fade" id="itemDetailsModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-                <div class="modal-header">
 
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
+    <!-- New Product Details Container -->
+    <div id="product-details-container" class="container mt-5 hidden">
+        <div class="row"
+            style="padding-top: 30px;  font-size: medium; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;"
+            class="container mt-5 hidden">
+            <!-- Product Image -->
+            <div id="product-image-container" class="col-md-6 text-center">
+                <img id="product-image" src="" class="img-fluid" alt="Product Image">
+            </div>
+            <!-- Product Details -->
+            <div id="product-details-body" class="col-md-6 mt-3 mt-md-0">
+                <h5 id="product-name" style="font-size: medium;"></h5>
+                <!-- Specifications Tab -->
+                <div>
+
+                    <p id="product-specs"></p>
                 </div>
-                <div class="modal-body">
-                    <div class="row mt-3">
-                        <!-- Product Image -->
-                        <div id="modal-product-image-container" class="col-md-6 text-center">
-                            <img id="modal-product-image" src="" class="img-fluid" alt="Product Image">
-                        </div>
-                        <!-- Product Details -->
-                        <div id="modal-product-body" class="col-md-6 mt-3 mt-md-0">
-                            <h5 id="modal-product-name" style="font-size: medium;"></h5>
-                            <p id="modal-product-description" style="font-size: smaller;"></p>
-                            <p id="modal-product-price" style="font-size: smaller; color: #f40b0b; font-weight: bold;"></p>
-
-                            <!-- Size Selection -->
-                            <div class="form-group" style="font-size: smaller;">
-                                <label for="product-size">Size:</label>
-                                <select id="product-size" class="form-control">
-                                    <option value="22">22</option>
-                                    <option value="24">24</option>
-                                    <option value="26">26</option>
-                                    <option value="28">28</option>
-                                    <option value="30">30</option>
-                                    <option value="32">32</option>
-                                    <option value="34">34</option>
-                                    <option value="36">36</option>
-                                    <option value="38">38</option>
-                                    <option value="40">40</option>
-                                    <option value="42">42</option>
-                                </select>
-                            </div>
-
-                            <!-- Quantity Selection -->
-                            <div class="form-group" style="font-size: smaller;">
-                                <label for="product-quantity">Quantity:</label>
-                                <input type="number" id="product-quantity" class="form-control" value="1" min="1">
-                            </div>
-
-                            <!-- Add to Cart and Inquire on WhatsApp Buttons -->
-                            <div class="d-flex justify-content-center mt-3">
-                                <button id="add-to-cart-button" class="btn btn-primary mx-2" style="font-size: smaller;">Add to Cart</button>
-                                <a href="whatsapp://send?phone=+254723914386&text=Hello%20I%20would%20like%20to%20inquire%20about%20"
-                                    class="btn btn-success mx-2" id="whatsapp-button" style="font-size: smaller;">Inquire on WhatsApp</a>
-                            </div>
-
-                            <!-- Hidden input for storing product ID -->
-                            <input type="hidden" id="modal-product-id">
-
-
-                        </div>
-
-                    </div>
-
+                <p id="product-description" style="font-size: smaller; visibility: hidden;"></p>
+                <p id="product-price" style="font-size: smaller; color: #f40b0b; font-weight: bold;"></p>
+                <!-- Size Selection -->
+                <div class="form-group" style="font-size: smaller;">
+                    <label for="product-size">Size:</label>
+                    <select id="product-size" class="form-control">
+                        <option value="22">22</option>
+                        <option value="24">24</option>
+                        <option value="26">26</option>
+                        <option value="28">28</option>
+                        <option value="30">30</option>
+                        <option value="32">32</option>
+                        <option value="34">34</option>
+                        <option value="36">36</option>
+                        <option value="38">38</option>
+                        <option value="40">40</option>
+                        <option value="42">42</option>
+                    </select>
                 </div>
-                <!-- Nav tabs -->
-                <ul class="nav nav-tabs mt-4 justify-content-center" id="productTab" role="tablist">
-                    <li class="nav-item">
-                        <a class="nav-link active" id="specifications-tab" data-toggle="tab" href="#specifications"
-                            role="tab" aria-controls="specifications" aria-selected="true" style="font-size: x-small;">Description</a>
-                    </li>
-                    <li class="nav-item"  style="font-size: x-small;">
-                        <a class="nav-link" id="reviews-tab" data-toggle="tab" href="#reviews" role="tab"
-                            aria-controls="reviews" aria-selected="false">Comments</a>
-                    </li>
-                </ul>
-
-                <!-- Tab panes -->
-                <div class="tab-content" id="productTabContent"  style="font-size: x-small;">
-
-                    <!-- Specifications Tab -->
-                    <div class="tab-pane fade show active" id="specifications" role="tabpanel"
-                        aria-labelledby="specifications-tab">
-                        <div id="modal-product-specifications" class="mt-3">
-                            <h6 style="font-size: small;">Specifications:</h6>
-                            <p id="modal-product-specs"></p>
-                        </div>
-                    </div>
-                    <!-- Reviews Tab -->
-                    <div class="tab-pane fade" id="reviews" role="tabpanel" aria-labelledby="reviews-tab">
-                        <div id="modal-product-reviews" class="mt-3">
-                            <h6 style="font-size: small;">Reviews:</h6>
-                            <ul id="modal-product-reviews-list" class="list-unstyled"></ul>
-                        </div>
-                        <div id="add-review-form" class="mt-3">
-                            <form id="review-form" class="form-centered">
-                                <input type="hidden" id="modal-product-id">
-                                <div class="form-group">
-                                    <label for="review-name">Name:</label>
-                                    <input type="text" id="review-name" class="form-control textarea-margin" required>
-                                </div>
-                                <div class="form-group">
-                                    <label for="review-text">Comment:</label>
-                                    <textarea id="review-text" class="form-control textarea-margin" rows="3"
-                                        required></textarea>
-                                </div>
-                                <div class="button-container">
-                                    <button type="submit" class="btn btn-primary submit-review-button">Submit</button>
-                                </div>
-                            </form>
-                        </div>
-
-                    </div>
-
-
+                <!-- Quantity Selection -->
+                <div class="form-group" style="font-size: smaller;">
+                    <label for="product-quantity">Quantity:</label>
+                    <input type="number" id="product-quantity" class="form-control" value="1" min="1">
                 </div>
+                <!-- Add to Cart and Inquire on WhatsApp Buttons -->
+<div class="d-flex justify-content-center mt-3">
+    <button id="add-to-cart-button" class="btn btn-primary mx-2" style="font-size: smaller;">Add to Cart</button>
+    <a href="#" class="btn btn-success mx-2" id="whatsapp-button" style="font-size: smaller;">Inquire on WhatsApp</a>
+</div>
+                <!-- Hidden input for storing product ID -->
+                <input type="hidden" id="product-id">
             </div>
         </div>
+
+        <!-- Reviews Tab -->
+        <div class="mt-4">
+            <h6 style="font-size: small;">Reviews:</h6>
+            <ul id="product-reviews-list" class="list-unstyled"></ul>
+        </div>
+        <div id="add-review-form" class="mt-3">
+            <form id="review-form" class="form-centered">
+                <input type="hidden" id="review-product-id">
+                <div class="form-group">
+                    <label for="review-name">Name:</label>
+                    <input type="text" id="review-name" class="form-control textarea-margin" required>
+                </div>
+                <div class="form-group">
+                    <label for="review-text">Comment:</label>
+                    <textarea id="review-text" class="form-control textarea-margin" rows="3" required></textarea>
+                </div>
+                <div class="button-container">
+                    <button type="submit" class="btn btn-primary submit-review-button">Submit</button>
+                </div>
+            </form>
+        </div>
     </div>
+
 
     <!-- Cart Modal -->
     <div class="modal fade" id="cartModal" tabindex="-1" aria-labelledby="cartModalLabel" aria-hidden="true">

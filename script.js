@@ -1,3 +1,4 @@
+// Firebase configuration
 const firebaseConfig = {
     apiKey: "AIzaSyClS4zP63hQipphS-FzNzmCpNsXb6SDdkc",
     authDomain: "jolly-uniforms.firebaseapp.com",
@@ -7,14 +8,11 @@ const firebaseConfig = {
     appId: "1:17335535863:web:42f53ed271796ac4852bf2",
     measurementId: "G-GE79K2PX5M"
 };
-
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 
 // Reference to Firebase Database
 const database = firebase.database();
-
-// Fetch products from Firebase
 const productsRef = database.ref('products');
 
 // Get the navbar-toggler element
@@ -26,8 +24,18 @@ navbarToggler.addEventListener('click', function () {
     this.style.display = 'none';
 });
 
+// Ensure the navbar brand toggle visibility
+const navbarBrand = document.querySelector('.navbar-brand.ml-2');
+navbarToggler.addEventListener('click', function () {
+    // Toggle the hidden class on the navbar-brand element
+    navbarBrand.classList.toggle('hidden');
+});
+
+// Add event listeners for DOM content loaded and window resize
 window.addEventListener('DOMContentLoaded', checkWidth);
 window.addEventListener('resize', checkWidth);
+
+// Document ready function with jQuery
 $(document).ready(function() {
     $('#itemDetailsModal').modal({
         backdrop: 'static',
@@ -45,20 +53,18 @@ $(document).ready(function() {
     });
 });
 
+// Function to check the width and apply sticky navbar
 function checkWidth() {
-    // Get the viewport width
     var viewportWidth = window.innerWidth || document.documentElement.clientWidth;
 
-    // Check if viewport width is less than or equal to 767px (mobile view)
     if (viewportWidth <= 767) {
-        // Add sticky class to the navbar
         document.getElementById('navbar').classList.add('sticky');
     } else {
-        // Remove sticky class from the navbar
         document.getElementById('navbar').classList.remove('sticky');
     }
 }
 
+// Functions to show and hide dropdown
 function showDropdown() {
     document.getElementById("navbarDropdown").setAttribute("aria-expanded", "true");
     document.getElementById("dropdownMenu").classList.add("show");
@@ -69,41 +75,38 @@ function hideDropdown() {
     document.getElementById("dropdownMenu").classList.remove("show");
 }
 
-/// Function to show loader and hide content
+// Functions to show and hide loader
 function showLoader() {
     document.getElementById('loader').style.display = 'block';
     document.getElementById('main-content').classList.add('hidden');
 }
 
-// Function to hide loader and show content
 function hideLoader() {
     document.getElementById('loader').style.display = 'none';
     document.getElementById('main-content').classList.remove('hidden');
 }
 
-// Function to hide the navbar
+// Functions to show and hide navbar and footer
 function hideNavbar() {
     document.getElementById('navbar').style.display = 'none';
 }
 
-// Function to show the navbar
 function showNavbar() {
     document.getElementById('navbar').style.display = 'block';
 }
 
-// Function to hide the footer
 function hideFooter() {
     document.getElementById('footer').classList.add('hidden');
 }
 
-// Function to show the footer
 function showFooter() {
     document.getElementById('footer').classList.remove('hidden');
 }
 
-// Call the function to display loader when the page starts loading
+// Display loader on page start loading
 showLoader();
 hideNavbar();
+
 // Get the review form element
 const reviewForm = document.getElementById('review-form');
 
@@ -145,7 +148,7 @@ function shuffleArray(array) {
     return array;
 }
 
-// Modify the displayProducts function to pass product details to WhatsApp chat
+// Function to display products
 function displayProducts() {
     const productList = document.getElementById('product-list');
 
@@ -162,7 +165,6 @@ function displayProducts() {
             // Shuffle the array of child data
             const shuffledChildDataArray = shuffleArray(childDataArray);
 
-            // Loop through the array of child data
             shuffledChildDataArray.forEach((childData) => {
                 hideLoader();
                 showFooter();
@@ -170,18 +172,17 @@ function displayProducts() {
                 // Create product card for each product
                 const productCard = document.createElement('div');
                 productCard.classList.add('col-6', 'col-md-3', 'product-card'); // Add responsive classes for mobile and desktop view
+                productCard.setAttribute('data-product-id', childData.key); // Set data attribute
                 productCard.innerHTML = `
-                <div class="card mb-4 shadow-sm product-card"> <!-- Add product-card class -->
+                <div class="card mb-4 shadow-sm">
                     <div class="d-flex justify-content-center">
-                        <a href="#" onclick="logProductID('${childData.key}')" data-toggle="modal" data-target="#itemDetailsModal">
+                        <a href="#" onclick="getProductDetails('${childData.key}')">
                             <img src="${childData.image}" class="card-img-top" alt="${childData.name}" style="height: 200px; object-fit: contain;"> <!-- Set fixed height and object-fit -->
                         </a>
                     </div>
-                
                     <div class="card-body d-flex flex-column">
                         <div class="card-title-box"><h6 class="card-title">${childData.name}</h6></div>
-                        <div> <p class="card-text"><span style="color: red; font-size: 14px; font-weight: bold;">From Kshs. ${childData.price}</span></p></div> <!-- Apply styling to price text -->
-            
+                        <div><p class="card-text"><span style="color: red; font-size: 14px; font-weight: bold;">From Kshs. ${childData.price}</span></p></div> <!-- Apply styling to price text -->
                         <div class="d-flex justify-content-end align-items-end mt-auto" style="margin-top: auto;">
                             <span class="cart-icon">
                                 <!-- Add event listener to cart icon -->
@@ -199,8 +200,10 @@ function displayProducts() {
                     </div>
                 </div>`;
                 productList.appendChild(productCard);
+
+                // Add event listener to the product card
+                productCard.addEventListener('click', () => getProductDetails(childData.key));
             });
-            
         } else {
             console.log("No data available");
         }
@@ -222,44 +225,67 @@ function openWhatsAppChat(image, description, price) {
     window.open(whatsappUrl, '_blank');
 }
 
+// Function to load product reviews
+function loadProductReviews(productId) {
+    const reviewsRef = firebase.database().ref('products/' + productId + '/reviews');
+    const productReviewsList = document.getElementById('product-reviews-list');
+    reviewsRef.once('value').then((snapshot) => {
+        productReviewsList.innerHTML = ''; // Clear existing reviews
+        if (snapshot.exists()) {
+            snapshot.forEach((childSnapshot) => {
+                const review = childSnapshot.val();
+                const reviewItem = document.createElement('li');
+                reviewItem.innerHTML = `<strong>${review.name}</strong>: ${review.text} <br><small>${new Date(review.timestamp).toLocaleString()}</small>`;
+                productReviewsList.appendChild(reviewItem);
+            });
+        } else {
+            productReviewsList.innerHTML = '<li>No reviews available.</li>';
+        }
+    }).catch((error) => {
+        console.error("Error fetching reviews: ", error);
+    });
+}
 
-// Function to retrieve product details by ID
+// Function to display product details
 function getProductDetails(productId) {
     const productRef = firebase.database().ref('products/' + productId);
     productRef.once('value').then((snapshot) => {
-        if (snapshot.exists()) {
-            const productData = snapshot.val();
-            // Populate modal with product details
-            const modalProductImage = document.getElementById('modal-product-image');
-            const modalProductName = document.getElementById('modal-product-name');
-            const modalProductDescription = document.getElementById('modal-product-description');
-            const modalProductPrice = document.getElementById('modal-product-price');
-            const modalProductSpecs = document.getElementById('modal-product-specs');
-            const modalProductReviewsList = document.getElementById('modal-product-reviews-list');
-            const modalProductId = document.getElementById('modal-product-id'); // Get the hidden input field
+        const productData = snapshot.val();
+        if (productData) {
+            // Update the modal with product details
+            const productImage = document.getElementById('product-image');
+            const productName = document.getElementById('product-name');
+            const productDescription = document.getElementById('product-description');
+            const productPrice = document.getElementById('product-price');
+            const productSpecs = document.getElementById('product-specs');
+            const productIdInput = document.getElementById('product-id');
 
-            // Check if modal elements exist before setting their properties
-            if (modalProductImage && modalProductName && modalProductDescription && modalProductPrice && modalProductSpecs && modalProductReviewsList && modalProductId) {
-                modalProductImage.src = productData.image;
-                modalProductName.textContent = productData.name;
-                modalProductDescription.textContent = productData.description;
-                modalProductPrice.textContent = `From Kshs. ${productData.price}`;
-                modalProductSpecs.textContent = productData.specifications || "No specifications available.";
-                modalProductId.value = productId; // Set the product ID in the hidden input field
+            if (productImage && productName && productDescription && productPrice && productSpecs && productIdInput) {
+                productImage.src = productData.image;
+                productName.textContent = productData.name;
+                productDescription.textContent = productData.description;
+                productPrice.textContent = `From Kshs. ${productData.price}`;
+                productIdInput.value = productId;
 
-               
+                // Populate specifications
+                if (typeof productData.specifications === 'string') {
+                    const specificationsArray = productData.specifications.split(',');
+                    productSpecs.innerHTML = specificationsArray.map(spec => `<li>${spec.trim()}</li>`).join('');
+                } else if (Array.isArray(productData.specifications)) {
+                    productSpecs.innerHTML = productData.specifications.map(spec => `<li>${spec}</li>`).join('');
+                } else {
+                    productSpecs.innerHTML = "<p>No specifications available.</p>";
+                }
+
+                // Populate reviews
                 // Populate reviews
                 loadProductReviews(productId);
 
-                 // Populate specifications
-                 if (productData.specifications) {
-                    modalProductSpecs.innerHTML = Object.entries(productData.specifications).map(([key, value]) => `<li><strong>${key}:</strong> ${value}</li>`).join('');
-                } else {
-                    modalProductSpecs.innerHTML = "<p>No specifications available.</p>";
-                }
-
+                // Show the product details container and hide the main content
+                document.getElementById('main-content').classList.add('hidden');
+                document.getElementById('product-details-container').classList.remove('hidden');
             } else {
-                console.error("One or more modal elements not found.");
+                console.error("One or more container elements not found.");
             }
         } else {
             console.log("Product does not exist");
@@ -270,31 +296,31 @@ function getProductDetails(productId) {
 }
 // Function to load product reviews
 function loadProductReviews(productId) {
-    const reviewsRef = database.ref('products/' + productId + '/reviews');
-    const modalProductReviewsList = document.getElementById('modal-product-reviews-list');
+    const reviewsRef = firebase.database().ref('products/' + productId + '/reviews');
+    const productReviewsList = document.getElementById('product-reviews-list');
     reviewsRef.once('value').then((snapshot) => {
-        modalProductReviewsList.innerHTML = ''; // Clear existing reviews
+        productReviewsList.innerHTML = ''; // Clear existing reviews
         if (snapshot.exists()) {
             snapshot.forEach((childSnapshot) => {
                 const review = childSnapshot.val();
                 const reviewItem = document.createElement('li');
                 reviewItem.innerHTML = `<strong>${review.name}</strong>: ${review.text} <br><small>${new Date(review.timestamp).toLocaleString()}</small>`;
-                modalProductReviewsList.appendChild(reviewItem);
+                productReviewsList.appendChild(reviewItem);
             });
         } else {
-            modalProductReviewsList.innerHTML = '<li>No reviews available.</li>';
+            productReviewsList.innerHTML = '<li>No reviews available.</li>';
         }
     }).catch((error) => {
         console.error("Error fetching reviews: ", error);
     });
 }
 
-// Function to log product ID when item image is clicked and retrieve product details
-function logProductID(productId) {
-    console.log("Product ID:", productId);
-    // Retrieve product details by ID
-    getProductDetails(productId);
-}
+// Call the function to display products when the page loads
+window.onload = () => {
+    displayProducts();
+};
+
+
 // Event listener for the WhatsApp button to dynamically construct the URL with product details
 document.getElementById('whatsapp-button').addEventListener('click', function (event) {
     event.preventDefault(); // Prevent the default link behavior
@@ -315,18 +341,36 @@ document.getElementById('whatsapp-button').addEventListener('click', function (e
     const whatsappUrl = `https://wa.me/254723914386?text=${encodeURIComponent(message)}`;
     window.open(whatsappUrl, '_blank');
 });
+function inquireOnWhatsApp() {
+    // Example: Retrieve product details from specific elements
+    const productDescription = document.getElementById('product-description').textContent;
+    const productName = document.getElementById('product-name').textContent;
+    const productPrice = document.getElementById('product-price').textContent;
+
+    // Construct the message
+    const message = `Hello, I would like to inquire about:
+    Product: ${productName}
+    Description: ${productDescription}
+    Price: ${productPrice}`;
+
+    // Encode the message to be URL-friendly
+    const encodedMessage = encodeURIComponent(message);
+
+    // Construct the WhatsApp URL with the encoded message
+    const whatsappUrl = `https://wa.me/254723914386?text=${encodedMessage}`;
+
+    // Open the WhatsApp URL in a new tab/window
+    window.open(whatsappUrl, '_blank');
+}
+
+// Add event listener to the WhatsApp button
+document.getElementById('whatsapp-button').addEventListener('click', function(event) {
+    event.preventDefault(); // Prevent the default link behavior
+    inquireOnWhatsApp(); // Call the function to handle the WhatsApp inquiry
+});
 
 
 // Call the function to display products when the page loads
 window.onload = () => {
     displayProducts();
 };
-
-// Get the navbar-brand element
-const navbarBrand = document.querySelector('.navbar-brand.ml-2');
-
-// Add an event listener to detect when the navbar is opened
-navbarToggler.addEventListener('click', function () {
-    // Toggle the hidden class on the navbar-brand element
-    navbarBrand.classList.toggle('hidden');
-});
