@@ -333,9 +333,9 @@ document.getElementById('whatsapp-button').addEventListener('click', function (e
 
     const message = `Hello, I would like to inquire about :
     ${productDescription}
-    Price: ${productPrice}
-    Size: ${selectedSize}
-    Quantity: ${quantity}
+    , ${productPrice}
+   , ${selectedSize}
+    , ${quantity}
     ${productImage}`;
 
     const whatsappUrl = `https://wa.me/254723914386?text=${encodeURIComponent(message)}`;
@@ -374,3 +374,4 @@ document.getElementById('whatsapp-button').addEventListener('click', function(ev
 window.onload = () => {
     displayProducts();
 };
+

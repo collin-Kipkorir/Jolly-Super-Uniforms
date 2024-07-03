@@ -4,8 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Visit our school uniform store in Kericho town for high-quality, affordable uniforms. We provide a wide range of uniforms for different schools.">
-    <meta name="keywords" content="school uniforms, Kericho, Kericho town, uniforms, high-quality uniforms, affordable uniforms, school clothing">
+    <meta name="description"
+        content="Visit our school uniform store in Kericho town for high-quality, affordable uniforms. We provide a wide range of uniforms for different schools.">
+    <meta name="keywords"
+        content="school uniforms, Kericho, Kericho town, uniforms, high-quality uniforms, affordable uniforms, school clothing">
     <title>Jolly Uniforms - School Uniform Store in Kericho - High-Quality, Affordable Uniforms</title>
 
     <!-- Bootstrap CSS -->
@@ -24,7 +26,7 @@
     }
 
     .product-card .card {
-        margin-bottom: 5px;
+        margin-bottom: 3px;
         /* Adjust this value to reduce space between cards */
     }
 
@@ -78,7 +80,7 @@
     }
 
     .card {
-        margin-bottom: 3px;
+        margin-bottom: 2px;
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         transition: box-shadow 0.3s ease;
         display: flex;
@@ -94,6 +96,7 @@
         width: 100%;
         height: 200px;
         object-fit: cover;
+        padding-top: 10px;
         border-top-left-radius: 0.25rem;
         border-top-right-radius: 0.25rem;
     }
@@ -106,6 +109,7 @@
         overflow: hidden;
         white-space: nowrap;
         text-overflow: ellipsis;
+        font-weight: normal;
     }
 
     .textarea-margin {
@@ -115,12 +119,14 @@
     }
 
     .card-title {
-        font-size: 0.9rem;
+        font-size: 15px;
         color: #333;
+        font-synthesis-weight: 1;
+        font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     }
 
     .card-text {
-        font-size: 0.8rem;
+        font-size: 13px;
         color: #666;
     }
 
@@ -200,7 +206,12 @@
     .navbar-toggler {
         display: block;
 
+    
     }
+    #product-specs li {
+    font-weight: normal;
+}
+
 
     .modal-body {
         display: flex;
@@ -227,9 +238,11 @@
             width: 100%;
 
         }
+
         .navbar-brand img {
-        height: 30px;
-    }
+            height: 30px;
+        }
+
         .desktop-view {
             display: none;
         }
@@ -303,6 +316,9 @@
             max-width: 100%;
 
         }
+        #product-specs li {
+    font-synthesis-weight: 1;
+}
 
 
 
@@ -371,6 +387,31 @@
     .hidden {
         display: none !important;
     }
+    .rating {
+    margin-bottom: 10px;
+}
+
+.rating-bar-container {
+    width: 200px; /* Adjust as needed */
+    height: 20px; /* Adjust as needed */
+    background-color: #f0f0f0;
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: 5px;
+}
+
+.rating-bar {
+    height: 100%;
+    width: 0;
+    background-color: #5cb85c; /* Default color for filled part */
+    transition: width 0.5s ease-in-out;
+}
+
+.rating-text {
+    font-size: 14px;
+    font-weight: bold;
+}
+
 </style>
 
 <body>
@@ -394,11 +435,13 @@
 
                     <ul class="navbar-nav flex-grow-1 justify-content-center">
                         <form class="form-inline my-2 my-lg-0">
-                            <input class="form-control mr-sm-2 justify-content-center" type="search" placeholder="Search" aria-label="Search">
+                            <input class="form-control mr-sm-2 justify-content-center" type="search"
+                                placeholder="Search" aria-label="Search">
                             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
                         </form>
                         <li class="nav-item active">
-                            <a class="nav-link" href="index.html" style="color: #fff;">Home <span class="sr-only">(current)</span></a>
+                            <a class="nav-link" href="index.html" style="color: #fff;">Home <span
+                                    class="sr-only">(current)</span></a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="index.html" style="padding-right: 10px; color:#fff;">Products</a>
@@ -443,20 +486,20 @@
     <!-- New Product Details Container -->
     <div id="product-details-container" class="container mt-5 hidden">
         <div class="row"
-            style="padding-top: 30px;  font-size: medium; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;"
+            style="padding-top: 50px;  font-size: medium; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;"
             class="container mt-5 hidden">
             <!-- Product Image -->
-            <div id="product-image-container" class="col-md-6 text-center">
-                <img id="product-image" src="" class="img-fluid" alt="Product Image">
+            <div id="product-image-container" class="col-md-6 text-center" >
+                <img id="product-image" src="" class="img-fluid" alt="Product Image" style="max-height: 250px;">
             </div>
             <!-- Product Details -->
             <div id="product-details-body" class="col-md-6 mt-3 mt-md-0">
                 <h5 id="product-name" style="font-size: medium;"></h5>
                 <!-- Specifications Tab -->
-            <div>
+                <div>
 
-                    <h6 id="product-specs"></h6>
-            </div>
+                    <ul id="product-specs" style="font: 1em sans-serif; "></ul>
+                </div>
                 <p id="product-description" style="font-size: smaller; visibility: hidden;"></p>
                 <p id="product-price" style="font-size: smaller; color: #f40b0b; font-weight: bold;"></p>
                 <!-- Size Selection -->
@@ -494,26 +537,36 @@
         </div>
 
         <!-- Reviews Tab -->
-        <div class="mt-4">
-            <h6 style="font-size: small;">Reviews:</h6>
-            <ul id="product-reviews-list" class="list-unstyled"></ul>
+        <div class="container mt-4">
+            <div class="row" style="margin-inline-end: 5px;">
+                <div class="col-md-6">
+                    <h6 style="font-size: medium;">Reviews:</h6>`                  
+
+                    <ul id="product-reviews-list" class="list-unstyled" style="font: small"></ul>
+                </div>
+                <div class="col-md-6">
+                    <h6 style="font-size: medium;">Leave a comment:</h6>
+                    <div id="add-review-form" class="mt-3">
+                        <form id="review-form" class="form-centered">
+                            <input type="hidden" id="review-product-id">
+                            <div class="form-group">
+                                <label for="review-name">Name:</label>
+                                <input type="text" id="review-name" class="form-control textarea-margin" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="review-text">Comment:</label>
+                                <textarea id="review-text" class="form-control textarea-margin" rows="3"
+                                    required></textarea>
+                            </div>
+                            <div class="button-container text-center">
+                                <button type="submit" class="btn btn-primary submit-review-button">Submit</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div id="add-review-form" class="mt-3">
-            <form id="review-form" class="form-centered">
-                <input type="hidden" id="review-product-id">
-                <div class="form-group">
-                    <label for="review-name">Name:</label>
-                    <input type="text" id="review-name" class="form-control textarea-margin" required>
-                </div>
-                <div class="form-group">
-                    <label for="review-text">Comment:</label>
-                    <textarea id="review-text" class="form-control textarea-margin" rows="3" required></textarea>
-                </div>
-                <div class="button-container">
-                    <button type="submit" class="btn btn-primary submit-review-button">Submit</button>
-                </div>
-            </form>
-        </div>
+
     </div>
 
 
