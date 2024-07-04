@@ -32,13 +32,14 @@
         }
         .cart-counter {
             position: absolute;
-            top: -5px;
-            right: -5px;
+            top: -3px;
+            right: -3px;
             background-color: red;
             color: white;
             border-radius: 50%;
             padding: 1px 5px;
             margin-top: 3px;
+            margin-right: 10px;
             font-size: 10px;
         }
     .scale-down {
@@ -253,6 +254,26 @@
     }
 
     @media (max-width: 767px) {
+        .cart-container {
+            position: relative;
+            display: inline-block;
+        }
+        .cart-icon {
+            font-size: 20px;
+            cursor: pointer;
+            color: white;
+        }
+        .cart-counter {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background-color: red;
+            color: white;
+            border-radius: 50%;
+            padding: 1px 5px;
+            margin-top: 3px;
+            font-size: 10px;
+        }
         .navbar-brand {
             justify-content: start;
             width: 100%;
@@ -485,7 +506,7 @@
                 <div class="navbar-nav ml-auto">
                     <div class="cart-container">
                         <a class="nav-item nav-link" href="#" data-toggle="modal" data-target="#cartModal" style="padding-right: 20px;">
-                            <i class="fas fa-shopping-cart cart-icon"></i>
+                            <i class="cart-icon">🛒</i>
                         </a>
                         <div class="cart-counter" id="cart-counter">0</div>
                     </div>
