@@ -21,6 +21,26 @@
     <link rel="icon" type="image/png" href="images/icon.png">
 </head>
 <style>
+    .cart-container {
+            position: relative;
+            display: inline-block;
+        }
+        .cart-icon {
+            font-size: 20px;
+            cursor: pointer;
+            color: white;
+        }
+        .cart-counter {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background-color: red;
+            color: white;
+            border-radius: 50%;
+            padding: 1px 5px;
+            margin-top: 3px;
+            font-size: 10px;
+        }
     .scale-down {
         transform: scale(0.8);
     }
@@ -463,10 +483,12 @@
                     </ul>
                 </div>
                 <div class="navbar-nav ml-auto">
-                    <a class="nav-item nav-link" href="#" data-toggle="modal" data-target="#cartModal"
-                        style="padding-right: 20px;">
-                        <i class="fas fa-shopping-cart" style="color: white;"></i>
-                    </a>
+                    <div class="cart-container">
+                        <a class="nav-item nav-link" href="#" data-toggle="modal" data-target="#cartModal" style="padding-right: 20px;">
+                            <i class="fas fa-shopping-cart cart-icon"></i>
+                        </a>
+                        <div class="cart-counter" id="cart-counter">0</div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -538,7 +560,7 @@
 
         <!-- Reviews Tab -->
         <div class="container mt-4">
-            <div class="row" style="margin-inline-end: 3px;">
+            <div class="row">
                 <div class="col-md-6">
                     <h6 style="font-size: medium;">Reviews:</h6>                
 

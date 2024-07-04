@@ -347,11 +347,14 @@ function inquireOnWhatsApp() {
     const productName = document.getElementById('product-name').textContent;
     const productPrice = document.getElementById('product-price').textContent;
 
-    // Construct the message
-    const message = `Hello, I would like to inquire about:
-    Product: ${productName}
-    Description: ${productDescription}
-    Price: ${productPrice}`;
+// Construct the message
+const message = `Hi there!
+
+I'm interested in the ${productName} listed on your website.
+Could you provide more details \n
+
+Thanks!`;
+
 
     // Encode the message to be URL-friendly
     const encodedMessage = encodeURIComponent(message);
@@ -375,3 +378,11 @@ window.onload = () => {
     displayProducts();
 };
 
+let cartCount = 0;
+const cartCounter = document.getElementById('cart-counter');
+const cartIcon = document.querySelector('.cart-icon');
+
+cartIcon.addEventListener('click', () => {
+    cartCount++;
+    cartCounter.textContent = cartCount;
+});
