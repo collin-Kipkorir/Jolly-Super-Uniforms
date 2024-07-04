@@ -147,6 +147,45 @@ function shuffleArray(array) {
     }
     return array;
 }
+// Cart counter logic
+let cartCount = 0;
+const cartCounter = document.getElementById('cart-counter');
+
+// Check if cartCounter element exists
+if (cartCounter) {
+    console.log("Cart counter element found");
+
+    document.addEventListener('click', function(event) {
+        if (event.target && event.target.classList.contains('add-to-cart')) {
+            cartCount++;
+            cartCounter.textContent = cartCount;
+            console.log(`Cart count updated: ${cartCount}`);
+
+            const productCard = event.target.closest('.product-card');
+            const productId = productCard.getAttribute('data-product-id');
+            const productName = productCard.querySelector('.card-title').textContent;
+            const productImage = productCard.querySelector('img').src;
+            const productPrice = productCard.querySelector('.card-text span').textContent;
+
+            console.log(`Product added to cart: ${productName}, ID: ${productId}`);
+
+            // Update the cart modal with product details (example code, update according to your modal structure)
+            const cartModal = document.getElementById('cartModal');
+            const cartItemsContainer = cartModal.querySelector('.cart-items');
+            const newItem = document.createElement('div');
+            newItem.classList.add('cart-item');
+            newItem.innerHTML = `
+                <img src="${productImage}" alt="${productName}" style="height: 50px;">
+                <span>${productName}</span>
+                <span>${productPrice}</span>
+                <span>Quantity: 1</span>
+            `;
+            cartItemsContainer.appendChild(newItem);
+        }
+    });
+} else {
+    console.error("Cart counter element not found.");
+}
 
 // Function to display products
 function displayProducts() {
@@ -186,7 +225,7 @@ function displayProducts() {
                         <div class="d-flex justify-content-end align-items-end mt-auto" style="margin-top: auto;">
                             <span class="cart-icon">
                                 <!-- Add event listener to cart icon -->
-                                <a href="add to cart" style="margin-right: 10px;">
+                                <a href="javascript:void(0);" class="add-to-cart" style="margin-right: 10px;">
                                     <img src="images/addcart.png" alt="Add Cart" style="height: 25px;" class="cart-img">
                                 </a>
                             </span> <!-- Cart Icon -->
@@ -211,6 +250,12 @@ function displayProducts() {
         console.error("Error fetching products: ", error);
     });
 }
+
+// Call the function to display products when the page loads
+window.onload = () => {
+    displayProducts();
+};
+
 
 // Function to open WhatsApp chat with product details
 function openWhatsAppChat(image, description, price) {
@@ -315,11 +360,6 @@ function loadProductReviews(productId) {
     });
 }
 
-// Call the function to display products when the page loads
-window.onload = () => {
-    displayProducts();
-};
-
 
 // Event listener for the WhatsApp button to dynamically construct the URL with product details
 document.getElementById('whatsapp-button').addEventListener('click', function (event) {
@@ -378,11 +418,3 @@ window.onload = () => {
     displayProducts();
 };
 
-let cartCount = 0;
-const cartCounter = document.getElementById('cart-counter');
-const cartIcon = document.querySelector('.cart-icon');
-
-cartIcon.addEventListener('click', () => {
-    cartCount++;
-    cartCounter.textContent = cartCount;
-});
