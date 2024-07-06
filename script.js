@@ -157,30 +157,30 @@ if (cartCounter) {
 
     document.addEventListener('click', function(event) {
         if (event.target && event.target.classList.contains('add-to-cart')) {
-            cartCount++;
-            cartCounter.textContent = cartCount;
-            console.log(`Cart count updated: ${cartCount}`);
+        //     cartCount++;
+        //     cartCounter.textContent = cartCount;
+        //     console.log(`Cart count updated: ${cartCount}`);
 
-            const productCard = event.target.closest('.product-card');
-            const productId = productCard.getAttribute('data-product-id');
-            const productName = productCard.querySelector('.card-title').textContent;
-            const productImage = productCard.querySelector('img').src;
-            const productPrice = productCard.querySelector('.card-text span').textContent;
+        //     const productCard = event.target.closest('.product-card');
+        //     const productId = productCard.getAttribute('data-product-id');
+        //     const productName = productCard.querySelector('.card-title').textContent;
+        //     const productImage = productCard.querySelector('img').src;
+        //     const productPrice = productCard.querySelector('.card-text span').textContent;
 
-            console.log(`Product added to cart: ${productName}, ID: ${productId}`);
+        //     console.log(`Product added to cart: ${productName}, ID: ${productId}`);
 
-            // Update the cart modal with product details (example code, update according to your modal structure)
-            const cartModal = document.getElementById('cartModal');
-            const cartItemsContainer = cartModal.querySelector('.cart-items');
-            const newItem = document.createElement('div');
-            newItem.classList.add('cart-item');
-            newItem.innerHTML = `
-                <img src="${productImage}" alt="${productName}" style="height: 50px;">
-                <span>${productName}</span>
-                <span>${productPrice}</span>
-                <span>Quantity: 1</span>
-            `;
-            cartItemsContainer.appendChild(newItem);
+        //     // Update the cart modal with product details (example code, update according to your modal structure)
+        //     const cartModal = document.getElementById('cartModal');
+        //     const cartItemsContainer = cartModal.querySelector('.cart-items');
+        //     const newItem = document.createElement('div');
+        //     newItem.classList.add('cart-item');
+        //     newItem.innerHTML = `
+        //         <img src="${productImage}" alt="${productName}" style="height: 50px;">
+        //         <span>${productName}</span>
+        //         <span>${productPrice}</span>
+        //         <span>Quantity: 1</span>
+        //     `;
+        //     cartItemsContainer.appendChild(newItem);
         }
     });
 } else {
@@ -225,8 +225,8 @@ function displayProducts() {
                         <div class="d-flex justify-content-end align-items-end mt-auto" style="margin-top: auto;">
                             <span class="cart-icon">
                                 <!-- Add event listener to cart icon -->
-                                <a href="javascript:void(0);" class="add-to-cart" style="margin-right: 10px;">
-                                    <img src="images/addcart.png" alt="Add Cart" style="height: 25px;" class="cart-img">
+                                 <a href="#" onclick="addItemtoCart('${childData.image}', '${childData.description}', '${childData.price}')">
+                                    <img src="images/addcart.png" alt="WhatsApp Logo" style="height: 25px;" class="whatsapp-img">
                                 </a>
                             </span> <!-- Cart Icon -->
                             <span class="ml-2 whatsapp-icon">
@@ -240,8 +240,7 @@ function displayProducts() {
                 </div>`;
                 productList.appendChild(productCard);
 
-                // Add event listener to the product card
-                productCard.addEventListener('click', () => getProductDetails(childData.key));
+               
             });
         } else {
             console.log("No data available");
@@ -249,6 +248,9 @@ function displayProducts() {
     }).catch((error) => {
         console.error("Error fetching products: ", error);
     });
+}
+function addItemtoCart(image, description, price){
+    console.log (description + " Item Added");
 }
 
 // Call the function to display products when the page loads
