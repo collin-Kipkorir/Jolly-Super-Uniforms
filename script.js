@@ -112,34 +112,6 @@ hideNavbar();
 // Get the review form element
 const reviewForm = document.getElementById('review-form');
 
-// Add event listener for form submission
-reviewForm.addEventListener('submit', function(event) {
-    event.preventDefault(); // Prevent the default form submission
-
-    const reviewName = document.getElementById('review-name').value;
-    const reviewText = document.getElementById('review-text').value;
-    const productId = document.getElementById('modal-product-id').value; // Retrieve the current product ID
-
-    if (reviewName && reviewText && productId) {
-        const reviewRef = database.ref('products/' + productId + '/reviews');
-        const newReview = {
-            name: reviewName,
-            text: reviewText,
-            timestamp: firebase.database.ServerValue.TIMESTAMP // Add a timestamp
-        };
-        reviewRef.push(newReview)
-            .then(() => {
-                alert('Review submitted successfully!');
-                document.getElementById('review-name').value = ''; // Clear the name input
-                document.getElementById('review-text').value = ''; // Clear the textarea
-                loadProductReviews(productId); // Reload the reviews
-            })
-            .catch(error => {
-                console.error('Error submitting review: ', error);
-                alert('Failed to submit review. Please try again.');
-            });
-    }
-});
 
 // Function to shuffle an array using the Fisher-Yates shuffle algorithm
 function shuffleArray(array) {
@@ -149,9 +121,26 @@ function shuffleArray(array) {
     }
     return array;
 }
-// Cart counter logic
 const cartCounter = document.getElementById('cart-counter');
 let cartCount = 0;
+const addedProductIds = new Set();
+
+function addItemtoCart(productId, image, name, price) {
+    if (!addedProductIds.has(productId)) {
+        console.log(name + " Item Added");
+        
+        // Increment the cart counter
+        cartCount++;
+        cartCounter.textContent = cartCount;
+        
+        // Add product ID to the set
+        addedProductIds.add(productId);
+    } else {
+        console.log(name + " Item already in cart");
+    }
+}
+
+
 
 
 
@@ -176,6 +165,7 @@ function displayProducts() {
                 hideLoader();
                 showFooter();
                 showNavbar();
+                
                 // Create product card for each product
                 const productCard = document.createElement('div');
                 productCard.classList.add('col-6', 'col-md-3', 'product-card'); // Add responsive classes for mobile and desktop view
@@ -193,13 +183,13 @@ function displayProducts() {
                         <div class="d-flex justify-content-end align-items-end mt-auto" style="margin-top: auto;">
                             <span class="cart-icon">
                                 <!-- Add event listener to cart icon -->
-                                 <a href="#" onclick="addItemtoCart('${childData.image}', '${childData.description}', '${childData.price}')">
-                                    <img src="images/addcart.png" alt="WhatsApp Logo" style="height: 25px;" class="whatsapp-img">
+                                <a href="#" onclick="addItemtoCart('${childData.key}', '${childData.image}', '${childData.name}', '${childData.price}')">
+                                    <img src="images/addcart.png" alt="Add to Cart" style="height: 25px;" class="cart-img">
                                 </a>
                             </span> <!-- Cart Icon -->
                             <span class="ml-2 whatsapp-icon">
                                 <!-- Add event listener to WhatsApp icon -->
-                                <a href="#" onclick="openWhatsAppChat('${childData.image}', '${childData.description}', '${childData.price}')">
+                                <a href="#" onclick="openWhatsAppChat('${childData.image}', '${childData.name}', '${childData.price}')">
                                     <img src="images/whatsapp.png" alt="WhatsApp Logo" style="height: 25px;" class="whatsapp-img">
                                 </a>
                             </span> <!-- WhatsApp Logo -->
@@ -207,9 +197,8 @@ function displayProducts() {
                     </div>
                 </div>`;
                 productList.appendChild(productCard);
-
-               
             });
+            
            
         } else {
             console.log("No data available");
@@ -218,19 +207,7 @@ function displayProducts() {
         console.error("Error fetching products: ", error);
     });
 }
-function addItemtoCart(image,name, description, price) {
-    console.log(name + " Item Added");
-    
-    // Increment the cart counter
-    cartCount++;
-    cartCounter.textContent = cartCount;
-}
 
-
-// Call the function to display products when the page loads
-window.onload = () => {
-    displayProducts();
-};
 
 
 // Function to open WhatsApp chat with product details
@@ -245,29 +222,6 @@ function openWhatsAppChat(image, description, price) {
     const whatsappUrl = `https://wa.me/254723914386?text=${encodeURIComponent(message)}`;
     window.open(whatsappUrl, '_blank');
 }
-
-// Function to load product reviews
-function loadProductReviews(productId) {
-    const reviewsRef = firebase.database().ref('products/' + productId + '/reviews');
-    const productReviewsList = document.getElementById('product-reviews-list');
-    reviewsRef.once('value').then((snapshot) => {
-        productReviewsList.innerHTML = ''; // Clear existing reviews
-        if (snapshot.exists()) {
-            snapshot.forEach((childSnapshot) => {
-                const review = childSnapshot.val();
-                const reviewItem = document.createElement('li');
-                reviewItem.innerHTML = `<strong>${review.name}</strong>: ${review.text} <br><small>${new Date(review.timestamp).toLocaleString()}</small>`;
-                productReviewsList.appendChild(reviewItem);
-            });
-        } else {
-            productReviewsList.innerHTML = '<li>No reviews available.</li>';
-        }
-    }).catch((error) => {
-        console.error("Error fetching reviews: ", error);
-    });
-}
-
-// Function to display product details
 function getProductDetails(productId) {
     const productRef = firebase.database().ref('products/' + productId);
     productRef.once('value').then((snapshot) => {
@@ -280,8 +234,9 @@ function getProductDetails(productId) {
             const productPrice = document.getElementById('product-price');
             const productSpecs = document.getElementById('product-specs');
             const productIdInput = document.getElementById('product-id');
+            const addToCartButton = document.getElementById('add-to-cart-button');
 
-            if (productImage && productName && productDescription && productPrice && productSpecs && productIdInput) {
+            if (productImage && productName && productDescription && productPrice && productSpecs && productIdInput && addToCartButton) {
                 productImage.src = productData.image;
                 productName.textContent = productData.name;
                 productDescription.textContent = productData.description;
@@ -299,12 +254,14 @@ function getProductDetails(productId) {
                 }
 
                 // Populate reviews
-                // Populate reviews
                 loadProductReviews(productId);
 
                 // Show the product details container and hide the main content
                 document.getElementById('main-content').classList.add('hidden');
                 document.getElementById('product-details-container').classList.remove('hidden');
+
+                // Add event listener to the "Add to Cart" button
+                addToCartButton.onclick = () => addItemtoCart(productId, productData.image, productData.name, productData.price);
             } else {
                 console.error("One or more container elements not found.");
             }
@@ -315,6 +272,7 @@ function getProductDetails(productId) {
         console.error("Error fetching product details: ", error);
     });
 }
+
 // Function to load product reviews
 function loadProductReviews(productId) {
     const reviewsRef = firebase.database().ref('products/' + productId + '/reviews');
@@ -335,6 +293,12 @@ function loadProductReviews(productId) {
         console.error("Error fetching reviews: ", error);
     });
 }
+
+
+// Call the function to display products when the page loads
+window.onload = () => {
+    displayProducts();
+};
 
 
 // Event listener for the WhatsApp button to dynamically construct the URL with product details
@@ -388,9 +352,31 @@ document.getElementById('whatsapp-button').addEventListener('click', function(ev
     inquireOnWhatsApp(); // Call the function to handle the WhatsApp inquiry
 });
 
+// Add event listener for form submission
+reviewForm.addEventListener('submit', function(event) {
+    event.preventDefault(); // Prevent the default form submission
 
-// Call the function to display products when the page loads
-window.onload = () => {
-    displayProducts();
-};
+    const reviewName = document.getElementById('review-name').value;
+    const reviewText = document.getElementById('review-text').value;
+    const productId = document.getElementById('modal-product-id').value; // Retrieve the current product ID
 
+    if (reviewName && reviewText && productId) {
+        const reviewRef = database.ref('products/' + productId + '/reviews');
+        const newReview = {
+            name: reviewName,
+            text: reviewText,
+            timestamp: firebase.database.ServerValue.TIMESTAMP // Add a timestamp
+        };
+        reviewRef.push(newReview)
+            .then(() => {
+                alert('Review submitted successfully!');
+                document.getElementById('review-name').value = ''; // Clear the name input
+                document.getElementById('review-text').value = ''; // Clear the textarea
+                loadProductReviews(productId); // Reload the reviews
+            })
+            .catch(error => {
+                console.error('Error submitting review: ', error);
+                alert('Failed to submit review. Please try again.');
+            });
+    }
+});
