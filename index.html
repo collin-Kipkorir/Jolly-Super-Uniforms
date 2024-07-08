@@ -23,26 +23,29 @@
 
 <style>
     .cart-container {
-            position: relative;
-            display: inline-block;
-        }
-        .cart-icon {
-            font-size: 20px;
-            cursor: pointer;
-            color: white;
-        }
-        .cart-counter {
-            position: absolute;
-            top: -3px;
-            right: -3px;
-            background-color: red;
-            color: white;
-            border-radius: 50%;
-            padding: 1px 5px;
-            margin-top: 3px;
-            margin-right: 10px;
-            font-size: 10px;
-        }
+        position: relative;
+        display: inline-block;
+    }
+
+    .cart-icon {
+        font-size: 20px;
+        cursor: pointer;
+        color: white;
+    }
+
+    .cart-counter {
+        position: absolute;
+        top: -3px;
+        right: -3px;
+        background-color: red;
+        color: white;
+        border-radius: 50%;
+        padding: 1px 5px;
+        margin-top: 3px;
+        margin-right: 10px;
+        font-size: 10px;
+    }
+
     .scale-down {
         transform: scale(0.8);
     }
@@ -62,7 +65,7 @@
         align-items: center;
         font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
         text-align: center;
-    
+
 
     }
 
@@ -229,11 +232,12 @@
     .navbar-toggler {
         display: block;
         background-color: rgb(12, 12, 48);
-    
+
     }
+
     #product-specs li {
-    font-weight: normal;
-}
+        font-weight: normal;
+    }
 
 
     .modal-body {
@@ -260,11 +264,13 @@
             position: relative;
             display: inline-block;
         }
+
         .cart-icon {
             font-size: 20px;
             cursor: pointer;
             color: white;
         }
+
         .cart-counter {
             position: absolute;
             top: -5px;
@@ -276,6 +282,7 @@
             margin-top: 3px;
             font-size: 10px;
         }
+
         .navbar-brand {
             justify-content: start;
             width: 100%;
@@ -360,9 +367,10 @@
             max-width: 100%;
 
         }
+
         #product-specs li {
-    font-synthesis-weight: 1;
-}
+            font-synthesis-weight: 1;
+        }
 
 
 
@@ -431,31 +439,34 @@
     .hidden {
         display: none !important;
     }
+
     .rating {
-    margin-bottom: 10px;
-}
+        margin-bottom: 10px;
+    }
 
-.rating-bar-container {
-    width: 200px; /* Adjust as needed */
-    height: 20px; /* Adjust as needed */
-    background-color: #f0f0f0;
-    border-radius: 4px;
-    overflow: hidden;
-    margin-bottom: 5px;
-}
+    .rating-bar-container {
+        width: 200px;
+        /* Adjust as needed */
+        height: 20px;
+        /* Adjust as needed */
+        background-color: #f0f0f0;
+        border-radius: 4px;
+        overflow: hidden;
+        margin-bottom: 5px;
+    }
 
-.rating-bar {
-    height: 100%;
-    width: 0;
-    background-color: #5cb85c; /* Default color for filled part */
-    transition: width 0.5s ease-in-out;
-}
+    .rating-bar {
+        height: 100%;
+        width: 0;
+        background-color: #5cb85c;
+        /* Default color for filled part */
+        transition: width 0.5s ease-in-out;
+    }
 
-.rating-text {
-    font-size: 14px;
-    font-weight: bold;
-}
-
+    .rating-text {
+        font-size: 14px;
+        font-weight: bold;
+    }
 </style>
 
 <body>
@@ -469,7 +480,7 @@
                     aria-label="Toggle navigation" style="background-color: #fff;">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="navbar-brand ml-2" style="color: #fff;" >
+                <div class="navbar-brand ml-2" style="color: #fff;">
                     <img src="images/icon.png" alt="Logo">
                     JOLLY UNIFORMS
                 </div>
@@ -508,13 +519,15 @@
                 </div>
                 <div class="navbar-nav ml-auto">
                     <div class="cart-container">
-                        <a class="nav-item nav-link" href="" data-toggle="modal" data-target="#cartModal" style="padding-right: 20px;">
+                        <a class="nav-item nav-link" href="" data-toggle="modal" data-target="#cartModal"
+                            style="padding-right: 20px;">
                             <i class="cart-icon">🛒</i>
-                            <div class="cart-counter" id="cart-counter">0</div> <!-- Ensure the counter is inside the anchor tag -->
+                            <div class="cart-counter" id="cart-counter">0</div>
+                            <!-- Ensure the counter is inside the anchor tag -->
                         </a>
                     </div>
                 </div>
-                
+
             </div>
         </div>
 
@@ -536,7 +549,7 @@
             style="padding-top: 50px;  font-size: medium; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;"
             class="container mt-5 hidden">
             <!-- Product Image -->
-            <div id="product-image-container" class="col-md-6 text-center" >
+            <div id="product-image-container" class="col-md-6 text-center">
                 <img id="product-image" src="" class="img-fluid" alt="Product Image" style="max-height: 250px;">
             </div>
             <!-- Product Details -->
@@ -587,7 +600,7 @@
         <div class="container mt-4">
             <div class="row">
                 <div class="col-md-6">
-                    <h6 style="font-size: medium;">Reviews:</h6>                
+                    <h6 style="font-size: medium;">Reviews:</h6>
 
                     <ul id="product-reviews-list" class="list-unstyled" style="font: small"></ul>
                 </div>
@@ -615,28 +628,26 @@
         </div>
 
     </div>
-
-
-    <!-- Cart Modal -->
-    <div class="modal fade" id="cartModal" tabindex="-1" aria-labelledby="cartModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="cartModalLabel">Your Cart</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <ul id="cart-items-list" class="list-unstyled"></ul>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Checkout</button>
-                </div>
+ <!-- Cart Modal -->
+ <div class="modal fade" id="cartModal" tabindex="-1" aria-labelledby="cartModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="cartModalLabel">Your Cart</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <ul id="cart-items-list" class="list-unstyled"></ul>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" id="checkout-button">Checkout</button>
             </div>
         </div>
     </div>
+</div>
 
     <img id="loader" class="loader" src="images/shopping.gif" alt="Loading...">
     <!-- Cookie consent modal -->

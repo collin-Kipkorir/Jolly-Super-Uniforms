@@ -122,27 +122,94 @@ function shuffleArray(array) {
     return array;
 }
 const cartCounter = document.getElementById('cart-counter');
-let cartCount = 0;
-const addedProductIds = new Set();
+let cartCount = parseInt(localStorage.getItem('cartCount')) || 0;
+const addedProductIds = new Set(JSON.parse(localStorage.getItem('addedProductIds')) || []);
+
+function updateCartCounter() {
+    cartCounter.textContent = cartCount;
+}
 
 function addItemtoCart(productId, image, name, price) {
+    let cart = JSON.parse(localStorage.getItem('cart')) || {};
+
     if (!addedProductIds.has(productId)) {
         console.log(name + " Item Added");
-        
-        // Increment the cart counter
-        cartCount++;
-        cartCounter.textContent = cartCount;
-        
-        // Add product ID to the set
+
+        cart[productId] = {
+            image: image,
+            name: name,
+            price: price,
+            count: 1
+        };
+
         addedProductIds.add(productId);
+        localStorage.setItem('addedProductIds', JSON.stringify(Array.from(addedProductIds)));
+
+        cartCount++;
+        localStorage.setItem('cartCount', cartCount);
+        localStorage.setItem('cart', JSON.stringify(cart)); // Store updated cart
+        updateCartCounter(); // Update counter
     } else {
         console.log(name + " Item already in cart");
     }
 }
 
+function loadCartItems() {
+    let cart = JSON.parse(localStorage.getItem('cart')) || {};
+    const cartItemsList = document.getElementById('cart-items-list');
+    cartItemsList.innerHTML = '';
 
+    for (let productId in cart) {
+        const item = cart[productId];
+        const listItem = document.createElement('li');
+        listItem.classList.add('media', 'mb-3');
+        listItem.innerHTML = `
+            <img src="${item.image}" class="mr-3" alt="${item.name}" style="width: 64px; height: 64px; object-fit: contain;">
+            <div class="media-body">
+                <h6 class="mt-0 mb-1">${item.name}</h6>
+                <p>Price: Kshs. ${item.price}</p>
+                <p>Quantity: ${item.count}</p>
+                <button class="btn btn-danger btn-sm delete-item-button" data-product-id="${productId}">Delete</button>
+            </div>
+        `;
+        cartItemsList.appendChild(listItem);
+    }
 
+    // Add event listeners to delete buttons
+    document.querySelectorAll('.delete-item-button').forEach(button => {
+        button.addEventListener('click', (event) => {
+            const productId = event.target.getAttribute('data-product-id');
+            removeItemFromCart(productId);
+        });
+    });
+}
 
+function removeItemFromCart(productId) {
+    let cart = JSON.parse(localStorage.getItem('cart')) || {};
+
+    if (cart[productId]) {
+        cartCount -= 1;
+        if (cartCount < 0) cartCount = 0; // Ensure cart count does not go negative
+        localStorage.setItem('cartCount', cartCount);
+
+        delete cart[productId];
+        localStorage.setItem('cart', JSON.stringify(cart));
+
+        addedProductIds.delete(productId);
+        localStorage.setItem('addedProductIds', JSON.stringify(Array.from(addedProductIds)));
+
+        // Reload cart items to update the UI
+        updateCartCounter(); // Update counter
+        loadCartItems();
+    }
+}
+
+document.getElementById('cartModal').addEventListener('show.bs.modal', loadCartItems);
+
+document.addEventListener('DOMContentLoaded', () => {
+    updateCartCounter(); // Initialize cart counter on page load
+    loadCartItems(); // Load cart items on page load
+});
 
 // Function to display products
 function displayProducts() {
