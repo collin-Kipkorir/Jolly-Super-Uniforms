@@ -1,108 +1,110 @@
 // Firebase configuration
 const firebaseConfig = {
-    apiKey: "AIzaSyClS4zP63hQipphS-FzNzmCpNsXb6SDdkc",
-    authDomain: "jolly-uniforms.firebaseapp.com",
-    projectId: "jolly-uniforms",
-    storageBucket: "jolly-uniforms.appspot.com",
-    messagingSenderId: "17335535863",
-    appId: "1:17335535863:web:42f53ed271796ac4852bf2",
-    measurementId: "G-GE79K2PX5M"
+  apiKey: "AIzaSyClS4zP63hQipphS-FzNzmCpNsXb6SDdkc",
+  authDomain: "jolly-uniforms.firebaseapp.com",
+  projectId: "jolly-uniforms",
+  storageBucket: "jolly-uniforms.appspot.com",
+  messagingSenderId: "17335535863",
+  appId: "1:17335535863:web:42f53ed271796ac4852bf2",
+  measurementId: "G-GE79K2PX5M",
 };
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 
-
-
 // Reference to Firebase Database
 const database = firebase.database();
-const productsRef = database.ref('products');
+const productsRef = database.ref("products");
 
 // Get the navbar-toggler element
-const navbarToggler = document.getElementById('navbar-toggler');
+const navbarToggler = document.getElementById("navbar-toggler");
 
 // Add an event listener to detect when the navbar is opened
-navbarToggler.addEventListener('click', function () {
-    // Hide the navbar-toggler-icon after it has been clicked
-    this.style.display = 'none';
+navbarToggler.addEventListener("click", function () {
+  // Hide the navbar-toggler-icon after it has been clicked
+  this.style.display = "none";
 });
 
 // Ensure the navbar brand toggle visibility
-const navbarBrand = document.querySelector('.navbar-brand.ml-2');
-navbarToggler.addEventListener('click', function () {
-    // Toggle the hidden class on the navbar-brand element
-    navbarBrand.classList.toggle('hidden');
+const navbarBrand = document.querySelector(".navbar-brand.ml-2");
+navbarToggler.addEventListener("click", function () {
+  // Toggle the hidden class on the navbar-brand element
+  navbarBrand.classList.toggle("hidden");
 });
 
 // Add event listeners for DOM content loaded and window resize
-window.addEventListener('DOMContentLoaded', checkWidth);
-window.addEventListener('resize', checkWidth);
+window.addEventListener("DOMContentLoaded", checkWidth);
+window.addEventListener("resize", checkWidth);
 
 // Document ready function with jQuery
-$(document).ready(function() {
-    $('#itemDetailsModal').modal({
-        backdrop: 'static',
-        keyboard: false
-    });
+$(document).ready(function () {
+  $("#itemDetailsModal").modal({
+    backdrop: "static",
+    keyboard: false,
+  });
 
-    $('#modal-close-button').on('click', function() {
-        $('#itemDetailsModal').modal('hide');
-    });
+  $("#modal-close-button").on("click", function () {
+    $("#itemDetailsModal").modal("hide");
+  });
 
-    $('#itemDetailsModal').on('hide.bs.modal', function (e) {
-        if (!confirm("Are you sure you want to close the modal?")) {
-            e.preventDefault();
-        }
-    });
+  $("#itemDetailsModal").on("hide.bs.modal", function (e) {
+    if (!confirm("Are you sure you want to close the modal?")) {
+      e.preventDefault();
+    }
+  });
 });
 
 // Function to check the width and apply sticky navbar
 function checkWidth() {
-    var viewportWidth = window.innerWidth || document.documentElement.clientWidth;
+  var viewportWidth = window.innerWidth || document.documentElement.clientWidth;
 
-    if (viewportWidth <= 767) {
-        document.getElementById('navbar').classList.add('sticky');
-    } else {
-        document.getElementById('navbar').classList.remove('sticky');
-    }
+  if (viewportWidth <= 767) {
+    document.getElementById("navbar").classList.add("sticky");
+  } else {
+    document.getElementById("navbar").classList.remove("sticky");
+  }
 }
 
 // Functions to show and hide dropdown
 function showDropdown() {
-    document.getElementById("navbarDropdown").setAttribute("aria-expanded", "true");
-    document.getElementById("dropdownMenu").classList.add("show");
+  document
+    .getElementById("navbarDropdown")
+    .setAttribute("aria-expanded", "true");
+  document.getElementById("dropdownMenu").classList.add("show");
 }
 
 function hideDropdown() {
-    document.getElementById("navbarDropdown").setAttribute("aria-expanded", "false");
-    document.getElementById("dropdownMenu").classList.remove("show");
+  document
+    .getElementById("navbarDropdown")
+    .setAttribute("aria-expanded", "false");
+  document.getElementById("dropdownMenu").classList.remove("show");
 }
 
 // Functions to show and hide loader
 function showLoader() {
-    document.getElementById('loader').style.display = 'block';
-    document.getElementById('main-content').classList.add('hidden');
+  document.getElementById("loader").style.display = "block";
+  document.getElementById("main-content").classList.add("hidden");
 }
 
 function hideLoader() {
-    document.getElementById('loader').style.display = 'none';
-    document.getElementById('main-content').classList.remove('hidden');
+  document.getElementById("loader").style.display = "none";
+  document.getElementById("main-content").classList.remove("hidden");
 }
 
 // Functions to show and hide navbar and footer
 function hideNavbar() {
-    document.getElementById('navbar').style.display = 'none';
+  document.getElementById("navbar").style.display = "none";
 }
 
 function showNavbar() {
-    document.getElementById('navbar').style.display = 'block';
+  document.getElementById("navbar").style.display = "block";
 }
 
 function hideFooter() {
-    document.getElementById('footer').classList.add('hidden');
+  document.getElementById("footer").classList.add("hidden");
 }
 
 function showFooter() {
-    document.getElementById('footer').classList.remove('hidden');
+  document.getElementById("footer").classList.remove("hidden");
 }
 
 // Display loader on page start loading
@@ -110,134 +112,147 @@ showLoader();
 hideNavbar();
 
 // Get the review form element
-const reviewForm = document.getElementById('review-form');
-
+const reviewForm = document.getElementById("review-form");
 
 // Function to shuffle an array using the Fisher-Yates shuffle algorithm
 function shuffleArray(array) {
-    for (let i = array.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [array[i], array[j]] = [array[j], array[i]];
-    }
-    return array;
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]];
+  }
+  return array;
 }
-const cartCounter = document.getElementById('cart-counter');
-let cartCount = parseInt(localStorage.getItem('cartCount')) || 0;
-const addedProductIds = new Set(JSON.parse(localStorage.getItem('addedProductIds')) || []);
+const cartCounter = document.getElementById("cart-counter");
+let cartCount = parseInt(localStorage.getItem("cartCount")) || 0;
+const addedProductIds = new Set(
+  JSON.parse(localStorage.getItem("addedProductIds")) || []
+);
 
 function updateCartCounter() {
-    cartCounter.textContent = cartCount;
+  cartCounter.textContent = cartCount;
 }
 
 function addItemtoCart(productId, image, name, price) {
-    let cart = JSON.parse(localStorage.getItem('cart')) || {};
+  let cart = JSON.parse(localStorage.getItem("cart")) || {};
 
-    if (!addedProductIds.has(productId)) {
-        console.log(name + " Item Added");
+  if (!addedProductIds.has(productId)) {
+    console.log(name + " Item Added");
 
-        cart[productId] = {
-            image: image,
-            name: name,
-            price: price,
-            count: 1
-        };
+    cart[productId] = {
+      image: image,
+      name: name,
+      price: price,
+      count: 1,
+    };
 
-        addedProductIds.add(productId);
-        localStorage.setItem('addedProductIds', JSON.stringify(Array.from(addedProductIds)));
+    addedProductIds.add(productId);
+    localStorage.setItem(
+      "addedProductIds",
+      JSON.stringify(Array.from(addedProductIds))
+    );
 
-        cartCount++;
-        localStorage.setItem('cartCount', cartCount);
-        localStorage.setItem('cart', JSON.stringify(cart)); // Store updated cart
-        updateCartCounter(); // Update counter
-    } else {
-        console.log(name + " Item already in cart");
-    }
+    cartCount++;
+    localStorage.setItem("cartCount", cartCount);
+    localStorage.setItem("cart", JSON.stringify(cart)); // Store updated cart
+    updateCartCounter(); // Update counter
+  } else {
+    console.log(name + " Item already in cart");
+  }
 }
 
 function loadCartItems() {
-    let cart = JSON.parse(localStorage.getItem('cart')) || {};
-    const cartItemsList = document.getElementById('cart-items-list');
-    cartItemsList.innerHTML = '';
+  let cart = JSON.parse(localStorage.getItem("cart")) || {};
+  const cartItemsList = document.getElementById("cart-items-list");
+  cartItemsList.innerHTML = "";
 
-    for (let productId in cart) {
-        const item = cart[productId];
-        const listItem = document.createElement('li');
-        listItem.classList.add('media', 'mb-3');
-        listItem.innerHTML = `
-            <img src="${item.image}" class="mr-3" alt="${item.name}" style="width: 64px; height: 64px; object-fit: contain;">
-            <div class="media-body">
-                <h6 class="mt-0 mb-1">${item.name}</h6>
-                <p>Price: Kshs. ${item.price}</p>
-                <p>Quantity: ${item.count}</p>
-                <button class="btn btn-danger btn-sm delete-item-button" data-product-id="${productId}">Delete</button>
-            </div>
-        `;
-        cartItemsList.appendChild(listItem);
-    }
+  for (let productId in cart) {
+    const item = cart[productId];
+    const listItem = document.createElement("li");
+    listItem.classList.add("media", "mb-3");
+    listItem.innerHTML = `
+    <div class="d-flex align-items-center">
+        <img src="${item.image}" class="mr-3" alt="${item.name}" style="width: 64px; height: 64px; object-fit: contain;">
+        <div class="media-body flex-grow-1">
+            <h6 class="mt-0 mb-1">${item.name}</h6>
+            <p>Price: Kshs. ${item.price}</p>
+            <p>Quantity: ${item.count}</p>
+        </div>
+        <button class="btn btn-danger btn-sm delete-item-button ml-3" data-product-id="${productId}">X</button>
+    </div>
+`;
 
-    // Add event listeners to delete buttons
-    document.querySelectorAll('.delete-item-button').forEach(button => {
-        button.addEventListener('click', (event) => {
-            const productId = event.target.getAttribute('data-product-id');
-            removeItemFromCart(productId);
-        });
+    cartItemsList.appendChild(listItem);
+  }
+
+  // Add event listeners to delete buttons
+  document.querySelectorAll(".delete-item-button").forEach((button) => {
+    button.addEventListener("click", (event) => {
+      const productId = event.target.getAttribute("data-product-id");
+      removeItemFromCart(productId);
     });
+  });
 }
 
 function removeItemFromCart(productId) {
-    let cart = JSON.parse(localStorage.getItem('cart')) || {};
+  let cart = JSON.parse(localStorage.getItem("cart")) || {};
 
-    if (cart[productId]) {
-        cartCount -= 1;
-        if (cartCount < 0) cartCount = 0; // Ensure cart count does not go negative
-        localStorage.setItem('cartCount', cartCount);
+  if (cart[productId]) {
+    cartCount -= 1;
+    if (cartCount < 0) cartCount = 0; // Ensure cart count does not go negative
+    localStorage.setItem("cartCount", cartCount);
 
-        delete cart[productId];
-        localStorage.setItem('cart', JSON.stringify(cart));
+    delete cart[productId];
+    localStorage.setItem("cart", JSON.stringify(cart));
 
-        addedProductIds.delete(productId);
-        localStorage.setItem('addedProductIds', JSON.stringify(Array.from(addedProductIds)));
+    addedProductIds.delete(productId);
+    localStorage.setItem(
+      "addedProductIds",
+      JSON.stringify(Array.from(addedProductIds))
+    );
 
-        // Reload cart items to update the UI
-        updateCartCounter(); // Update counter
-        loadCartItems();
-    }
+    // Reload cart items to update the UI
+    updateCartCounter(); // Update counter
+    loadCartItems();
+  }
 }
 
-document.getElementById('cartModal').addEventListener('show.bs.modal', loadCartItems);
+document
+  .getElementById("cartModal")
+  .addEventListener("show.bs.modal", loadCartItems);
 
-document.addEventListener('DOMContentLoaded', () => {
-    updateCartCounter(); // Initialize cart counter on page load
-    loadCartItems(); // Load cart items on page load
+document.addEventListener("DOMContentLoaded", () => {
+  updateCartCounter(); // Initialize cart counter on page load
+  loadCartItems(); // Load cart items on page load
 });
 
 // Function to display products
 function displayProducts() {
-    const productList = document.getElementById('product-list');
+  const productList = document.getElementById("product-list");
 
-    // Clear existing product list
-    productList.innerHTML = '';
-    productsRef.on('value', (snapshot) => {
-        if (snapshot.exists()) {
-            const childDataArray = []; // Array to store child data
-            snapshot.forEach((childSnapshot) => {
-                const childData = childSnapshot.val();
-                childDataArray.push({ key: childSnapshot.key, ...childData }); // Push each product into the array with its key
-            });
+  // Clear existing product list
+  productList.innerHTML = "";
+  productsRef
+    .on("value", (snapshot) => {
+      if (snapshot.exists()) {
+        const childDataArray = []; // Array to store child data
+        snapshot.forEach((childSnapshot) => {
+          const childData = childSnapshot.val();
+          childDataArray.push({ key: childSnapshot.key, ...childData }); // Push each product into the array with its key
+        });
 
-            // Shuffle the array of child data
-            const shuffledChildDataArray = shuffleArray(childDataArray);
+        // Shuffle the array of child data
+        const shuffledChildDataArray = shuffleArray(childDataArray);
 
-            shuffledChildDataArray.forEach((childData) => {
-                hideLoader();
-                showFooter();
-                showNavbar();
-                
-                // Create product card for each product
-                const productCard = document.createElement('div');
-                productCard.classList.add('col-6', 'col-md-3', 'product-card'); // Add responsive classes for mobile and desktop view
-                productCard.setAttribute('data-product-id', childData.key); // Set data attribute
-                productCard.innerHTML = `
+        shuffledChildDataArray.forEach((childData) => {
+          hideLoader();
+          showFooter();
+          showNavbar();
+
+          // Create product card for each product
+          const productCard = document.createElement("div");
+          productCard.classList.add("col-6", "col-md-3", "product-card"); // Add responsive classes for mobile and desktop view
+          productCard.setAttribute("data-product-id", childData.key); // Set data attribute
+          productCard.innerHTML = `
                 <div class="card mb-4 shadow-sm">
                     <div class="d-flex justify-content-center">
                         <a href="#" onclick="getProductDetails('${childData.key}')">
@@ -263,120 +278,155 @@ function displayProducts() {
                         </div>
                     </div>
                 </div>`;
-                productList.appendChild(productCard);
-            });
-            
-           
-        } else {
-            console.log("No data available");
-        }
-    }).catch((error) => {
-        console.error("Error fetching products: ", error);
+          productList.appendChild(productCard);
+        });
+      } else {
+        console.log("No data available");
+      }
+    })
+    .catch((error) => {
+      console.error("Error fetching products: ", error);
     });
 }
 
-
-
 // Function to open WhatsApp chat with product details
 function openWhatsAppChat(image, description, price) {
-    event.preventDefault(); // Prevent the default link behavior
+  event.preventDefault(); // Prevent the default link behavior
 
-    const message = `Hello, I would like to inquire about:
+  const message = `Hello, I would like to inquire about:
     ${description}
     Price: ${price}
     ${image}`;
 
-    const whatsappUrl = `https://wa.me/254723914386?text=${encodeURIComponent(message)}`;
-    window.open(whatsappUrl, '_blank');
+  const whatsappUrl = `https://wa.me/254723914386?text=${encodeURIComponent(
+    message
+  )}`;
+  window.open(whatsappUrl, "_blank");
 }
 function getProductDetails(productId) {
-    const productRef = firebase.database().ref('products/' + productId);
-    productRef.once('value').then((snapshot) => {
-        const productData = snapshot.val();
-        if (productData) {
-            // Update the modal with product details
-            const productImage = document.getElementById('product-image');
-            const productName = document.getElementById('product-name');
-            const productDescription = document.getElementById('product-description');
-            const productPrice = document.getElementById('product-price');
-            const productSpecs = document.getElementById('product-specs');
-            const productIdInput = document.getElementById('product-id');
-            const addToCartButton = document.getElementById('add-to-cart-button');
+  const productRef = firebase.database().ref("products/" + productId);
+  productRef
+    .once("value")
+    .then((snapshot) => {
+      const productData = snapshot.val();
+      if (productData) {
+        // Update the modal with product details
+        const productImage = document.getElementById("product-image");
+        const productName = document.getElementById("product-name");
+        const productDescription = document.getElementById(
+          "product-description"
+        );
+        const productPrice = document.getElementById("product-price");
+        const productSpecs = document.getElementById("product-specs");
+        const productIdInput = document.getElementById("product-id");
+        const addToCartButton = document.getElementById("add-to-cart-button");
 
-            if (productImage && productName && productDescription && productPrice && productSpecs && productIdInput && addToCartButton) {
-                productImage.src = productData.image;
-                productName.textContent = productData.name;
-                productDescription.textContent = productData.description;
-                productPrice.textContent = `From Kshs. ${productData.price}`;
-                productIdInput.value = productId;
+        if (
+          productImage &&
+          productName &&
+          productDescription &&
+          productPrice &&
+          productSpecs &&
+          productIdInput &&
+          addToCartButton
+        ) {
+          productImage.src = productData.image;
+          productName.textContent = productData.name;
+          productDescription.textContent = productData.description;
+          productPrice.textContent = `From Kshs. ${productData.price}`;
+          productIdInput.value = productId;
 
-                // Populate specifications
-                if (typeof productData.specifications === 'string') {
-                    const specificationsArray = productData.specifications.split(',');
-                    productSpecs.innerHTML = specificationsArray.map(spec => `<li>${spec.trim()}</li>`).join('');
-                } else if (Array.isArray(productData.specifications)) {
-                    productSpecs.innerHTML = productData.specifications.map(spec => `<li>${spec}</li>`).join('');
-                } else {
-                    productSpecs.innerHTML = "<p>No specifications available.</p>";
-                }
+          // Populate specifications
+          if (typeof productData.specifications === "string") {
+            const specificationsArray = productData.specifications.split(",");
+            productSpecs.innerHTML = specificationsArray
+              .map((spec) => `<li>${spec.trim()}</li>`)
+              .join("");
+          } else if (Array.isArray(productData.specifications)) {
+            productSpecs.innerHTML = productData.specifications
+              .map((spec) => `<li>${spec}</li>`)
+              .join("");
+          } else {
+            productSpecs.innerHTML = "<p>No specifications available.</p>";
+          }
 
-                // Populate reviews
-                loadProductReviews(productId);
+          // Populate reviews
+          loadProductReviews(productId);
 
-                // Show the product details container and hide the main content
-                document.getElementById('main-content').classList.add('hidden');
-                document.getElementById('product-details-container').classList.remove('hidden');
+          // Show the product details container and hide the main content
+          document.getElementById("main-content").classList.add("hidden");
+          document
+            .getElementById("product-details-container")
+            .classList.remove("hidden");
 
-                // Add event listener to the "Add to Cart" button
-                addToCartButton.onclick = () => addItemtoCart(productId, productData.image, productData.name, productData.price);
-            } else {
-                console.error("One or more container elements not found.");
-            }
+          // Add event listener to the "Add to Cart" button
+          addToCartButton.onclick = () =>
+            addItemtoCart(
+              productId,
+              productData.image,
+              productData.name,
+              productData.price
+            );
         } else {
-            console.log("Product does not exist");
+          console.error("One or more container elements not found.");
         }
-    }).catch((error) => {
-        console.error("Error fetching product details: ", error);
+      } else {
+        console.log("Product does not exist");
+      }
+    })
+    .catch((error) => {
+      console.error("Error fetching product details: ", error);
     });
 }
 
 // Function to load product reviews
 function loadProductReviews(productId) {
-    const reviewsRef = firebase.database().ref('products/' + productId + '/reviews');
-    const productReviewsList = document.getElementById('product-reviews-list');
-    reviewsRef.once('value').then((snapshot) => {
-        productReviewsList.innerHTML = ''; // Clear existing reviews
-        if (snapshot.exists()) {
-            snapshot.forEach((childSnapshot) => {
-                const review = childSnapshot.val();
-                const reviewItem = document.createElement('li');
-                reviewItem.innerHTML = `<strong>${review.name}</strong>: ${review.text} <br><small>${new Date(review.timestamp).toLocaleString()}</small>`;
-                productReviewsList.appendChild(reviewItem);
-            });
-        } else {
-            productReviewsList.innerHTML = '<li>No reviews available.</li>';
-        }
-    }).catch((error) => {
-        console.error("Error fetching reviews: ", error);
+  const reviewsRef = firebase
+    .database()
+    .ref("products/" + productId + "/reviews");
+  const productReviewsList = document.getElementById("product-reviews-list");
+  reviewsRef
+    .once("value")
+    .then((snapshot) => {
+      productReviewsList.innerHTML = ""; // Clear existing reviews
+      if (snapshot.exists()) {
+        snapshot.forEach((childSnapshot) => {
+          const review = childSnapshot.val();
+          const reviewItem = document.createElement("li");
+          reviewItem.innerHTML = `<strong>${review.name}</strong>: ${
+            review.text
+          } <br><small>${new Date(review.timestamp).toLocaleString()}</small>`;
+          productReviewsList.appendChild(reviewItem);
+        });
+      } else {
+        productReviewsList.innerHTML = "<li>No reviews available.</li>";
+      }
+    })
+    .catch((error) => {
+      console.error("Error fetching reviews: ", error);
     });
 }
 
-
 // Call the function to display products when the page loads
 window.onload = () => {
-    displayProducts();
+  displayProducts();
 };
 
-
 // Event listener for the WhatsApp button to dynamically construct the URL with product details
-document.getElementById('whatsapp-button').addEventListener('click', function (event) {
+document
+  .getElementById("whatsapp-button")
+  .addEventListener("click", function (event) {
     event.preventDefault(); // Prevent the default link behavior
 
-    const productImage = document.getElementById('modal-product-image').src;
-    const productDescription = document.getElementById('modal-product-description').textContent;
-    const productPrice = document.getElementById('modal-product-price').textContent;
-    const selectedSize = document.getElementById('product-size').value;
-    const quantity = document.getElementById('product-quantity').value;
+    const productImage = document.getElementById("modal-product-image").src;
+    const productDescription = document.getElementById(
+      "modal-product-description"
+    ).textContent;
+    const productPrice = document.getElementById(
+      "modal-product-price"
+    ).textContent;
+    const selectedSize = document.getElementById("product-size").value;
+    const quantity = document.getElementById("product-quantity").value;
 
     const message = `Hello, I would like to inquire about :
     ${productDescription}
@@ -385,65 +435,71 @@ document.getElementById('whatsapp-button').addEventListener('click', function (e
     , ${quantity}
     ${productImage}`;
 
-    const whatsappUrl = `https://wa.me/254723914386?text=${encodeURIComponent(message)}`;
-    window.open(whatsappUrl, '_blank');
-});
+    const whatsappUrl = `https://wa.me/254723914386?text=${encodeURIComponent(
+      message
+    )}`;
+    window.open(whatsappUrl, "_blank");
+  });
 function inquireOnWhatsApp() {
-    // Example: Retrieve product details from specific elements
-    const productDescription = document.getElementById('product-description').textContent;
-    const productName = document.getElementById('product-name').textContent;
-    const productPrice = document.getElementById('product-price').textContent;
+  // Example: Retrieve product details from specific elements
+  const productDescription = document.getElementById(
+    "product-description"
+  ).textContent;
+  const productName = document.getElementById("product-name").textContent;
+  const productPrice = document.getElementById("product-price").textContent;
 
-// Construct the message
-const message = `Hi there!
+  // Construct the message
+  const message = `Hi there!
 
 I'm interested in the ${productName} listed on your website.
 Could you provide more details \n
 
 Thanks!`;
 
+  // Encode the message to be URL-friendly
+  const encodedMessage = encodeURIComponent(message);
 
-    // Encode the message to be URL-friendly
-    const encodedMessage = encodeURIComponent(message);
+  // Construct the WhatsApp URL with the encoded message
+  const whatsappUrl = `https://wa.me/254723914386?text=${encodedMessage}`;
 
-    // Construct the WhatsApp URL with the encoded message
-    const whatsappUrl = `https://wa.me/254723914386?text=${encodedMessage}`;
-
-    // Open the WhatsApp URL in a new tab/window
-    window.open(whatsappUrl, '_blank');
+  // Open the WhatsApp URL in a new tab/window
+  window.open(whatsappUrl, "_blank");
 }
 
 // Add event listener to the WhatsApp button
-document.getElementById('whatsapp-button').addEventListener('click', function(event) {
+document
+  .getElementById("whatsapp-button")
+  .addEventListener("click", function (event) {
     event.preventDefault(); // Prevent the default link behavior
     inquireOnWhatsApp(); // Call the function to handle the WhatsApp inquiry
-});
+  });
 
 // Add event listener for form submission
-reviewForm.addEventListener('submit', function(event) {
-    event.preventDefault(); // Prevent the default form submission
+reviewForm.addEventListener("submit", function (event) {
+  event.preventDefault(); // Prevent the default form submission
 
-    const reviewName = document.getElementById('review-name').value;
-    const reviewText = document.getElementById('review-text').value;
-    const productId = document.getElementById('modal-product-id').value; // Retrieve the current product ID
+  const reviewName = document.getElementById("review-name").value;
+  const reviewText = document.getElementById("review-text").value;
+  const productId = document.getElementById("modal-product-id").value; // Retrieve the current product ID
 
-    if (reviewName && reviewText && productId) {
-        const reviewRef = database.ref('products/' + productId + '/reviews');
-        const newReview = {
-            name: reviewName,
-            text: reviewText,
-            timestamp: firebase.database.ServerValue.TIMESTAMP // Add a timestamp
-        };
-        reviewRef.push(newReview)
-            .then(() => {
-                alert('Review submitted successfully!');
-                document.getElementById('review-name').value = ''; // Clear the name input
-                document.getElementById('review-text').value = ''; // Clear the textarea
-                loadProductReviews(productId); // Reload the reviews
-            })
-            .catch(error => {
-                console.error('Error submitting review: ', error);
-                alert('Failed to submit review. Please try again.');
-            });
-    }
+  if (reviewName && reviewText && productId) {
+    const reviewRef = database.ref("products/" + productId + "/reviews");
+    const newReview = {
+      name: reviewName,
+      text: reviewText,
+      timestamp: firebase.database.ServerValue.TIMESTAMP, // Add a timestamp
+    };
+    reviewRef
+      .push(newReview)
+      .then(() => {
+        alert("Review submitted successfully!");
+        document.getElementById("review-name").value = ""; // Clear the name input
+        document.getElementById("review-text").value = ""; // Clear the textarea
+        loadProductReviews(productId); // Reload the reviews
+      })
+      .catch((error) => {
+        console.error("Error submitting review: ", error);
+        alert("Failed to submit review. Please try again.");
+      });
+  }
 });
