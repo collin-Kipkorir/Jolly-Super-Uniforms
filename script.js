@@ -161,38 +161,38 @@ function addItemtoCart(productId, image, name, price) {
 }
 
 function loadCartItems() {
-  let cart = JSON.parse(localStorage.getItem("cart")) || {};
-  const cartItemsList = document.getElementById("cart-items-list");
-  cartItemsList.innerHTML = "";
-
-  for (let productId in cart) {
-    const item = cart[productId];
-    const listItem = document.createElement("li");
-    listItem.classList.add("media", "mb-3");
-    listItem.innerHTML = `
-    <div class="d-flex align-items-center">
-        <img src="${item.image}" class="mr-3" alt="${item.name}" style="width: 64px; height: 64px; object-fit: contain;">
-        <div class="media-body flex-grow-1">
-            <h6 class="mt-0 mb-1">${item.name}</h6>
-            <p>Price: Kshs. ${item.price}</p>
-            <p>Quantity: ${item.count}</p>
+    let cart = JSON.parse(localStorage.getItem("cart")) || {};
+    const cartItemsList = document.getElementById("cart-items-list");
+    cartItemsList.innerHTML = "";
+  
+    for (let productId in cart) {
+      const item = cart[productId];
+      const listItem = document.createElement("li");
+      listItem.classList.add("media", "mb-3", "cart-item");
+      listItem.innerHTML = `
+        <div class="d-flex align-items-center w-100">
+            <img src="${item.image}" class="mr-3" alt="${item.name}" style="width: 64px; height: 64px; object-fit: contain;">
+            <div class="media-body flex-grow-1">
+                <h6 class="mt-0 mb-1">${item.name}</h6>
+                <p>Price: Kshs. ${item.price}</p>
+                <p>Quantity: ${item.count}</p>
+            </div>
+            <button class="btn btn-danger btn-sm delete-item-button ml-auto" data-product-id="${productId}">X</button>
         </div>
-        <button class="btn btn-danger btn-sm delete-item-button ml-3" data-product-id="${productId}">X</button>
-    </div>
-`;
-
-    cartItemsList.appendChild(listItem);
-  }
-
-  // Add event listeners to delete buttons
-  document.querySelectorAll(".delete-item-button").forEach((button) => {
-    button.addEventListener("click", (event) => {
-      const productId = event.target.getAttribute("data-product-id");
-      removeItemFromCart(productId);
+        <hr class="item-divider">`;
+  
+      cartItemsList.appendChild(listItem);
+    }
+  
+    // Add event listeners to delete buttons
+    document.querySelectorAll(".delete-item-button").forEach((button) => {
+      button.addEventListener("click", (event) => {
+        const productId = event.target.getAttribute("data-product-id");
+        removeItemFromCart(productId);
+      });
     });
-  });
-}
-
+  }
+  
 function removeItemFromCart(productId) {
   let cart = JSON.parse(localStorage.getItem("cart")) || {};
 
