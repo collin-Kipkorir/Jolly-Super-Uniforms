@@ -174,8 +174,8 @@ function loadCartItems() {
             <img src="${item.image}" class="mr-3" alt="${item.name}" style="width: 64px; height: 64px; object-fit: contain;">
             <div class="media-body flex-grow-1">
                 <h6 class="mt-0 mb-1">${item.name}</h6>
-                <p>Price: Kshs. ${item.price}</p>
-                <p>Quantity: ${item.count}</p>
+                <p>Kshs. ${item.price}</p>
+                <p>Qty: ${item.count}</p>
             </div>
             <button class="btn btn-danger btn-sm delete-item-button ml-auto" data-product-id="${productId}">X</button>
         </div>
