@@ -503,3 +503,25 @@ reviewForm.addEventListener("submit", function (event) {
       });
   }
 });
+document.getElementById('checkout-button').addEventListener('click', function () {
+    const cart = JSON.parse(localStorage.getItem('cart')) || {};
+    const whatsappNumber = '+1234567890'; // Replace with your WhatsApp number
+    let message = 'Invoice:\n\n';
+
+    let total = 0;
+
+    for (let productId in cart) {
+        const item = cart[productId];
+        const itemTotal = item.count * item.price;
+        message += `${item.name} - Quantity: ${item.count}, Price: Kshs. ${item.price}, Total: Kshs. ${itemTotal}\n`;
+        total += itemTotal;
+    }
+
+    message += `\nTotal: Kshs. ${total}`;
+
+    // Encode the message
+    const encodedMessage = encodeURIComponent(message);
+
+    // Open WhatsApp with the pre-filled message
+    window.open(`https://wa.me/${whatsappNumber}?text=${encodedMessage}`, '_blank');
+});
