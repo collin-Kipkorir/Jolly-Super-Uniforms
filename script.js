@@ -505,7 +505,7 @@ document.getElementById('checkout-button').addEventListener('click', function ()
 
     // Add company and invoice details
     doc.setFontSize(12);
-    doc.text('MOBIGATES', 105, 10, { align: 'center' });
+    doc.text('PURCHASE ORDER', 105, 10);
     doc.setFontSize(10);
     doc.text('Payee: Your Company', 10, 20);
     doc.text(`Date: ${new Date().toLocaleDateString()}`, 10, 25);
@@ -541,11 +541,14 @@ document.getElementById('checkout-button').addEventListener('click', function ()
     const url = URL.createObjectURL(pdfBlob);
     const a = document.createElement('a');
     a.href = url;
-    a.download = 'invoice.pdf';
-    a.textContent = 'Download Invoice';
+    a.download = 'order_invoice.pdf'; // Set the download filename
+    a.style.display = 'none'; // Hide the download link
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);
+
+    // Automatically open the downloaded PDF
+    window.open(url, '_blank');
 
     // Clear the cart and reset the counter
     localStorage.removeItem('cart');
@@ -553,7 +556,8 @@ document.getElementById('checkout-button').addEventListener('click', function ()
     cartCount = 0;
     cartCounter.textContent = cartCount;
     loadCartItems(); // Refresh the cart items displayed in the modal
-
+    // Close the modal
+    $('#itemDetailsModal').modal('hide');
     // Provide instructions to share via WhatsApp
     alert("Invoice generated and downloaded. The cart has been cleared. Please share the invoice PDF via WhatsApp manually.");
 });
