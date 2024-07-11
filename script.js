@@ -260,7 +260,7 @@ function displayProducts() {
                         <div class="d-flex justify-content-end align-items-end mt-auto" style="margin-top: auto;">
                             <span class="cart-icon">
                                 <!-- Add event listener to cart icon -->
-                                <a href="#" onclick="addItemtoCart('${childData.key}', '${childData.image}', '${childData.name}', '${childData.price}')">
+                                <a onclick="addItemtoCart('${childData.key}', '${childData.image}', '${childData.name}', '${childData.price}')">
                                     <img src="images/addcart.png" alt="Add to Cart" style="height: 25px;" class="cart-img">
                                 </a>
                             </span> <!-- Cart Icon -->
@@ -507,10 +507,10 @@ document.getElementById('checkout-button').addEventListener('click', function ()
     doc.setFontSize(12);
     doc.text('PURCHASE ORDER', 105, 10);
     doc.setFontSize(10);
-    doc.text('Payee: Your Company', 10, 20);
+    doc.text('Payee: Jolly Super Enterprise', 10, 20);
     doc.text(`Date: ${new Date().toLocaleDateString()}`, 10, 25);
     doc.text('Reference: INV001', 10, 30);
-    doc.text('Address: 1234 Main St, City, Country', 10, 35);
+    doc.text('Address: Tengecha Lane, Kericho, Kericho', 10, 35);
 
     // Add table of items
     const tableColumn = ["Description", "Amount"];
@@ -548,7 +548,7 @@ document.getElementById('checkout-button').addEventListener('click', function ()
     document.body.removeChild(a);
 
     // Automatically open the downloaded PDF
-    window.open(url, '_blank');
+   // window.open(url, '_blank');
 
     // Clear the cart and reset the counter
     localStorage.removeItem('cart');
