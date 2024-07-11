@@ -122,107 +122,102 @@ function shuffleArray(array) {
   }
   return array;
 }
-const cartCounter = document.getElementById("cart-counter");
-let cartCount = parseInt(localStorage.getItem("cartCount")) || 0;
-const addedProductIds = new Set(
-  JSON.parse(localStorage.getItem("addedProductIds")) || []
-);
+
 
 function updateCartCounter() {
   cartCounter.textContent = cartCount;
 }
 
+const cartCounter = document.getElementById('cart-counter');
+let cartCount = 0;
+const addedProductIds = new Set();
+
 function addItemtoCart(productId, image, name, price) {
-  let cart = JSON.parse(localStorage.getItem("cart")) || {};
+    let cart = JSON.parse(localStorage.getItem('cart')) || {};
 
-  if (!addedProductIds.has(productId)) {
-    console.log(name + " Item Added");
+    if (!addedProductIds.has(productId)) {
+        console.log(name + " Item Added");
+        
+        // Increment the cart counter
+        cartCount++;
+        cartCounter.textContent = cartCount;
+        localStorage.setItem('cartCount', cartCount);
+        
+        // Add product ID to the set
+        addedProductIds.add(productId);
+        localStorage.setItem('addedProductIds', JSON.stringify(Array.from(addedProductIds)));
 
-    cart[productId] = {
-      image: image,
-      name: name,
-      price: price,
-      count: 1,
-    };
+        if (cart[productId]) {
+            cart[productId].count++;
+        } else {
+            cart[productId] = { image, name, price, count: 1 };
+        }
 
-    addedProductIds.add(productId);
-    localStorage.setItem(
-      "addedProductIds",
-      JSON.stringify(Array.from(addedProductIds))
-    );
-
-    cartCount++;
-    localStorage.setItem("cartCount", cartCount);
-    localStorage.setItem("cart", JSON.stringify(cart)); // Store updated cart
-    updateCartCounter(); // Update counter
-  } else {
-    console.log(name + " Item already in cart");
-  }
+        localStorage.setItem('cart', JSON.stringify(cart));
+    } else {
+        console.log(name + " Item already in cart");
+    }
 }
 
 function loadCartItems() {
-    let cart = JSON.parse(localStorage.getItem("cart")) || {};
-    const cartItemsList = document.getElementById("cart-items-list");
-    cartItemsList.innerHTML = "";
-  
+    let cart = JSON.parse(localStorage.getItem('cart')) || {};
+    const cartItemsList = document.getElementById('cart-items-list');
+    cartItemsList.innerHTML = '';
+
     for (let productId in cart) {
-      const item = cart[productId];
-      const listItem = document.createElement("li");
-      listItem.classList.add("media", "mb-3", "cart-item");
-      listItem.innerHTML = `
+        const item = cart[productId];
+        const listItem = document.createElement("li");
+        listItem.classList.add("media", "mb-3");
+        listItem.innerHTML = `
         <div class="d-flex align-items-center w-100">
             <img src="${item.image}" class="mr-3" alt="${item.name}" style="width: 64px; height: 64px; object-fit: contain;">
             <div class="media-body flex-grow-1">
                 <h6 class="mt-0 mb-1">${item.name}</h6>
-                <p>Kshs. ${item.price}</p>
-                <p>Qty: ${item.count}</p>
+                <p>Price: Kshs. ${item.price}</p>
+                <p>Quantity: ${item.count}</p>
             </div>
-            <button class="btn btn-danger btn-sm delete-item-button ml-auto" data-product-id="${productId}">X</button>
+            <button class="btn btn-danger btn-sm delete-item-button ml-3" data-product-id="${productId}">X</button>
         </div>
-        <hr class="item-divider">`;
-  
-      cartItemsList.appendChild(listItem);
+        <hr class="light-grey-divider">
+        `;
+
+        cartItemsList.appendChild(listItem);
     }
-  
+
     // Add event listeners to delete buttons
     document.querySelectorAll(".delete-item-button").forEach((button) => {
-      button.addEventListener("click", (event) => {
-        const productId = event.target.getAttribute("data-product-id");
-        removeItemFromCart(productId);
-      });
+        button.addEventListener("click", (event) => {
+            const productId = event.target.getAttribute("data-product-id");
+            removeItemFromCart(productId);
+        });
     });
-  }
+}
   
-function removeItemFromCart(productId) {
-  let cart = JSON.parse(localStorage.getItem("cart")) || {};
+  function removeItemFromCart(productId) {
+    let cart = JSON.parse(localStorage.getItem('cart')) || {};
 
-  if (cart[productId]) {
-    cartCount -= 1;
-    if (cartCount < 0) cartCount = 0; // Ensure cart count does not go negative
-    localStorage.setItem("cartCount", cartCount);
+    if (cart[productId]) {
+        cartCount -= cart[productId].count;
+        cartCounter.textContent = Math.max(cartCount, 0); // Ensure counter is not negative
+        localStorage.setItem('cartCount', cartCount);
 
-    delete cart[productId];
-    localStorage.setItem("cart", JSON.stringify(cart));
+        delete cart[productId];
+        localStorage.setItem('cart', JSON.stringify(cart));
 
-    addedProductIds.delete(productId);
-    localStorage.setItem(
-      "addedProductIds",
-      JSON.stringify(Array.from(addedProductIds))
-    );
+        addedProductIds.delete(productId);
+        localStorage.setItem('addedProductIds', JSON.stringify(Array.from(addedProductIds)));
 
-    // Reload cart items to update the UI
-    updateCartCounter(); // Update counter
-    loadCartItems();
-  }
+        // Reload cart items to update the UI
+        loadCartItems();
+    }
 }
 
-document
-  .getElementById("cartModal")
-  .addEventListener("show.bs.modal", loadCartItems);
+document.getElementById('cartModal').addEventListener('show.bs.modal', loadCartItems);
 
-document.addEventListener("DOMContentLoaded", () => {
-  updateCartCounter(); // Initialize cart counter on page load
-  loadCartItems(); // Load cart items on page load
+document.addEventListener('DOMContentLoaded', () => {
+    cartCount = parseInt(localStorage.getItem('cartCount')) || 0;
+    cartCounter.textContent = cartCount;
+    loadCartItems(); // Load cart items on page load
 });
 
 // Function to display products
@@ -505,23 +500,60 @@ reviewForm.addEventListener("submit", function (event) {
 });
 document.getElementById('checkout-button').addEventListener('click', function () {
     const cart = JSON.parse(localStorage.getItem('cart')) || {};
-    const whatsappNumber = '+1234567890'; // Replace with your WhatsApp number
-    let message = 'Invoice:\n\n';
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF();
+
+    // Add company and invoice details
+    doc.setFontSize(12);
+    doc.text('MOBIGATES', 105, 10, { align: 'center' });
+    doc.setFontSize(10);
+    doc.text('Payee: Your Company', 10, 20);
+    doc.text(`Date: ${new Date().toLocaleDateString()}`, 10, 25);
+    doc.text('Reference: INV001', 10, 30);
+    doc.text('Address: 1234 Main St, City, Country', 10, 35);
+
+    // Add table of items
+    const tableColumn = ["Description", "Amount"];
+    const tableRows = [];
 
     let total = 0;
 
     for (let productId in cart) {
         const item = cart[productId];
         const itemTotal = item.count * item.price;
-        message += `${item.name} - Quantity: ${item.count}, Price: Kshs. ${item.price}, Total: Kshs. ${itemTotal}\n`;
+        const itemData = [
+            `${item.name} (Quantity: ${item.count}, Price: Kshs. ${item.price})`,
+            `Kshs. ${itemTotal}`
+        ];
+        tableRows.push(itemData);
         total += itemTotal;
     }
 
-    message += `\nTotal: Kshs. ${total}`;
+    doc.autoTable(tableColumn, tableRows, { startY: 40 });
 
-    // Encode the message
-    const encodedMessage = encodeURIComponent(message);
+    // Add total
+    doc.text(`Total: Kshs. ${total}`, 10, doc.lastAutoTable.finalY + 10);
 
-    // Open WhatsApp with the pre-filled message
-    window.open(`https://wa.me/${whatsappNumber}?text=${encodedMessage}`, '_blank');
+    // Generate the PDF and create a blob
+    const pdfBlob = doc.output('blob');
+
+    // Create a download link
+    const url = URL.createObjectURL(pdfBlob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'invoice.pdf';
+    a.textContent = 'Download Invoice';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+
+    // Clear the cart and reset the counter
+    localStorage.removeItem('cart');
+    localStorage.removeItem('cartCount');
+    cartCount = 0;
+    cartCounter.textContent = cartCount;
+    loadCartItems(); // Refresh the cart items displayed in the modal
+
+    // Provide instructions to share via WhatsApp
+    alert("Invoice generated and downloaded. The cart has been cleared. Please share the invoice PDF via WhatsApp manually.");
 });
