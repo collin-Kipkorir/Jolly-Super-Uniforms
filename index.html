@@ -99,91 +99,84 @@
         <div id="product-list" class="row mt-4"></div>
     </div>
 
-    <!-- New Product Details Container -->
-    <div id="product-details-container" class="container mt-5 hidden">
-        <div class="row"
-            style="padding-top: 50px;  font-size: medium; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;"
-            class="container mt-5 hidden">
-            <!-- Product Image -->
-            <div id="product-image-container" class="col-md-6 text-center">
-                <img id="product-image" src="" class="img-fluid" alt="Product Image" style="max-height: 250px;">
-            </div>
-            <!-- Product Details -->
-            <div id="product-details-body" class="col-md-6 mt-3 mt-md-0">
-                <h5 id="product-name" style="font-size: medium;"></h5>
-                <!-- Specifications Tab -->
-                <div>
-
-                    <ul id="product-specs" style="font: 1em sans-serif; "></ul>
-                </div>
-                <p id="product-description" style="font-size: smaller; visibility: hidden;"></p>
-                <p id="product-price" style="font-size: smaller; color: #f40b0b; font-weight: bold;"></p>
-                <!-- Size Selection -->
-                <div class="form-group" style="font-size: smaller;">
-                    <label for="product-size">Size:</label>
-                    <select id="product-size" class="form-control">
-                        <option value="22">22</option>
-                        <option value="24">24</option>
-                        <option value="26">26</option>
-                        <option value="28">28</option>
-                        <option value="30">30</option>
-                        <option value="32">32</option>
-                        <option value="34">34</option>
-                        <option value="36">36</option>
-                        <option value="38">38</option>
-                        <option value="40">40</option>
-                        <option value="42">42</option>
-                    </select>
-                </div>
-                <!-- Quantity Selection -->
-                <div class="form-group" style="font-size: smaller;">
-                    <label for="product-quantity">Quantity:</label>
-                    <input type="number" id="product-quantity" class="form-control" value="1" min="1">
-                </div>
-                <!-- Add to Cart and Inquire on WhatsApp Buttons -->
-                <div class="d-flex justify-content-center mt-3">
-                    <button id="add-to-cart-button" class="btn btn-primary mx-2" style="font-size: smaller;">Add to
-                        Cart</button>
-                    <a href="#" class="btn btn-success mx-2" id="whatsapp-button" style="font-size: smaller;">Inquire on
-                        WhatsApp</a>
-                </div>
-                <!-- Hidden input for storing product ID -->
-                <input type="hidden" id="product-id">
-            </div>
+   <!-- New Product Details Container -->
+<div id="product-details-container" class="container hidden" style="margin-top: 30px;">
+    <div class="row" style="padding-top: 20px; font-size: medium; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">
+        <!-- Product Image -->
+        <div id="product-image-container" class="col-md-6 text-center">
+            <img id="product-image" src="" class="img-fluid" alt="Product Image" style="max-height: 250px;">
         </div>
-
-        <!-- Reviews Tab -->
-        <div class="container mt-4">
-            <div class="row">
-                <div class="col-md-6">
-                    <h6 style="font-size: medium;">Reviews:</h6>
-
-                    <ul id="product-reviews-list" class="list-unstyled" style="font: small"></ul>
-                </div>
-                <div class="col-md-6">
-                    <h6 style="font-size: medium;">Leave a comment:</h6>
-                    <div id="add-review-form" class="mt-3">
-                        <form id="review-form" class="form-centered">
-                            <input type="hidden" id="review-product-id">
-                            <div class="form-group">
-                                <label for="review-name">Name:</label>
-                                <input type="text" id="review-name" class="form-control textarea-margin" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="review-text">Comment:</label>
-                                <textarea id="review-text" class="form-control textarea-margin" rows="3"
-                                    required></textarea>
-                            </div>
-                            <div class="button-container text-center">
-                                <button type="submit" class="btn btn-primary submit-review-button">Submit</button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
+        <!-- Product Details -->
+        <div id="product-details-body" class="col-md-6 mt-2">
+            <h5 id="product-name" style="font-size: medium;"></h5>
+            <!-- Specifications Tab -->
+            <div>
+                <ul id="product-specs" style="font: 1em sans-serif;"></ul>
             </div>
+            <p id="product-description" style="font-size: smaller; visibility: hidden;"></p>
+            <p id="product-price" style="font-size: smaller; color: #f40b0b; font-weight: bold;"></p>
+            <!-- Size Selection -->
+            <div class="form-group" style="font-size: smaller;">
+                <label for="product-size">Size:</label>
+                <select id="product-size" class="form-control">
+                    <option value="22">22</option>
+                    <option value="24">24</option>
+                    <option value="26">26</option>
+                    <option value="28">28</option>
+                    <option value="30">30</option>
+                    <option value="32">32</option>
+                    <option value="34">34</option>
+                    <option value="36">36</option>
+                    <option value="38">38</option>
+                    <option value="40">40</option>
+                    <option value="42">42</option>
+                </select>
+            </div>
+            <!-- Quantity Selection -->
+            <div class="form-group" style="font-size: smaller;">
+                <label for="product-quantity">Quantity:</label>
+                <input type="number" id="product-quantity" class="form-control" value="1" min="1">
+            </div>
+            <!-- Add to Cart and Inquire on WhatsApp Buttons -->
+            <div class="d-flex justify-content-center mt-2">
+                <button id="add-to-cart-button" class="btn btn-primary mx-2" style="font-size: smaller;">Add to Cart</button>
+                <a href="#" class="btn btn-success mx-2" id="whatsapp-button" style="font-size: smaller;">Inquire on WhatsApp</a>
+            </div>
+            <!-- Hidden input for storing product ID -->
+            <input type="hidden" id="product-id">
         </div>
-
     </div>
+
+    <!-- Reviews Tab -->
+    <div class="container mt-2">
+        <div class="row">
+            <div class="col-md-6">
+                <h6 style="font-size: medium;">Reviews:</h6>
+                <ul id="product-reviews-list" class="list-unstyled" style="font: small"></ul>
+            </div>
+            <div class="col-md-6">
+                <h6 style="font-size: medium;">Leave a comment:</h6>
+                <div id="add-review-form" class="mt-2">
+                    <form id="review-form" class="form-centered">
+                        <input type="hidden" id="review-product-id">
+                        <div class="form-group">
+                            <label for="review-name">Name:</label>
+                            <input type="text" id="review-name" class="form-control textarea-margin" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="review-text">Comment:</label>
+                            <textarea id="review-text" class="form-control textarea-margin" rows="3" required></textarea>
+                        </div>
+                        <div class="button-container text-center">
+                            <button type="submit" class="btn btn-primary submit-review-button">Submit</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
  <!-- Cart Modal -->
  <div class="modal fade" id="cartModal" tabindex="-1" aria-labelledby="cartModalLabel" aria-hidden="true" style="align-self: flex-end;">
     <div class="modal-dialog modal-lg">
