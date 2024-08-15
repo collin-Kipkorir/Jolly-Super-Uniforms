@@ -293,7 +293,7 @@ function openWhatsAppChat(image, description, price) {
     Price: ${price}
     ${image}`;
 
-  const whatsappUrl = `https://wa.me/254723914386?text=${encodeURIComponent(
+  const whatsappUrl = `https://wa.me/254757024304?text=${encodeURIComponent(
     message
   )}`;
   window.open(whatsappUrl, "_blank");
