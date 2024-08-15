@@ -430,7 +430,7 @@ document
     , ${quantity}
     ${productImage}`;
 
-    const whatsappUrl = `https://wa.me/254723914386?text=${encodeURIComponent(
+    const whatsappUrl = `https://wa.me/254757024304?text=${encodeURIComponent(
       message
     )}`;
     window.open(whatsappUrl, "_blank");
@@ -455,7 +455,7 @@ Thanks!`;
   const encodedMessage = encodeURIComponent(message);
 
   // Construct the WhatsApp URL with the encoded message
-  const whatsappUrl = `https://wa.me/254723914386?text=${encodedMessage}`;
+  const whatsappUrl = `https://wa.me/254757024304?text=${encodedMessage}`;
 
   // Open the WhatsApp URL in a new tab/window
   window.open(whatsappUrl, "_blank");
