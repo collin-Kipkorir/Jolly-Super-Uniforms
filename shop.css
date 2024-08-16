@@ -524,3 +524,66 @@ border-top: 1px solid #e0e0e0; /* Light grey divider */
 .breadcrumb a:hover {
     text-decoration: underline;
 }
+/* Carousel Styles */
+.carousel-wrapper {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.carousel {
+    width: 100%;
+}
+
+.carousel-item img {
+    max-width: 1200px;
+    margin: 0 auto;
+    justify-content: center;
+    border-radius: 6px;
+margin-top: 5px;
+padding-left: 5px;
+padding-right: 5px;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    background-color: transparent;
+    max-width: 700px;
+}
+/* Align Navbar items */
+.d-flex {
+    display: flex !important;
+}
+
+.align-items-center {
+    align-items: center !important;
+}
+
+.w-100 {
+    width: 100% !important;
+}
+
+.justify-content-between {
+    justify-content: space-between !important;
+}
+
+/* Admin Panel Styles */
+.admin-panel {
+    width: 100%;
+    margin: 0 auto;
+}
+
+.admin-panel form div {
+    margin-bottom: 15px;
+}
+
+.admin-panel form label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.admin-panel form input {
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+}
