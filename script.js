@@ -496,6 +496,7 @@ reviewForm.addEventListener("submit", function (event) {
       });
   }
 });
+
 document.getElementById('checkout-button').addEventListener('click', function () {
     const cart = JSON.parse(localStorage.getItem('cart')) || {};
     const { jsPDF } = window.jspdf;
