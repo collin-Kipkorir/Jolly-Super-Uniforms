@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - Manage Products</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-database.js"></script>
+    <style>
+        .container {
+            margin-top: 30px;
+        }
+        .button {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .dashboard {
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .form-container, .product-list {
+            flex: 1;
+            min-width: 300px; /* Ensures elements don't get too narrow */
+        }
+        .form-container {
+            margin-right: 10px; /* Space between form and product list */
+        }
+        .product-list {
+            margin-left: 20px;
+            max-height: 600px; /* Set a fixed height for the product list */
+            overflow-y: auto; /* Enable vertical scrolling */
+        }
+        @media (max-width: 767px) {
+            .form-container, .product-list {
+                margin: 0;
+                min-width: 100%;
+                max-height: none; /* Remove fixed height in mobile view */
+                overflow-y: visible; /* Disable scrolling in mobile view */
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h3 style="text-align: center;">Jolly Admin Dashboard</h3>
+        <div class="dashboard">
+            <div class="form-container">
+                <form id="productForm">
+                    <input type="hidden" id="productId">
+                    <div class="form-group">
+                        <label for="name">Product Name</label>
+                        <input type="text" class="form-control" id="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="category">Category</label>
+                        <input type="text" class="form-control" id="category" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="description">Description</label>
+                        <textarea class="form-control" id="description" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="price">Price</label>
+                        <input type="number" class="form-control" id="price" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="image">Image URL</label>
+                        <input type="text" class="form-control" id="image" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="colors">Colors (comma-separated)</label>
+                        <input type="text" class="form-control" id="colors" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="sizes">Sizes (comma-separated)</label>
+                        <input type="text" class="form-control" id="sizes" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="specifications">Specifications (comma-separated)</label>
+                        <input type="text" class="form-control" id="specifications" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="customizable">Customizable</label>
+                        <select class="form-control" id="customizable" required>
+                            <option value="true">Yes</option>
+                            <option value="false">No</option>
+                        </select>
+                    </div>
+                    <div class="button">
+                        <button type="submit" class="btn btn-primary">Save Product</button>
+                    </div>
+                </form>
+            </div>
+            <div class="product-list">            
+                <h2 style="text-align: center;">Product List</h2>
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Category</th>
+                            <th>Price</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="productTableBody">
+                        <!-- Products will be dynamically inserted here -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    </div>
+
+    <script>
+        // Your Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyClS4zP63hQipphS-FzNzmCpNsXb6SDdkc",
+            authDomain: "jolly-uniforms.firebaseapp.com",
+            projectId: "jolly-uniforms",
+            storageBucket: "jolly-uniforms.appspot.com",
+            messagingSenderId: "17335535863",
+            appId: "1:17335535863:web:42f53ed271796ac4852bf2",
+            measurementId: "G-GE79K2PX5M"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        const database = firebase.database();
+
+        const productForm = document.getElementById('productForm');
+        const productIdInput = document.getElementById('productId');
+        const productTableBody = document.getElementById('productTableBody');
+
+        // Handle form submission for adding and editing products
+        productForm.addEventListener('submit', function (e) {
+            e.preventDefault();
+            const productId = productIdInput.value;
+            const name = document.getElementById('name').value;
+            const category = document.getElementById('category').value;
+            const description = document.getElementById('description').value;
+            const price = document.getElementById('price').value;
+            const image = document.getElementById('image').value;
+            const colors = document.getElementById('colors').value.split(',').map(color => color.trim());
+            const sizes = document.getElementById('sizes').value.split(',').map(size => size.trim());
+            const specifications = document.getElementById('specifications').value.split(',').map(spec => spec.trim());
+            const customizable = document.getElementById('customizable').value === 'true';
+
+            const productData = {
+                name,
+                category,
+                description,
+                price,
+                image,
+                colors,
+                sizes,
+                specifications,
+                customizable
+            };
+
+            if (productId) {
+                // Edit existing product
+                database.ref('products/' + productId).update(productData).then(() => {
+                    alert('Product updated successfully');
+                    productForm.reset();
+                    productIdInput.value = '';
+                    fetchProducts();
+                }).catch((error) => {
+                    console.error('Error updating product: ', error);
+                    alert('Error updating product');
+                });
+            } else {
+                // Add new product
+                database.ref('products').push(productData).then(() => {
+                    alert('Product added successfully');
+                    productForm.reset();
+                    fetchProducts();
+                }).catch((error) => {
+                    console.error('Error adding product: ', error);
+                    alert('Error adding product');
+                });
+            }
+        });
+
+        // Fetch and display products
+        function fetchProducts() {
+            database.ref('products').once('value', (snapshot) => {
+                productTableBody.innerHTML = '';
+                snapshot.forEach((childSnapshot) => {
+                    const product = childSnapshot.val();
+                    const productId = childSnapshot.key;
+                    const row = document.createElement('tr');
+                    row.innerHTML = `
+                        <td>${product.name}</td>
+                        <td>${product.category}</td>
+                        <td>${product.price}</td>
+                        <td>
+                            <button class="btn btn-info" onclick="editProduct('${productId}')">Edit</button>
+                            <button class="btn btn-danger" onclick="deleteProduct('${productId}')">Delete</button>
+                        </td>
+                    `;
+                    productTableBody.appendChild(row);
+                });
+            }).catch((error) => {
+                console.error('Error fetching products: ', error);
+                alert('Error fetching products');
+            });
+        }
+
+        // Edit product
+        function editProduct(productId) {
+            database.ref('products/' + productId).once('value').then((snapshot) => {
+                if (snapshot.exists()) {
+                    const product = snapshot.val();
+                    productIdInput.value = productId;
+                    document.getElementById('name').value = product.name;
+                    document.getElementById('category').value = product.category;
+                    document.getElementById('description').value = product.description;
+                    document.getElementById('price').value = product.price;
+                    document.getElementById('image').value = product.image;
+                    document.getElementById('colors').value = product.colors.join(', ');
+                    document.getElementById('sizes').value = product.sizes.join(', ');
+                    document.getElementById('specifications').value = product.specifications.join(', ');
+                    document.getElementById('customizable').value = product.customizable ? 'true' : 'false';
+                }
+            }).catch((error) => {
+                console.error('Error fetching product: ', error);
+                alert('Error fetching product');
+            });
+        }
+
+        // Delete product
+        function deleteProduct(productId) {
+            if (confirm('Are you sure you want to delete this product?')) {
+                database.ref('products/' + productId).remove().then(() => {
+                    alert('Product deleted successfully');
+                    fetchProducts();
+                }).catch((error) => {
+                    console.error('Error deleting product: ', error);
+                    alert('Error deleting product');
+                });
+            }
+        }
+
+        // Fetch products on page load
+        window.onload = fetchProducts;
+    </script>
+</body>
+</html>

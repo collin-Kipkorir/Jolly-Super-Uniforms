@@ -39,7 +39,8 @@
 .navbar-brand {
     display: flex;
     align-items: center;
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+   /* font-family: cursive; */
+   font-family: Verdana, Geneva, Tahoma, sans-serif;
     text-align: center;
 
 
@@ -489,4 +490,37 @@ cursor: pointer;
 margin-top: 1rem;
 border: none;
 border-top: 1px solid #e0e0e0; /* Light grey divider */
+}
+
+/* Breadcrumb styles */
+.breadcrumb {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    padding: 0;
+    margin: 20px 0;
+    background-color: #ffffff;
+}
+
+.breadcrumb li {
+    margin-right: 10px;
+}
+
+.breadcrumb li::after {
+    content: '>';
+    margin-left: 10px;
+    color: #666;
+}
+
+.breadcrumb li:last-child::after {
+    content: '';
+}
+
+.breadcrumb a {
+    text-decoration: none;
+    color: #007bff;
+}
+
+.breadcrumb a:hover {
+    text-decoration: underline;
 }

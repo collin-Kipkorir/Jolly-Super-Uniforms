@@ -290,8 +290,7 @@ function openWhatsAppChat(image, description, price) {
 
   const message = `Hello, I would like to inquire about:
     ${description}
-    Price: ${price}
-    ${image}`;
+    Priced at: ${price}`;
 
   const whatsappUrl = `https://wa.me/254757024304?text=${encodeURIComponent(
     message
@@ -427,8 +426,7 @@ document
     ${productDescription}
     , ${productPrice}
    , ${selectedSize}
-    , ${quantity}
-    ${productImage}`;
+     ${quantity}`;
 
     const whatsappUrl = `https://wa.me/254757024304?text=${encodeURIComponent(
       message
