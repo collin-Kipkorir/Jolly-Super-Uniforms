@@ -541,8 +541,8 @@ border-top: 1px solid #e0e0e0; /* Light grey divider */
     justify-content: center;
     border-radius: 6px;
 margin-top: 3px;
-padding-left: 5px;
-padding-right: 5px;
+padding-left: 1px;
+padding-right: 1px;
 }
 
 .carousel-control-prev-icon,
