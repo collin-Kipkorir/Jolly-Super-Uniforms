@@ -528,7 +528,7 @@ border-top: 1px solid #e0e0e0; /* Light grey divider */
 .carousel-wrapper {
     display: flex;
     justify-content: center;
-    margin-top: 20px;
+    margin-top: 10px;
 }
 
 .carousel {
