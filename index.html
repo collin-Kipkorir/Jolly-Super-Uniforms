@@ -229,8 +229,8 @@
     </div>
 </div>
 
- <!-- Cart Modal -->
- <div class="modal fade" id="cartModal" tabindex="-1" aria-labelledby="cartModalLabel" aria-hidden="true" style="align-self: flex-end;">
+<!-- Cart Modal -->
+<div class="modal fade" id="cartModal" tabindex="-1" aria-labelledby="cartModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
@@ -240,15 +240,122 @@
                 </button>
             </div>
             <div class="modal-body">
-                <ul id="cart-items-list" class="list-unstyled"></ul>
+            
+                <ul id="cart-items-list" class="list-unstyled">
+                    <li class="cart-item">
+                        <div class="item-image-container">
+                            <img src="image1.jpg" alt="Product Image" class="item-image">
+                        </div>
+                        <div class="item-details">
+                            <h6>Product Name</h6>
+                            <p>Product Description</p>
+                        </div>
+                        <div class="item-price">
+                            <span>KSh 1,499</span>
+                        </div>
+                    </li>
+                    <!-- Repeat for each item -->
+                </ul>
+
+
+                <div class="discount-section">
+                    <span>Discount:</span>
+                    <span class="discount-amount">KSh 0</span>
+                </div>
+
+                <div class="total-price">
+                    <span>Total:</span>
+                    <span class="total-amount">KSh 4,425</span>
+                </div>
+                <div class="shipping-info">
+                    <span>Shipping Information</span>
+                    <button type="button" class="btn btn-link" id="btn-link">Add Shipping Address</button>
+                </div>
+
+                <div class="payment-method">
+                    <rb></rb>
+                    <h6>Payment Method</h6>
+                    <p>M-PESA</p>
+                </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-primary" id="checkout-button">Checkout with Whatsap</button>
+                <button type="button" class="btn btn-primary" id="checkout-button">Place Order</button>
             </div>
-            
         </div>
     </div>
 </div>
+
+<!-- Toast Shipping Modal -->
+<div id="toastModal" class="toast-modal">
+    <div class="address-form-container">
+        <div class="form-header">
+            <h5>Add Address</h5>
+            <button type="button" class="close close-toast" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <form class="address-form">
+            <div class="form-group">
+                <label for="firstName">First Name</label>
+                <input type="text" id="firstName" class="form-control" placeholder="First Name">
+                <small class="form-error">Please enter first name.</small>
+            </div>
+            <div class="form-group">
+                <label for="lastName">Last Name</label>
+                <input type="text" id="lastName" class="form-control" placeholder="Last Name">
+                <small class="form-error">Please enter last name.</small>
+            </div>
+            <div class="form-group">
+                <label for="phone">Phone Number</label>
+                <div class="phone-input">
+                    <input type="text" id="phoneCode" class="form-control phone-code" value="+ 254" readonly>
+                    <input type="text" id="phoneNumber" class="form-control phone-number" placeholder="e.g. 700200100">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="county">County</label>
+                <select id="county" class="form-control">
+                    <option>Select County</option>
+                    <option>Kericho</option>
+                    <option>Bomet</option>
+                    <!-- Add options here -->
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="subcounty">Subcounty/Town</label>
+                <select id="subcounty" class="form-control">
+                    <option>Ainamoi</option>
+                    <option>Township</option>
+                    <option>Brook</option>
+                    <!-- Add options here -->
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="area">Area(ward)</label>
+                <select id="area" class="form-control">
+                    <option>Kericho Town</option>
+                    <option>Ainamoi centre</option>
+                    <option>Litein</option>
+                    <!-- Add options here -->
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="addressDetails">Address Details (Delivery to Doorstep)</label>
+                <textarea id="addressDetails" class="form-control" rows="3" placeholder="Name of the building and floor, Road, Ward (E.g. Room 310, 3rd floor, Lenana Tower, Lenana Road, )"></textarea>
+                <small class="form-char-count">0/200</small>
+            </div>
+            <div class="form-group default-address">
+                <input type="checkbox" id="defaultAddress">
+                <label for="defaultAddress">Set to the default address</label>
+            </div>
+            <div class="form-actions">
+                <button type="submit" class="btn btn-submit">Submit</button>
+                <button type="button" class="btn btn-cancel close-toast">Cancel</button>
+            </div>
+        </form>
+    </div>
+</div>
+
 <!-- Success Modal -->
 <div class="modal fade" id="successModal" tabindex="-1" aria-labelledby="successModalLabel" aria-hidden="true">
     <div class="modal-dialog">

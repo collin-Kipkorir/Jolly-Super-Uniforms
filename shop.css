@@ -587,3 +587,277 @@ padding-right: 1px;
     padding: 8px;
     box-sizing: border-box;
 }
+
+
+.close {
+    color: #000;
+    opacity: 1;
+}
+
+.shipping-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center; /* Vertically center the content */
+    padding: 10px 0;
+    border-bottom: 1px solid #ddd;
+    font-size: 14px;
+}
+
+.shipping-info button {
+    background: none;
+    border: none;
+    color: #d9534f;
+    font-size: 14px;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.payment-method {
+    padding: 10px 0;
+    border-bottom: 1px solid #ddd;
+}
+
+.payment-method h6 {
+    font-weight: bold;
+    margin-bottom: 5px; /* Add space between heading and paragraph */
+}
+
+.payment-method p {
+    color: #5cb85c;
+    margin: 0; /* Remove default margin */
+}
+
+.cart-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start; /* Align items to the top */
+    padding: 15px 0;
+    border-bottom: 1px solid #ddd;
+    position: relative; /* Enable absolute positioning for price */
+}
+
+.item-image-container {
+    flex: 0 0 60px; /* Fixed width for the image container */
+}
+
+.item-image {
+    width: 100%;
+    height: auto;
+    border: 1px solid #ddd;
+    object-fit: cover;
+}
+
+.item-details {
+    flex: 1;
+    padding-left: 10px;
+}
+
+.item-price {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    font-weight: bold;
+    color: #d9534f;
+}
+
+.discount-section, .total-price {
+    display: flex;
+    justify-content: space-between;
+    align-items: center; /* Vertically center the content */
+    padding: 10px 0;
+    font-size: 14px;
+}
+
+.total-price .total-amount {
+    font-weight: bold;
+    color: #d9534f;
+}
+
+.modal-footer {
+    background-color: #f5f5f5;
+    border-top: 1px solid #ddd;
+    justify-content: space-between;
+}
+
+#checkout-button {
+    width: 100%;
+    background-color: #d9534f;
+    border-color: #d43f3a;
+    font-weight: bold;
+}
+/* Container */
+.address-form-container {
+    width: 400px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    padding: 20px;
+    border-radius: 5px;
+    font-family: Arial, sans-serif;
+}
+
+/* Form Header */
+.form-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.form-header h5 {
+    margin: 0;
+    font-weight: bold;
+}
+
+.form-header .close {
+    background: none;
+    border: none;
+    font-size: 24px;
+    line-height: 1;
+    cursor: pointer;
+}
+
+/* Form Group */
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.form-control {
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.form-control:focus {
+    border-color: #d9534f;
+    outline: none;
+}
+
+.form-error {
+    color: #d9534f;
+    font-size: 12px;
+    display: none; /* Show this when there's an error */
+}
+
+.phone-input {
+    display: flex;
+    align-items: center;
+}
+
+.phone-code {
+    width: 70px;
+    margin-right: 5px;
+    text-align: center;
+    background-color: #f5f5f5;
+    cursor: not-allowed;
+}
+
+.phone-number {
+    flex: 1;
+}
+
+/* Textarea with Character Count */
+textarea.form-control {
+    resize: none;
+}
+
+.form-char-count {
+    font-size: 12px;
+    text-align: right;
+    color: #999;
+}
+
+/* Default Address */
+.default-address {
+    display: flex;
+    align-items: center;
+}
+
+.default-address label {
+    margin-left: 5px;
+    font-size: 14px;
+}
+
+/* Form Actions */
+.form-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.btn {
+    padding: 8px 16px;
+    border-radius: 4px;
+    border: 1px solid transparent;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.btn-submit {
+    background-color: #d9534f;
+    color: #fff;
+    border-color: #d43f3a;
+}
+
+.btn-submit:hover {
+    background-color: #c9302c;
+}
+
+.btn-cancel {
+    background-color: #fff;
+    color: #333;
+    border-color: #ccc;
+}
+
+.btn-cancel:hover {
+    background-color: #f5f5f5;
+}
+/* Toast Modal Container */
+.toast-modal {
+    visibility: hidden;
+    background-color: #fff;
+    color: #333;
+    border-radius: 8px;
+    position: fixed;
+    z-index: 1000;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2);
+    opacity: 0;
+    transition: visibility 0s linear 0.3s, opacity 0.3s linear;
+    width: 100%;
+    max-width: 500px;
+}
+
+/* Show the modal */
+.toast-modal.show {
+    visibility: visible;
+    opacity: 1;
+    transition: opacity 0.3s linear;
+}
+
+/* Close button */
+.close-toast {
+    background: none;
+    border: none;
+    color: #333;
+    font-size: 24px;
+    line-height: 1;
+    cursor: pointer;
+}
+
+/* Centering the content */
+.address-form-container {
+    display: flex;
+    flex-direction: column;
+}

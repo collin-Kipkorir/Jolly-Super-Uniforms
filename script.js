@@ -560,3 +560,20 @@ document.getElementById('checkout-button').addEventListener('click', function ()
     // Provide instructions to share via WhatsApp
     alert("Invoice generated and downloaded. The cart has been cleared. Please share the invoice PDF via WhatsApp manually.");
 });
+
+// Get the modal and button
+const toastModal = document.getElementById('toastModal');
+const checkoutButton = document.getElementById('btn-link');
+const closeToastButtons = document.querySelectorAll('.close-toast');
+
+// Show the modal when the "Place Order" button is clicked
+checkoutButton.addEventListener('click', function() {
+    toastModal.classList.add('show');
+});
+
+// Close the modal when any of the close buttons are clicked
+closeToastButtons.forEach(button => {
+    button.addEventListener('click', function() {
+        toastModal.classList.remove('show');
+    });
+});
