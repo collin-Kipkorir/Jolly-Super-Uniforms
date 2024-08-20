@@ -22,6 +22,13 @@
     <link rel="icon" type="image/png" href="images/icon.png">
     <link rel="stylesheet" href="shop.css">
 </head>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const cartCounter = document.getElementById("cart-counter");
+        const cartCount = localStorage.getItem("cartCount") || 0;
+        cartCounter.textContent = cartCount;
+    });
+</script>
 
 
 <body>
@@ -74,8 +81,7 @@
                 </div>
                 <div class="navbar-nav ml-auto">
                     <div class="cart-container">
-                        <a class="nav-item nav-link" href="" data-toggle="modal" data-target="#cartModal"
-                            style="padding-right: 20px;">
+                        <a class="nav-item nav-link" href="cart.html"style="padding-right: 20px;">
                             <i class="cart-icon">🛒</i>
                             <div class="cart-counter" id="cart-counter">0</div>
                             <!-- Ensure the counter is inside the anchor tag -->
@@ -282,77 +288,6 @@
                 <button type="button" class="btn btn-primary" id="checkout-button">Place Order</button>
             </div>
         </div>
-    </div>
-</div>
-
-<!-- Toast Shipping Modal -->
-<div id="toastModal" class="toast-modal">
-    <div class="address-form-container">
-        <div class="form-header">
-            <h5>Add Address</h5>
-            <button type="button" class="close close-toast" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-        <form class="address-form">
-            <div class="form-group">
-                <label for="firstName">First Name</label>
-                <input type="text" id="firstName" class="form-control" placeholder="First Name">
-                <small class="form-error">Please enter first name.</small>
-            </div>
-            <div class="form-group">
-                <label for="lastName">Last Name</label>
-                <input type="text" id="lastName" class="form-control" placeholder="Last Name">
-                <small class="form-error">Please enter last name.</small>
-            </div>
-            <div class="form-group">
-                <label for="phone">Phone Number</label>
-                <div class="phone-input">
-                    <input type="text" id="phoneCode" class="form-control phone-code" value="+ 254" readonly>
-                    <input type="text" id="phoneNumber" class="form-control phone-number" placeholder="e.g. 700200100">
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="county">County</label>
-                <select id="county" class="form-control">
-                    <option>Select County</option>
-                    <option>Kericho</option>
-                    <option>Bomet</option>
-                    <!-- Add options here -->
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="subcounty">Subcounty/Town</label>
-                <select id="subcounty" class="form-control">
-                    <option>Ainamoi</option>
-                    <option>Township</option>
-                    <option>Brook</option>
-                    <!-- Add options here -->
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="area">Area(ward)</label>
-                <select id="area" class="form-control">
-                    <option>Kericho Town</option>
-                    <option>Ainamoi centre</option>
-                    <option>Litein</option>
-                    <!-- Add options here -->
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="addressDetails">Address Details (Delivery to Doorstep)</label>
-                <textarea id="addressDetails" class="form-control" rows="3" placeholder="Name of the building and floor, Road, Ward (E.g. Room 310, 3rd floor, Lenana Tower, Lenana Road, )"></textarea>
-                <small class="form-char-count">0/200</small>
-            </div>
-            <div class="form-group default-address">
-                <input type="checkbox" id="defaultAddress">
-                <label for="defaultAddress">Set to the default address</label>
-            </div>
-            <div class="form-actions">
-                <button type="submit" class="btn btn-submit">Submit</button>
-                <button type="button" class="btn btn-cancel close-toast">Cancel</button>
-            </div>
-        </form>
     </div>
 </div>
 

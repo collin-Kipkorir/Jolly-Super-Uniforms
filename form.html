@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Address Form</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <style>
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f8f8;
+    padding: 20px;
+}
+
+.address-form-container {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.form-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+.form-header h5 {
+    margin: 0;
+    font-size: 12px;
+}
+
+.close {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.form-row {
+    display: flex;
+    justify-content: space-between;
+}
+
+.half-width {
+    width: 49%;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.form-control {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.phone-input {
+    display: flex;
+}
+
+.phone-code {
+    width: 70px;
+    margin-right: 10px;
+    text-align: center;
+}
+
+.form-error {
+    color: red;
+    font-size: 9px;
+    display: none; /* Hide by default */
+}
+
+.form-char-count {
+    display: block;
+    text-align: right;
+    font-size: 9px;
+    color: #888;
+}
+
+.default-address {
+    display: flex;
+    align-items: center;
+}
+
+.default-address input {
+    margin-right: 10px;
+}
+
+.form-actions {
+    display: flex;
+    justify-content: space-between;
+}
+
+.btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.btn-submit {
+    background-color: #1f83c6;
+    color: #fff;
+}
+
+.btn-cancel {
+    background-color: #cfcdcd;
+    color: #333;
+}
+label{
+    font-size: 10px;
+}
+input{
+color: #888;
+}
+
+    </style>
+
+<div class="address-form-container">
+    <div class="form-header">
+        <label for="addressDetails">Add Address</label>
+        <button type="button" class="close" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <form class="address-form">
+        <div class="form-row">
+            <div class="form-group half-width">
+                <input type="text" id="firstName" class="form-control" placeholder="First Name">
+                <small class="form-error">Please enter first name.</small>
+            </div>
+            <div class="form-group half-width">
+                <input type="text" id="lastName" class="form-control" placeholder="Last Name">
+                <small class="form-error">Please enter last name.</small>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="phone-input">
+                <input type="text" id="phoneCode" class="form-control phone-code" value="+254" readonly>
+                <input type="text" id="phoneNumber" class="form-control phone-number" placeholder="e.g. 700200100">
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group half-width">
+                <select id="county" class="form-control">
+                    <option>Select County</option>
+                    <option>Kericho</option>
+                    <option>Bomet</option>
+                    <!-- Add more options as needed -->
+                </select>
+            </div>
+            <div class="form-group half-width">
+                <select id="subcounty" class="form-control">
+                    <option>Ainamoi</option>
+                    <option>Township</option>
+                    <option>Brook</option>
+                    <!-- Add more options as needed -->
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <select id="area" class="form-control">
+                <option>Kericho Town</option>
+                <option>Ainamoi Centre</option>
+                <option>Litein</option>
+                <!-- Add more options as needed -->
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="addressDetails">Address Details (Delivery to Doorstep)</label>
+            <textarea id="addressDetails" class="form-control" rows="3" placeholder="Name of the building and floor, Road, Ward (E.g. Room 310, 3rd floor, Tengecha Lane, Ubora Centre)"></textarea>
+            <small class="form-char-count">0/200</small>
+        </div>
+        <div class="form-group default-address">
+            <input type="checkbox" id="defaultAddress">
+            <label for="defaultAddress">Set to the default address</label>
+        </div>
+        <div class="form-actions">
+            <button type="submit" class="btn btn-submit">Submit</button>
+            <button type="button" class="btn btn-cancel">Cancel</button>
+        </div>
+    </form>
+</div>
+</body>
+</html>

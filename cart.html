@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Visit our school uniform store in Kericho town for high-quality, affordable uniforms. We provide a wide range of uniforms for different schools.">
+    <meta name="keywords"
+        content="school uniforms, Kericho, Kericho town, uniforms, high-quality uniforms, affordable uniforms, school clothing">
+    <title>Jolly Uniforms - School Uniform Store in Kericho - High-Quality, Affordable Uniforms</title>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="images/icon.png">
+    <link rel="stylesheet" href="shop.css">
+</head>
+    <link rel="stylesheet" href="styles.css"> <!-- Link your CSS file here -->
+    <style>
+        /* Basic styling for the cart page */
+        body {
+            font-family: Arial, sans-serif;
+            padding-top: 70px;
+            background-color: #f7f7f7;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: #fff;
+            border-radius: 5px;
+            padding: 20px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .cart-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 15px;
+            margin-bottom: 15px;
+        }
+
+        .cart-header h1 {
+            margin: 0;
+            font-size: 24px;
+        }
+
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .item-image-container {
+            width: 80px;
+            margin-right: 15px;
+        }
+
+        .item-image {
+            width: 100%;
+            border-radius: 5px;
+        }
+
+        .item-details {
+            flex-grow: 1;
+        }
+
+        .item-price {
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        .discount-section, .total-price, .shipping-info, .payment-method {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-top: 1px solid #ddd;
+            margin-top: 15px;
+        }
+
+        .shipping-info button {
+            background: none;
+            border: none;
+            color: #007bff;
+            cursor: pointer;
+            padding: 0;
+        }
+
+        .btn-primary {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+        }
+
+        .modal-footer {
+            text-align: right;
+            margin-top: 15px;
+        }
+    </style>
+</head>
+<body>
+    <nav id="navbar" class="navbar navbar-expand-lg navbar-light custom-navbar-bg"
+    style="background-color: rgb(12, 12, 48)">
+    <div class="d-flex align-items-center w-100 justify-content-between">
+        <div class="d-flex align-items-center w-100">
+
+            <button id="navbar-toggler" class="navbar-toggler" type="button" data-toggle="collapse"
+                data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation" style="background-color: #fff;">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="navbar-brand ml-2" style="color: #fff;">
+                <img src="images/icon.png" alt="Logo">
+                JOLLY UNIFORMS
+            </div>
+
+            <div class="collapse navbar-collapse justify-content-between align-items-center"
+                id="navbarSupportedContent">
+
+                <ul class="navbar-nav flex-grow-1 justify-content-center">
+                    <form class="form-inline my-2 my-lg-0">
+                        <input class="form-control mr-sm-2 justify-content-center" type="search"
+                            placeholder="Search" aria-label="Search">
+                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                    </form>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="index.html" style="color: #fff;">Home <span
+                                class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html" style="padding-right: 10px; color:#fff;">Products</a>
+                    </li>
+                    <li class="nav-item">
+                        <div class="dropdown" onmouseover="showDropdown()" onmouseout="hideDropdown()">
+                            <a class="nav-link" href="#" id="navbarDropdown" role="button" aria-haspopup="true"
+                                aria-expanded="false" style="color: #fff;">
+                                Our Branches
+                            </a>
+                            <div class="dropdown-menu" id="dropdownMenu" aria-labelledby="navbarDropdown"
+                                style="color: #fff;">
+                                <a class="dropdown-item" href="#">Roret Branch</a>
+                                <a class="dropdown-item" href="#">Kapsuser Branch</a>
+                                <a class="dropdown-item" href="index.html">Kericho Town Branch</a>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="navbar-nav ml-auto">
+                <div class="cart-container">
+                    <a class="nav-item nav-link" href="cart.html"style="padding-right: 20px;">
+                        <i class="cart-icon">🛒</i>
+                        <div class="cart-counter" id="cart-counter">0</div>
+                        <!-- Ensure the counter is inside the anchor tag -->
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+</nav>
+
+    <div class="container">
+        <div class="cart-header">
+            <label>Shopping Cart</label>
+            <button type="button" class="close" aria-label="Close" onclick="window.location.href='index.html'">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+
+        <div id="cart-items-list">
+            <!-- Cart items will be injected here by JavaScript -->
+        </div>
+
+        <div class="discount-section">
+            <span>Discount:</span>
+            <span class="discount-amount">KSh 0</span>
+        </div>
+
+        <div class="total-price">
+            <span>Total:</span>
+            <span id="total-amount" class="total-amount">KSh 0</span>
+        </div>
+
+        <div class="shipping-info">
+            <span>Shipping Information</span>
+            <button type="button" class="btn btn-link" id="btn-link">Add Shipping Address</button>
+        </div>
+
+        <div class="payment-method">
+            <h6>Payment Method</h6>
+            <p>M-PESA</p>
+        </div>
+
+        <div class="modal-footer">
+            <button type="button" class="btn btn-primary" id="checkout-button">Place Order</button>
+        </div>
+    </div>
+    
+    <script src="cart.js"></script> <!-- Link to your JavaScript file -->
+    
+</body>
+</html>
