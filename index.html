@@ -22,6 +22,25 @@
     <link rel="icon" type="image/png" href="images/icon.png">
     <link rel="stylesheet" href="shop.css">
 </head>
+<style>
+       @media (max-width: 767px) {
+  .container {
+    margin: 10px;
+  }
+  .item-price {
+        font-size: 12px;
+        font-weight: bold;
+    }
+
+    .item-details h6 {
+        font-size: 0.85rem; /* Smaller font size for mobile */
+    }
+
+    .item-details p {
+        font-size: 0.75rem; /* Smaller font size for mobile */
+    }
+}
+</style>
 <script>
     document.addEventListener("DOMContentLoaded", function() {
         const cartCounter = document.getElementById("cart-counter");
@@ -97,12 +116,11 @@
 
 
     <div id="main-content"
-    
          font-size: medium; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;"
         class="container mt-5 hidden">
             <!-- Main Content -->
     <div class="admin-panel mt-5 pt-3">
-        <div id="carouselExampleIndicators" class="carousel slide style="padding-top: 20px; " data-ride="carousel">
+        <div id="carouselExampleIndicators" class="carousel slide style="padding-top: 10px; " data-ride="carousel">
             <ol class="carousel-indicators">
                 <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
                 <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>

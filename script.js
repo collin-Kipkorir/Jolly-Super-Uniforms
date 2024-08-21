@@ -1,3 +1,18 @@
+document.addEventListener('gesturestart', function (e) {
+  e.preventDefault();
+  e.stopPropagation();
+}, { passive: false });
+
+document.addEventListener('gesturechange', function (e) {
+  e.preventDefault();
+  e.stopPropagation();
+}, { passive: false });
+
+document.addEventListener('gestureend', function (e) {
+  e.preventDefault();
+  e.stopPropagation();
+}, { passive: false });
+
 // Firebase configuration
 const firebaseConfig = {
   apiKey: "AIzaSyClS4zP63hQipphS-FzNzmCpNsXb6SDdkc",

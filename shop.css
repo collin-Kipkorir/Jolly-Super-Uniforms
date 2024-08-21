@@ -1,3 +1,7 @@
+html {
+    touch-action: manipulation;
+    -ms-touch-action: manipulation;
+}
 .cart-container {
     position: relative;
     display: inline-block;
@@ -360,21 +364,8 @@
         font-synthesis-weight: 1;
     }
 
-    .container {
-        margin: 10px;
-      }
-      .item-price {
-            font-size: 12px;
-            font-weight: bold;
-        }
-    
-        .item-details h6 {
-            font-size: 0.85rem; /* Smaller font size for mobile */
-        }
-    
-        .item-details p {
-            font-size: 0.75rem; /* Smaller font size for mobile */
-        }
+
+
 
 }
 
@@ -564,7 +555,6 @@ border-top: 1px solid #e0e0e0; /* Light grey divider */
     margin: 0 auto;
     justify-content: center;
     border-radius: 6px;
-margin-top: 3px;
 padding-left: 1px;
 padding-right: 1px;
 }
