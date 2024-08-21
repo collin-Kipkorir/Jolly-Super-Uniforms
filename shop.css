@@ -509,17 +509,17 @@ border-top: 1px solid #e0e0e0; /* Light grey divider */
     display: flex;
     align-items: center;
     padding: 0;
-    margin: 10px 0;
+    margin: 5px 0;
     background-color: #ffffff;
 }
 
 .breadcrumb li {
-    margin-right: 10px;
+    margin-right: 6px;
 }
 
 .breadcrumb li::after {
     content: '>';
-    margin-left: 10px;
+    margin-left: 6px;
     color: #666;
 }
 
