@@ -14,7 +14,7 @@
 }
 
         .container {
-            margin-top: 20px;
+            margin: 10px;
         }
         .button {
             display: flex;
@@ -33,17 +33,20 @@
             margin-right: 10px; /* Space between form and product list */
         }
         .product-list {
-            margin-left: 20px;
+            margin-left: 10px;
             max-height: 600px; /* Set a fixed height for the product list */
             overflow-y: auto; /* Enable vertical scrolling */
         }
         @media (max-width: 767px) {
             .form-container, .product-list {
-                margin: 0;
+                margin: 5;
                 min-width: 100%;
                 max-height: none; /* Remove fixed height in mobile view */
                 overflow-y: visible; /* Disable scrolling in mobile view */
             }
+            .container {
+            margin: 10px;
+        }
         }
     </style>
 </head>

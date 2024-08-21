@@ -246,16 +246,29 @@ html {
     margin-left: 1rem;
 }
 
-.modal-body .row {
-    align-items: flex-start;
+
+.fixed-element, .absolute-element {
+    max-width: 100vw;
+}
+* {
+    box-sizing: border-box;
 }
 
+
+
 @media (max-width: 767px) {
+    html, body {
+        overflow-x: hidden;
+    }
     .container {
         position: relative;
         display: inline-block;
-        margin: 5px;
+        margin: 7px;
     }
+    .fixed-element, .absolute-element {
+        max-width: 100vw;
+    }
+    
 
     .cart-icon {
         font-size: 20px;

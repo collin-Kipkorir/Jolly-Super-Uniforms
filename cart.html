@@ -141,8 +141,18 @@
         border-bottom: 1px solid #fff;
 
     }
-
-
+    @media (max-width: 767px) {
+            .form-container, .product-list {
+                margin: 5px;
+                min-width: 100%;
+                max-height: none; /* Remove fixed height in mobile view */
+                overflow-y: visible; /* Disable scrolling in mobile view */
+            }
+            .container {
+            margin-left: 10px;
+            margin-right: 10px;
+        }
+    }
 </style>
 </head>
 
