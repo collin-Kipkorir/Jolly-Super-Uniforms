@@ -32,24 +32,23 @@ document.addEventListener("DOMContentLoaded", function () {
           // Calculate the total price
           totalPrice += item.price * item.count;
 
-          // Create the cart item HTML
           const cartItemHTML = `
-                        <div class="cart-item" data-product-id="${productId}">
-                            <div class="item-image-container">
-                                <img src="${item.image}" alt="${
-            item.name
-          }" class="item-image">
-                            </div>
-                            <div class="item-details">
-                                <h4>${item.name}</h4>
-                                <p>Quantity: ${item.count}</p>
-                            </div>
-                            <div class="item-price" style="color: red;">
-                                KSh ${item.price * item.count}
-                            </div>
-                            <button class="btn-delete" data-product-id="${productId}">Delete</button>
-                        </div>
-                    `;
+    <div class="cart-item" data-product-id="${productId}">
+        <div class="item-image-container">
+            <img src="${item.image}" alt="${item.name}" class="item-image">
+        </div>
+        <div class="item-details">
+            <h6>${item.name}</h6>
+            <p>Quantity: ${item.count}</p>
+        </div>
+        <div class="price-delete-container">
+            <div class="item-price" style="color: red;">
+                KSh ${item.price * item.count}
+                <button class="btn-delete" data-product-id="${productId}" style="fontFamily: flex:">Delete</button>
+            </div>
+        </div>
+    </div>
+`;
 
           // Append the cart item HTML to the cart items list
           cartItemsList.innerHTML += cartItemHTML;
