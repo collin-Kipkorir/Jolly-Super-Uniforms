@@ -41,12 +41,13 @@ document.addEventListener("DOMContentLoaded", function () {
             <h6>${item.name}</h6>
             <p>Quantity: ${item.count}</p>
         </div>
-        <div class="price-delete-container">
-            <div class="item-price" style="color: red;">
-                KSh ${item.price * item.count}
-                <button class="btn-delete" data-product-id="${productId}" style="fontFamily: flex:">Delete</button>
-            </div>
+        <div class="price-delete-container" style="display: flex; justify-content: center; align-items: center; gap: 10px;">
+        <div class="item-price" style="color: red;">
+           <h6> KSh ${item.price * item.count}</h6>
         </div>
+        <i class="fas fa-trash delete-icon" data-product-id="${productId}" style="cursor: pointer;"></i>
+    </div>
+    </div>
     </div>
 `;
 
@@ -59,14 +60,15 @@ document.addEventListener("DOMContentLoaded", function () {
       document.getElementById("total-amount").textContent = `KSh ${totalPrice}`;
     }
 
-    // Add event listeners to delete buttons
-    const deleteButtons = document.querySelectorAll(".btn-delete");
-    deleteButtons.forEach((button) => {
-      button.addEventListener("click", function () {
+ // Add event listeners to delete icons
+const deleteIcons = document.querySelectorAll(".delete-icon");
+deleteIcons.forEach(icon => {
+    icon.addEventListener("click", function () {
         const productId = this.getAttribute("data-product-id");
         deleteItemFromCart(productId);
-      });
     });
+});
+
 
     // Update the cart counter with the number of unique items
     updateCartCounter();
