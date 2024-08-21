@@ -225,62 +225,63 @@ function displayProducts() {
   // Clear existing product list
   productList.innerHTML = "";
   productsRef
-    .on("value", (snapshot) => {
-      if (snapshot.exists()) {
-        const childDataArray = []; // Array to store child data
-        snapshot.forEach((childSnapshot) => {
-          const childData = childSnapshot.val();
-          childDataArray.push({ key: childSnapshot.key, ...childData }); // Push each product into the array with its key
-        });
+      .on("value", (snapshot) => {
+          if (snapshot.exists()) {
+              const childDataArray = []; // Array to store child data
+              snapshot.forEach((childSnapshot) => {
+                  const childData = childSnapshot.val();
+                  childDataArray.push({ key: childSnapshot.key, ...childData }); // Push each product into the array with its key
+              });
 
-        // Shuffle the array of child data
-        const shuffledChildDataArray = shuffleArray(childDataArray);
+              // Shuffle the array of child data
+              const shuffledChildDataArray = shuffleArray(childDataArray);
 
-        shuffledChildDataArray.forEach((childData) => {
-          hideLoader();
-          showFooter();
-          showNavbar();
+              shuffledChildDataArray.forEach((childData) => {
+                  hideLoader();
+                  showFooter();
+                  showNavbar();
 
-          // Create product card for each product
-          const productCard = document.createElement("div");
-          productCard.classList.add("col-6", "col-md-3", "product-card"); // Add responsive classes for mobile and desktop view
-          productCard.setAttribute("data-product-id", childData.key); // Set data attribute
-          productCard.innerHTML = `
-                <div class="card mb-4 shadow-sm">
-                    <div class="d-flex justify-content-center">
-                        <a href="#" onclick="getProductDetails('${childData.key}')">
-                            <img src="${childData.image}" class="card-img-top" alt="${childData.name}" style="height: 200px; object-fit: contain;"> <!-- Set fixed height and object-fit -->
-                        </a>
-                    </div>
-                    <div class="card-body d-flex flex-column">
-                        <div class="card-title-box"><h6 class="card-title">${childData.name}</h6></div>
-                        <div><p class="card-text"><span style="color: red; font-size: 14px; font-weight: bold;">From Kshs. ${childData.price}</span></p></div> <!-- Apply styling to price text -->
-                        <div class="d-flex justify-content-end align-items-end mt-auto" style="margin-top: auto;">
-                            <span class="cart-icon">
-                                <!-- Add event listener to cart icon -->
-                                <a onclick="addItemtoCart('${childData.key}', '${childData.image}', '${childData.name}', '${childData.price}')">
-                                    <img src="images/addcart.png" alt="Add to Cart" style="height: 25px;" class="cart-img">
-                                </a>
-                            </span> <!-- Cart Icon -->
-                            <span class="ml-2 whatsapp-icon">
-                                <!-- Add event listener to WhatsApp icon -->
-                                <a href="#" onclick="openWhatsAppChat('${childData.image}', '${childData.name}', '${childData.price}')">
-                                    <img src="images/whatsapp.png" alt="WhatsApp Logo" style="height: 25px;" class="whatsapp-img">
-                                </a>
-                            </span> <!-- WhatsApp Logo -->
-                        </div>
-                    </div>
-                </div>`;
-          productList.appendChild(productCard);
-        });
-      } else {
-        console.log("No data available");
-      }
-    })
-    .catch((error) => {
-      console.error("Error fetching products: ", error);
-    });
+                  // Create product card for each product
+                  const productCard = document.createElement("div");
+                  productCard.classList.add("col-6", "col-md-4", "col-lg-2", "product-card"); // Adjusted for 5 cards in a row
+                  productCard.setAttribute("data-product-id", childData.key); // Set data attribute
+                  productCard.innerHTML = `
+                      <div class="card mb-4 shadow-sm">
+                          <div class="d-flex justify-content-center">
+                              <a href="#" onclick="getProductDetails('${childData.key}')">
+                                  <img src="${childData.image}" class="card-img-top" alt="${childData.name}" style="height: 200px; object-fit: contain;"> <!-- Set fixed height and object-fit -->
+                              </a>
+                          </div>
+                          <div class="card-body d-flex flex-column">
+                              <div class="card-title-box"><h6 class="card-title">${childData.name}</h6></div>
+                              <div><p class="card-text"><span style="color: red; font-size: 14px; font-weight: bold;">From Kshs. ${childData.price}</span></p></div> <!-- Apply styling to price text -->
+                              <div class="d-flex justify-content-end align-items-end mt-auto" style="margin-top: 1px;">
+                                  <span class="cart-icon">
+                                      <!-- Add event listener to cart icon -->
+                                      <a onclick="addItemtoCart('${childData.key}', '${childData.image}', '${childData.name}', '${childData.price}')">
+                                          <img src="images/addcart.png" alt="Add to Cart" style="height: 25px;" class="cart-img">
+                                      </a>
+                                  </span> <!-- Cart Icon -->
+                                  <span class="ml-2 whatsapp-icon">
+                                      <!-- Add event listener to WhatsApp icon -->
+                                      <a href="#" onclick="openWhatsAppChat('${childData.image}', '${childData.name}', '${childData.price}')">
+                                          <img src="images/whatsapp.png" alt="WhatsApp Logo" style="height: 25px;" class="whatsapp-img">
+                                      </a>
+                                  </span> <!-- WhatsApp Logo -->
+                              </div>
+                          </div>
+                      </div>`;
+                  productList.appendChild(productCard);
+              });
+          } else {
+              console.log("No data available");
+          }
+      })
+      .catch((error) => {
+          console.error("Error fetching products: ", error);
+      });
 }
+
 
 // Function to open WhatsApp chat with product details
 function openWhatsAppChat(image, description, price) {
