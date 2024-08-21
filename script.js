@@ -249,25 +249,19 @@ function displayProducts() {
                       <div class="card mb-4 shadow-sm">
                           <div class="d-flex justify-content-center">
                               <a href="#" onclick="getProductDetails('${childData.key}')">
-                                  <img src="${childData.image}" class="card-img-top" alt="${childData.name}" style="height: 200px; object-fit: contain;"> <!-- Set fixed height and object-fit -->
+                                  <img src="${childData.image}" class="card-img-top" alt="${childData.name}" style="height: 180px; object-fit: contain;"> <!-- Set fixed height and object-fit -->
                               </a>
                           </div>
                           <div class="card-body d-flex flex-column">
-                              <div class="card-title-box"><h6 class="card-title">${childData.name}</h6></div>
-                              <div><p class="card-text"><span style="color: red; font-size: 14px; font-weight: bold;">From Kshs. ${childData.price}</span></p></div> <!-- Apply styling to price text -->
+                              <div class="card-title-box"><h7 class="card-title">${childData.name}</h7></div>
+                              <div><p class="card-text"><span style="color: red; font-size: 12px; font-weight: bold;">From Kshs. ${childData.price}</span></p></div> <!-- Apply styling to price text -->
                               <div class="d-flex justify-content-end align-items-end mt-auto" style="margin-top: 1px;">
                                   <span class="cart-icon">
                                       <!-- Add event listener to cart icon -->
                                       <a onclick="addItemtoCart('${childData.key}', '${childData.image}', '${childData.name}', '${childData.price}')">
-                                          <img src="images/addcart.png" alt="Add to Cart" style="height: 25px;" class="cart-img">
+                                         
                                       </a>
                                   </span> <!-- Cart Icon -->
-                                  <span class="ml-2 whatsapp-icon">
-                                      <!-- Add event listener to WhatsApp icon -->
-                                      <a href="#" onclick="openWhatsAppChat('${childData.image}', '${childData.name}', '${childData.price}')">
-                                          <img src="images/whatsapp.png" alt="WhatsApp Logo" style="height: 25px;" class="whatsapp-img">
-                                      </a>
-                                  </span> <!-- WhatsApp Logo -->
                               </div>
                           </div>
                       </div>`;
