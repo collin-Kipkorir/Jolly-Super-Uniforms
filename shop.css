@@ -47,7 +47,7 @@
 
 
 .custom-navbar-bg {
-    bbackground-color: rgb(12, 12, 48);
+    background-color: rgb(12, 12, 48);
 }
 
 .navbar-brand {
@@ -122,6 +122,7 @@
     white-space: nowrap;
     text-overflow: ellipsis;
     font-weight: normal;
+    max-lines: 2;
 }
 
 .textarea-margin {
