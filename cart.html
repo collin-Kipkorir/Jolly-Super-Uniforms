@@ -28,13 +28,13 @@
     /* Basic styling for the cart page */
     body {
         font-family: Arial, sans-serif;
-        padding-top: 70px;
+        padding-top: 50px;
         background-color: #f7f7f7;
     }
 
     .container {
         max-width: 900px;
-        margin: 20px auto;
+        margin: 10px auto;
         /* Auto on the left and right centers the container */
         padding: 10px;
         background: #fff;
@@ -66,6 +66,7 @@
 
     .item-image-container {
         width: 80px;
+        height: 80px;
         margin-right: 15px;
     }
 
@@ -142,17 +143,27 @@
 
     }
     @media (max-width: 767px) {
-            .form-container, .product-list {
-                margin: 5px;
-                min-width: 100%;
-                max-height: none; /* Remove fixed height in mobile view */
-                overflow-y: visible; /* Disable scrolling in mobile view */
-            }
-            .container {
-            margin-left: 10px;
-            margin-right: 10px;
-        }
-    }
+  .container {
+    margin: 10px; /* Adds a 10px margin to the container on mobile view */
+
+  }
+
+  .item-price {
+    font-size: 10px;
+    font-weight: bold;
+    margin-right: 10px;
+  }
+
+  .item-details h6 {
+    font-size: 0.85rem; /* Smaller font size for mobile */
+  }
+
+  .item-details p {
+    font-size: 0.75rem; /* Smaller font size for mobile */
+  }
+}
+
+
 </style>
 </head>
 
@@ -224,16 +235,16 @@
         <div class="cart-header">
             <label>Cart</label>
         </div>
-
+    
         <div id="cart-items-list">
             <!-- Cart items will be injected here by JavaScript -->
         </div>
-
+    
         <div class="discount-section">
             <span>Discount:</span>
             <span class="discount-amount">KSh 0</span>
         </div>
-
+    
         <div class="total-price">
             <span>Total:</span>
             <span id="total-amount" class="total-amount">KSh 0</span>
@@ -248,16 +259,15 @@
     <div class="container">
         <span>Payment Method</span>
         <div class="payment-method">
-            <!-- <span>Payment Method</span> -->
             <p style="font-family: background-origin;">M-PESA</p>
         </div>
-    </div>
     </div>
     <div class="container">
         <div class="modal-footer">
             <button type="button" class="btn btn-primary" id="checkout-button">Place Order</button>
         </div>
     </div>
+    
 
     <script src="cart.js"></script> <!-- Link to your JavaScript file -->
 
