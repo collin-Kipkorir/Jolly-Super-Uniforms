@@ -67,7 +67,7 @@
     .item-image-container {
         width: 80px;
         height: 80px;
-        margin-right: 15px;
+        margin-right: 10px;
     }
 
     .item-image {
@@ -89,7 +89,6 @@
         display: flex;
         justify-content: space-between;
         padding: 10px 0;
-        border-top: 1px solid #ddd;
         margin-top: 15px;
     }
 
@@ -142,12 +141,19 @@
         border-bottom: 1px solid #fff;
 
     }
-    @media (max-width: 760px) {
-  .container {
-    margin: 10px; /* Adds a 10px margin to the container on mobile view */
-
+    @media (max-width: 767px) {
+ 
+  .container-outer{
+margin: 7px;
   }
-
+  .discount-section,
+    .total-price {
+        display: flex;
+        justify-content: space-between;
+        padding: 10px 0;
+        border-top: 1px solid #ddd;
+        margin-top: 15px;
+    }
   .item-price {
     font-size: 12px;
     font-weight: bold;
@@ -343,42 +349,44 @@
 
     </nav>
 
-    <div class="container">
-        <div class="cart-header">
-            <label>Cart</label>
+       <div class="container-outer">
+        <div class="container">
+            <div class="cart-header">
+                <label>Cart</label>
+            </div>
+        
+            <div id="cart-items-list">
+                <!-- Cart items will be injected here by JavaScript -->
+            </div>
+        
+            <div class="discount-section">
+                <span>Discount:</span>
+                <span class="discount-amount">KSh 0</span>
+            </div>
+        
+            <div class="total-price">
+                <span>Total:</span>
+                <span id="total-amount" class="total-amount">KSh 0</span>
+            </div>
         </div>
-    
-        <div id="cart-items-list">
-            <!-- Cart items will be injected here by JavaScript -->
+        <div class="container">
+            <div class="shipping-info">
+                <span>Shipping Information</span>
+                <button type="button" class="btn btn-link" id="btn-link">Add Shipping Address</button>
+            </div>
         </div>
-    
-        <div class="discount-section">
-            <span>Discount:</span>
-            <span class="discount-amount">KSh 0</span>
+        <div class="container">
+            <span>Payment Method</span>
+            <div class="payment-method">
+                <p style="font-family: background-origin;">M-PESA</p>
+            </div>
         </div>
-    
-        <div class="total-price">
-            <span>Total:</span>
-            <span id="total-amount" class="total-amount">KSh 0</span>
+        <div class="container">
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" id="checkout-button">Place Order</button>
+            </div>
         </div>
-    </div>
-    <div class="container">
-        <div class="shipping-info">
-            <span>Shipping Information</span>
-            <button type="button" class="btn btn-link" id="btn-link">Add Shipping Address</button>
-        </div>
-    </div>
-    <div class="container">
-        <span>Payment Method</span>
-        <div class="payment-method">
-            <p style="font-family: background-origin;">M-PESA</p>
-        </div>
-    </div>
-    <div class="container">
-        <div class="modal-footer">
-            <button type="button" class="btn btn-primary" id="checkout-button">Place Order</button>
-        </div>
-    </div>
+       </div>
      <!-- Modal -->
      <div id="addressModal" class="modal">
         <div class="modal-content">
