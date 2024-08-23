@@ -45,7 +45,7 @@ document.addEventListener("DOMContentLoaded", function () {
         <div class="item-price" style="color: red;">
            <h6> KSh ${item.price * item.count}</h6>
         </div>
-        <i class="fas fa-trash delete-icon" data-product-id="${productId}" style="cursor: pointer;"></i>
+        <i class="fas fa-trash delete-icon" data-product-id="${productId}" style="cursor: pointer; margin-bottom: 8px"></i>
     </div>
     </div>
     </div>
