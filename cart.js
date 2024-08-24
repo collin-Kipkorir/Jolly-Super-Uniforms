@@ -42,10 +42,11 @@ document.addEventListener("DOMContentLoaded", function () {
             <p>Quantity: ${item.count}</p>
         </div>
         <div class="price-delete-container" style="display: flex; justify-content: center; align-items: center; gap: 10px;">
-        <div class="item-price" style="color: red;">
-           <h6> KSh ${item.price * item.count}</h6>
-        </div>
-        <i class="fas fa-trash delete-icon" data-product-id="${productId}" style="cursor: pointer; margin-bottom: 8px"></i>
+        <div class="item-price">
+    <span class="price-text">KSh ${item.price * item.count}</span>
+</div>
+
+        <i class="fas fa-trash delete-icon" data-product-id="${productId}" style="cursor: pointer; margin-bottom: 3px"></i>
     </div>
     </div>
     </div>
