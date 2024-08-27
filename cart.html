@@ -476,7 +476,7 @@
                     <span aria-hidden="true">×</span>
                 </button>
             </div>
-            <form class="address-form">
+            <form class="address-form" id="addressForm">
                 <div class="form-row">
                     <div class="form-group half-width">
                         <input type="text" id="firstName" class="form-control" placeholder="First Name">
@@ -489,9 +489,9 @@
                 </div>
                 <div class="form-group">
                     <div class="phone-input">
-                        <input type="text" id="phoneCode" class="form-control phone-code" value="+254" readonly="">
-                        <input type="text" id="phoneNumber" class="form-control phone-number"
-                            placeholder="E.g. 700200100">
+                        <input type="text" id="phoneCode" class="form-control phone-code" value="+254" readonly>
+                        <input type="text" id="phoneNumber" class="form-control phone-number" placeholder="E.g. 700200100">
+                        <small class="form-error">Please enter phone number.</small>
                     </div>
                 </div>
                 <div class="form-row">
@@ -547,24 +547,27 @@
                             <option value="west_pokot">West Pokot</option>
 
                         </select>
+                        <small class="form-error">Please select a county.</small>
                     </div>
                     <div class="form-group half-width">
                         <select id="subcounty" class="form-control">
                             <option value="">Select Sub-County</option>
                         </select>
+                        <small class="form-error">Please select a sub-county.</small>
                     </div>
                 </div>
                 <div class="form-group">
                     <select id="area" class="form-control">
                         <option value="">Select Area</option>
                     </select>
+                    <small class="form-error">Please select an area.</small>
                 </div>
-
                 <div class="form-group">
                     <label for="addressDetails">Address Details (Delivery to Doorstep)</label>
                     <textarea id="addressDetails" class="form-control" rows="3"
                         placeholder="Name of the building and floor, Road, Ward (E.g. Room 310, 3rd floor, Tengecha Lane, Ubora Centre)"></textarea>
                     <small class="form-char-count">0/200</small>
+                    <small class="form-error">Please enter address details.</small>
                 </div>
                 <div class="form-group default-address">
                     <input type="checkbox" id="defaultAddress">
@@ -618,6 +621,76 @@
                 enableScroll();
             }
         }
+
+        document.getElementById('addressForm').addEventListener('submit', function(event) {
+        event.preventDefault(); // Prevent form submission
+
+        // Clear all previous errors
+        const errors = document.querySelectorAll('.form-error');
+        errors.forEach(error => error.style.display = 'none');
+
+        let isValid = true;
+
+        // Check if first name is filled
+        const firstName = document.getElementById('firstName');
+        if (firstName.value.trim() === '') {
+            isValid = false;
+            firstName.nextElementSibling.style.display = 'block';
+        }
+
+        // Check if last name is filled
+        const lastName = document.getElementById('lastName');
+        if (lastName.value.trim() === '') {
+            isValid = false;
+            lastName.nextElementSibling.style.display = 'block';
+        }
+
+        // Check if phone number is filled
+        const phoneNumber = document.getElementById('phoneNumber');
+        if (phoneNumber.value.trim() === '') {
+            isValid = false;
+            phoneNumber.nextElementSibling.style.display = 'block';
+        }
+
+        // Check if county is selected
+        const county = document.getElementById('county');
+        if (county.value === '') {
+            isValid = false;
+            county.nextElementSibling.style.display = 'block';
+        }
+
+        // Check if sub-county is selected
+        const subCounty = document.getElementById('subcounty');
+        if (subCounty.value === '') {
+            isValid = false;
+            subCounty.nextElementSibling.style.display = 'block';
+        }
+
+        // Check if area is selected
+        const area = document.getElementById('area');
+        if (area.value === '') {
+            isValid = false;
+            area.nextElementSibling.style.display = 'block';
+        }
+
+        // Check if address details are filled
+        const addressDetails = document.getElementById('addressDetails');
+        if (addressDetails.value.trim() === '') {
+            isValid = false;
+            addressDetails.nextElementSibling.style.display = 'block';
+        }
+
+         // If the form is valid, you can proceed with form submission
+    if (isValid) {
+               // Dismiss the modal
+        const modalElement = document.querySelector('.modal'); // Assuming your modal has the class 'modal'
+        const modalInstance = bootstrap.Modal.getInstance(modalElement);
+        modalInstance.hide();
+
+        // Optionally, reset the form fields
+        this.reset();
+    }
+    });
 
         const subCountyData = {
             baringo: {
