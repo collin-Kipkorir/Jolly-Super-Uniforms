@@ -260,7 +260,6 @@ function displayProducts() {
                                   <span class="cart-icon">
                                       <!-- Add event listener to cart icon -->
                                       <a onclick="addItemtoCart('${childData.key}', '${childData.image}', '${childData.name}', '${childData.price}')">
-                                         
                                       </a>
                                   </span> <!-- Cart Icon -->
                               </div>

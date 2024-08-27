@@ -14,6 +14,8 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+
 
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
@@ -42,7 +44,7 @@
         box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     }
 
-    .cart-header label{
+    .cart-header label {
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -80,11 +82,12 @@
         flex-grow: 1;
     }
 
-  
+
     .item-price .price-text {
-    color: red;
-    font-size: 11px; /* Adjust this value to your desired font size */
-}
+        color: red;
+        font-size: 11px;
+        /* Adjust this value to your desired font size */
+    }
 
     .discount-section,
     .total-price {
@@ -214,24 +217,25 @@
     }
 
     .address-form-container {
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    max-width: 400px;
-    margin: 0 auto;
-    padding: 20px;
-}
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        max-width: 400px;
+        margin: 0 auto;
+        padding: 20px;
+    }
 
-.form-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-bottom: 1px solid #ddd;
-    padding-bottom: 10px;
-    margin-bottom: 20px;
+    .form-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: 1px solid #ddd;
+        padding-bottom: 10px;
+        margin-bottom: 20px;
 
-}
-.form-header abel{
+    }
+
+    .form-header abel {
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -241,116 +245,123 @@
         font-size: 15px;
         font-weight: bold;
     }
-.form-header h5 {
-    margin: 0;
-    font-size: 12px;
-}
 
-.close {
-    background: none;
-    border: none;
-    font-size: 24px;
-    cursor: pointer;
-}
+    .form-header h5 {
+        margin: 0;
+        font-size: 12px;
+    }
 
-.form-row {
-    display: flex;
-    justify-content: space-between;
-    margin: 2px;
-}
+    .close {
+        background: none;
+        border: none;
+        font-size: 24px;
+        cursor: pointer;
+    }
 
-.half-width {
-    width: 49%;
-}
+    .form-row {
+        display: flex;
+        justify-content: space-between;
+        margin: 2px;
+    }
 
-.form-group {
-    margin-bottom: 5px;
-}
+    .half-width {
+        width: 49%;
+    }
 
-.form-group label {
-    display: block;
-    margin-bottom: 5px;
-    font-weight: bold;
-}
+    .form-group {
+        margin-bottom: 5px;
+    }
 
-.form-control {
-    width: 100%;
-    padding: 3px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    box-sizing: border-box;
-    font-size: x-small;
-}
+    .form-group label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: bold;
+    }
 
-.phone-input {
-    display: flex;
-}
+    .form-control {
+        width: 100%;
+        padding: 3px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        box-sizing: border-box;
+        font-size: x-small;
+    }
 
-.phone-code {
-    width: 80px;
-    margin-right: 5px;
-    text-align: center;
-}
+    .phone-input {
+        display: flex;
+    }
 
-.form-error {
-    color: red;
-    font-size: 9px;
-    display: none; /* Hide by default */
-}
+    .phone-code {
+        width: 80px;
+        margin-right: 5px;
+        text-align: center;
+    }
 
-.form-char-count {
-    display: block;
-    text-align: right;
-    font-size: 9px;
-    color: #888;
-}
+    .form-error {
+        color: red;
+        font-size: 9px;
+        display: none;
+        /* Hide by default */
+    }
 
-.default-address {
-    display: flex;
-    align-items: center;
-}
+    .form-char-count {
+        display: block;
+        text-align: right;
+        font-size: 9px;
+        color: #888;
+    }
 
-.default-address input {
-    margin-right: 5px;
-}
+    .default-address {
+        display: flex;
+        align-items: center;
+    }
 
-.form-actions {
-    display: flex;
-    justify-content: space-between;
-}
+    .default-address input {
+        margin-right: 5px;
+    }
 
-.btn {
-    padding: 5px 10px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-}
+    .form-actions {
+        display: flex;
+        justify-content: space-between;
+    }
 
-.btn-submit {
-    background-color: #1f83c6;
-    color: #fff;
-    font-size: smaller;
-}
+    .btn {
+        padding: 5px 10px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
 
-.btn-cancel {
-    background-color: #cfcdcd;
-    color: #333;
-    font-size: smaller;
-}
-label{
-    font-size: 10px;
-}
-input{
-color: #888;
-}
+    .btn-submit {
+        background-color: #1f83c6;
+        color: #fff;
+        font-size: smaller;
+    }
+
+    .btn-cancel {
+        background-color: #cfcdcd;
+        color: #333;
+        font-size: smaller;
+    }
+
+    label {
+        font-size: 10px;
+    }
+
+    input {
+        color: #888;
+    }
+
     /* Disable scroll when no-scroll class is added to the body */
-.no-scroll {
-    overflow: hidden;
-    height: 100%; /* This prevents the body from scrolling */
-    position: fixed; /* Keeps the page in place */
-    width: 100%; /* Prevents layout shift */
-}
-
+    .no-scroll {
+        overflow: hidden;
+        height: 100%;
+        /* This prevents the body from scrolling */
+        position: fixed;
+        /* Keeps the page in place */
+        width: 100%;
+        /* Prevents layout shift */
+    }
 </style>
 </head>
 
@@ -479,38 +490,80 @@ color: #888;
                 <div class="form-group">
                     <div class="phone-input">
                         <input type="text" id="phoneCode" class="form-control phone-code" value="+254" readonly="">
-                        <input type="text" id="phoneNumber" class="form-control phone-number" placeholder="E.g. 700200100">
+                        <input type="text" id="phoneNumber" class="form-control phone-number"
+                            placeholder="E.g. 700200100">
                     </div>
                 </div>
                 <div class="form-row">
                     <div class="form-group half-width">
                         <select id="county" class="form-control">
-                            <option>Select County</option>
-                            <option>Kericho</option>
-                            <option>Bomet</option>
-                            <!-- Add more options as needed -->
+                            <option value="">Select County</option>
+                            <option value="baringo">Baringo</option>
+                            <option value="bomet">Bomet</option>
+                            <option value="bungoma">Bungoma</option>
+                            <option value="busia">Busia</option>
+                            <option value="elgeyo_marakwet">Elgeyo-Marakwet</option>
+                            <option value="embu">Embu</option>
+                            <option value="garissa">Garissa</option>
+                            <option value="homa_bay">Homa Bay</option>
+                            <option value="isiolo">Isiolo</option>
+                            <option value="kajiado">Kajiado</option>
+                            <option value="kakamega">Kakamega</option>
+                            <option value="kericho">Kericho</option>
+                            <option value="kiambu">Kiambu</option>
+                            <option value="kilifi">Kilifi</option>
+                            <option value="kirinyaga">Kirinyaga</option>
+                            <option value="kisii">Kisii</option>
+                            <option value="kisumu">Kisumu</option>
+                            <option value="kitui">Kitui</option>
+                            <option value="kwale">Kwale</option>
+                            <option value="laikipia">Laikipia</option>
+                            <option value="lamu">Lamu</option>
+                            <option value="machakos">Machakos</option>
+                            <option value="makueni">Makueni</option>
+                            <option value="mandera">Mandera</option>
+                            <option value="marsabit">Marsabit</option>
+                            <option value="meru">Meru</option>
+                            <option value="migori">Migori</option>
+                            <option value="mombasa">Mombasa</option>
+                            <option value="murang'a">Murang'a</option>
+                            <option value="nairobi">Nairobi</option>
+                            <option value="nakuru">Nakuru</option>
+                            <option value="nandi">Nandi</option>
+                            <option value="narok">Narok</option>
+                            <option value="nyamira">Nyamira</option>
+                            <option value="nyandarua">Nyandarua</option>
+                            <option value="nyeri">Nyeri</option>
+                            <option value="samburu">Samburu</option>
+                            <option value="siaya">Siaya</option>
+                            <option value="taita_taveta">Taita-Taveta</option>
+                            <option value="tana_river">Tana River</option>
+                            <option value="tharaka_nithi">Tharaka-Nithi</option>
+                            <option value="trans_nzoia">Trans-Nzoia</option>
+                            <option value="turkana">Turkana</option>
+                            <option value="uasin_gishu">Uasin Gishu</option>
+                            <option value="vihiga">Vihiga</option>
+                            <option value="wajir">Wajir</option>
+                            <option value="west_pokot">West Pokot</option>
+
                         </select>
                     </div>
                     <div class="form-group half-width">
                         <select id="subcounty" class="form-control">
-                            <option>Ainamoi</option>
-                            <option>Township</option>
-                            <option>Brook</option>
-                            <!-- Add more options as needed -->
+                            <option value="">Select Sub-County</option>
                         </select>
                     </div>
                 </div>
                 <div class="form-group">
                     <select id="area" class="form-control">
-                        <option>Kericho Town</option>
-                        <option>Ainamoi Centre</option>
-                        <option>Litein</option>
-                        <!-- Add more options as needed -->
+                        <option value="">Select Area</option>
                     </select>
                 </div>
+
                 <div class="form-group">
                     <label for="addressDetails">Address Details (Delivery to Doorstep)</label>
-                    <textarea id="addressDetails" class="form-control" rows="3" placeholder="Name of the building and floor, Road, Ward (E.g. Room 310, 3rd floor, Tengecha Lane, Ubora Centre)"></textarea>
+                    <textarea id="addressDetails" class="form-control" rows="3"
+                        placeholder="Name of the building and floor, Road, Ward (E.g. Room 310, 3rd floor, Tengecha Lane, Ubora Centre)"></textarea>
                     <small class="form-char-count">0/200</small>
                 </div>
                 <div class="form-group default-address">
@@ -529,35 +582,35 @@ color: #888;
     <script>
         // Get the modal
         var modal = document.getElementById("addressModal");
-    
+
         // Get the button that opens the modal
         var btn = document.getElementById("btn-link");
-    
+
         // Get the <span> element that closes the modal
         var span = document.getElementsByClassName("close")[0];
-    
+
         // Function to disable scrolling
         function disableScroll() {
             document.body.classList.add('no-scroll');
         }
-    
+
         // Function to enable scrolling
         function enableScroll() {
             document.body.classList.remove('no-scroll');
         }
-    
+
         // When the user clicks the button, open the modal and disable scrolling
         btn.onclick = function () {
             modal.style.display = "flex";
             disableScroll();
         }
-    
+
         // When the user clicks on <span> (x), close the modal and enable scrolling
         span.onclick = function () {
             modal.style.display = "none";
             enableScroll();
         }
-    
+
         // When the user clicks anywhere outside of the modal, close it and enable scrolling
         window.onclick = function (event) {
             if (event.target == modal) {
@@ -565,8 +618,374 @@ color: #888;
                 enableScroll();
             }
         }
+
+        const subCountyData = {
+            baringo: {
+                baringo_central: ["Kabarnet", "Ravine", "Kabartonjo"],
+                baringo_north: ["Kabartonjo", "Sacho", "Kapropita"],
+                baringo_south: ["Marigat", "Mochongoi", "Kiserian"],
+                eldama_ravine: ["Eldama Ravine", "Maji Mazuri", "Lembus"],
+                mogotio: ["Mogotio Town", "Soi", "Kisanana"],
+                tugen_hills: ["Tenges", "Kabarnet", "Kipsaraman"]
+            },
+            bomet: {
+                sotik: ["Sotik Town", "Kaplong", "Ndanai"],
+                chepalungu: ["Chepalungu Centre", "Sigor", "Siongiroi"],
+                bomet_central: ["Bomet Town", "Kaplong", "Tenwek"],
+                bomet_east: ["Longisa", "Mulot", "Kapkoros"],
+                konoin: ["Mogogosiek", "Kimulot", "Chepnyogaa"]
+            },
+            bungoma: {
+                bungoma_central: ["Bungoma Town", "Kanduyi", "Bukembe"],
+                mt_elgon: ["Kapsokwony", "Kapsiro", "Cheptais"],
+                kimilili: ["Kimilili Town", "Kamukuywa", "Matisi"],
+                webuye_east: ["Webuye Town", "Misikhu", "Naitiri"],
+                kabuchai: ["Kabuchai", "Chwele", "Sikata"],
+                sirisia: ["Sirisia Town", "Lwandanyi", "Namwela"]
+            },
+            busia: {
+                butula: ["Butula Town", "Nambale", "Ojamii"],
+                matayos: ["Matayos Town", "Amukura", "Mundika"],
+                nambale: ["Nambale Town", "Mayenje", "Magombe"],
+                samia: ["Funyula", "Bumala", "Lunza"],
+                teso_north: ["Amagoro", "Malaba", "Kakapel"],
+                teso_south: ["Ang'urai", "Mundika", "Chakol"]
+            },
+            elgeyo_marakwet: {
+                keiyo_north: ["Iten", "Kapsowar", "Kapcherop"],
+                keiyo_south: ["Flax", "Chepkorio", "Kaptarakwa"],
+                marakwet_east: ["Chesongoch", "Kapyego", "Tot"],
+                marakwet_west: ["Kapsowar", "Kipkunur", "Chebiemit"]
+            },
+            embu: {
+                manyatta: ["Embu Town", "Kianjokoma", "Manyatta"],
+                runyenjes: ["Runyenjes Town", "Kagaari", "Kieni"],
+                mbeere_north: ["Siakago", "Evurore", "Muminji"],
+                mbeere_south: ["Gachoka", "Mwea", "Makima"]
+            },
+            garissa: {
+                balambala: ["Balambala Town", "Danyere", "Saka"],
+                dadaab: ["Dadaab", "Hagadera", "Dagahaley"],
+                fafi: ["Bura", "Masalani", "Nanighi"],
+                garissa_town: ["Garissa Town", "Ijara", "Sankuri"],
+                ijara: ["Ijara Town", "Masalani", "Sangailu"],
+                lagdera: ["Modogashe", "Benane", "Abakaile"]
+            },
+            homa_bay: {
+                homa_bay_town: ["Homa Bay Town", "Rodi Kopany", "Kendu Bay"],
+                karachuonyo: ["Kendu Bay", "Wang'chieng'", "Kanyaluo"],
+                mbita: ["Mbita Town", "Mfangano", "Rusinga Island"],
+                ndhiwa: ["Ndhiwa Town", "Magina", "Kobuya"],
+                rangwe: ["Rangwe Town", "Oboke", "Kagan"],
+                suba: ["Sindo", "Magunga", "Gwassi"]
+            },
+            isiolo: {
+                isiolo_town: ["Isiolo Town", "Wabera", "Bulapesa"],
+                garbatulla: ["Garbatulla Town", "Kinna", "Merti"],
+                oldonyiro: ["Oldonyiro", "Kipsing", "Gatab"],
+                sericho: ["Sericho", "Korbesa", "Kinna"]
+            },
+            kajiado: {
+                kajiado_central: ["Kajiado Town", "Isinya", "Namanga"],
+                kajiado_west: ["Ongata Rongai", "Ngong", "Ewuaso"],
+                kajiado_north: ["Kitengela", "Ongata Rongai", "Kiserian"],
+                kajiado_east: ["Kajiado", "Mashuuru", "Kenyawa"],
+                kajiado_south: ["Loitokitok", "Kimana", "Rombo"]
+            },
+            kakamega: {
+                luhya: ["Kakamega Town", "Butere", "Mumias"],
+                likuyani: ["Likuyani", "Lumakanda", "Kongoni"],
+                lugari: ["Lugari", "Turbo", "Chekalini"],
+                mumias_west: ["Mumias", "Bungasi", "Shianda"],
+                ikolomani: ["Malinya", "Shisere", "Sidikho"],
+                matungu: ["Matungu", "Namamali", "Koyonzo"],
+                navakholo: ["Navakholo", "Shinyalu", "Musaga"]
+            },
+            kericho: {
+                ainamoi: ["Kericho Town", "Ainamoi Centre", "Kiptere"],
+                kipkelion_west: ["Kipkelion Town", "Londiani", "Chilchila"],
+                kipkelion_east: ["Fort Ternan", "Chepseon", "Tendeno"],
+                belgut: ["Sosiot", "Kabianga", "Kapsuser"],
+                sigowet_soin: ["Sigowet", "Soin", "Kapkatet"],
+                bureti: ["Litein", "Roret", "Kapkatet"]
+            },
+            kiambu: {
+                thika: ["Thika Town", "Juja", "Ruiru"],
+                kikuyu: ["Kikuyu Town", "Limuru", "Zambezi"],
+                kiambaa: ["Karuri", "Muchatha", "Ndenderu"],
+                githunguri: ["Githunguri", "Kwa Maiko", "Kiganjo"],
+                kabete: ["Kabete", "Wangige", "Nyathuna"],
+                lari: ["Lari Town", "Kimende", "Kijabe"]
+            },
+            kilifi: {
+                kilifi_north: ["Kilifi Town", "Mtwapa", "Tezo"],
+                kilifi_south: ["Malindi", "Watamu", "Gede"],
+                kaloleni: ["Kaloleni Town", "Mariakani", "Mtondia"],
+                magarini: ["Magarini", "Mambrui", "Sabaki"],
+                rabai: ["Rabai", "Kambe", "Mazeras"]
+            },
+            kirinyaga: {
+                kirinyaga_central: ["Kerugoya", "Kutus", "Kagumo"],
+                kirinyaga_east: ["Kianyaga", "Kutus", "Kiamutugu"],
+                kirinyaga_west: ["Kangaita", "Karima", "Kiine"],
+                mwingi: ["Mwea", "Makutano", "Wachoro"]
+            },
+            kisii: {
+                kisii_central: ["Kisii Town", "Suneka", "Nyanchwa"],
+                nyaribari_chache: ["Keumbu", "Igare", "Kegogi"],
+                nyaribari_masaba: ["Keroka", "Kenyenya", "Nyamasibi"],
+                bonchari: ["Kiamokama", "Nyamondo", "Masongo"],
+                bobasi: ["Nyamarambe", "Itumbe", "Ogembo"]
+            },
+            kisumu: {
+                kisumu_east: ["Manyatta", "Nyalenda", "Otonglo"],
+                kisumu_west: ["Maseno", "Nyahera", "Ojolla"],
+                kisumu_central: ["Kisumu Town", "Milimani", "Nyalenda"],
+                nyando: ["Ahero", "Awasi", "Koru"],
+                nyakach: ["Pap Onditi", "Katito", "Sondu"],
+                muhoroni: ["Muhoroni Town", "Chemelil", "Miwani"]
+            },
+            kitui: {
+                kitui_central: ["Kitui Town", "Mutitu", "Kanyangi"],
+                kitui_east: ["Zombe", "Endau", "Voo"],
+                kitui_west: ["Mutonguni", "Kauwi", "Kwavonza"],
+                mwingi_central: ["Mwingi Town", "Kyuso", "Migwani"]
+            },
+            kwale: {
+                msambweni: ["Diani", "Gombato", "Kinondo"],
+                lungalunga: ["Lungalunga Town", "Vanga", "Pongwe"],
+                kinango: ["Kinango Town", "Mackinnon Road", "Samburu"],
+                matuga: ["Kwale Town", "Tiwi", "Shimba Hills"]
+            },
+            laikipia: {
+                laikipia_west: ["Rumuruti", "Kinamba", "Ngarua"],
+                laikipia_east: ["Nanyuki", "Timau", "Kibiro"],
+                laikipia_north: ["Doldol", "Ol Jogi", "Il Polei"]
+            },
+            lamu: {
+                lamu_west: ["Mpeketoni", "Witu", "Hindi"],
+                lamu_east: ["Kiunga", "Pate", "Kizingitini"]
+            },
+            machakos: {
+                machakos_town: ["Machakos", "Mua Hills", "Kangundo"],
+                kathiani: ["Kathiani Town", "Mitaboni", "Ngelani"],
+                matungulu: ["Matungulu Town", "Kangundo", "Kinyui"],
+                mwala: ["Mwala Town", "Masii", "Kibauni"]
+            },
+            makueni: {
+                makueni_central: ["Wote", "Makueni", "Kasikeu"],
+                kilungu: ["Kilungu", "Emali", "Nzaui"],
+                kibwezi: ["Kibwezi Town", "Makindu", "Mtito Andei"],
+                mukaa: ["Sultan Hamud", "Kiboko", "Mashru"]
+            },
+            mandera: {
+                mandera_east: ["Mandera Town", "Rhamu", "Arabiya"],
+                mandera_north: ["Banisa", "Takaba", "Bulla Hawa"],
+                mandera_west: ["El Wak", "Kutulo", "Fino"],
+                lafey: ["Lafey", "Khalalio", "Kamor El Salam"]
+            },
+            marsabit: {
+                saku: ["Marsabit Town", "Saku", "Gof Choba"],
+                moyale: ["Moyale", "Sololo", "Butiye"],
+                north_horr: ["North Horr", "Loiyangalani", "Illeret"],
+                loysangalani: ["Loiyangalani", "Illeret", "Koobi Fora"]
+            },
+            meru: {
+                imenti_north: ["Meru Town", "Maua", "Timau"],
+                imenti_central: ["Nkubu", "Kianjai", "Mitunguu"],
+                imenti_south: ["Kionyo", "Chogoria", "Mitunguu"],
+                tigania_west: ["Mikinduri", "Maua", "Muthara"],
+                tigania_east: ["Laare", "Kiegoi", "Antuambui"],
+                igembe_south: ["Maua", "Kangeta", "Laare"]
+            },
+            migori: {
+                awendo: ["Awendo Town", "Rongo", "Sony"],
+                rongo: ["Rongo", "Chamgiwadu", "Kitere"],
+                kuria_east: ["Ntimaru", "Kegonga", "Masaba"],
+                kuria_west: ["Isebania", "Nyabasi", "Mabera"],
+                nyatike: ["Macalder", "Sori", "Nyandhiwa"],
+                uriri: ["Uriri", "Oyani", "Rapogi"]
+            },
+            mombasa: {
+                changamwe: ["Changamwe", "Port Reitz", "Migadini"],
+                jomvu: ["Jomvu", "Mikindani", "Magongo"],
+                kisauni: ["Kisauni", "Bamburi", "Mtopanga"],
+                likoni: ["Likoni", "Mtongwe", "Shelly Beach"],
+                mvita: ["Mombasa Town", "Ganjoni", "Tudor"],
+                nyali: ["Nyali", "Kongowea", "Nyali Bridge"]
+            },
+            muranga: {
+                kangema: ["Kangema", "Kanyenyaini", "Kiruri"],
+                kiharu: ["Murang'a Town", "Mugoiri", "Kiru"],
+                gatanga: ["Kariara", "Kihumbuini", "Kirwara"],
+                kandara: ["Kandara", "Gaichanjiru", "Githumu"],
+                kigumo: ["Kigumo", "Muthithi", "Kimandi"],
+                maragua: ["Maragua", "Makuyu", "Kenol"]
+            },
+            nairobi: {
+                westlands: ["Westlands", "Kangemi", "Mountain View"],
+                starehe: ["Pangani", "Nairobi Central", "Ngara"],
+                langata: ["Langata", "Karen", "Nyayo Highrise"],
+                embakasi: ["Embakasi", "Utawala", "Pipeline"],
+                kasarani: ["Kasarani", "Mwiki", "Githurai"],
+                dagoretti: ["Dagoretti", "Kawangware", "Riruta"]
+            },
+            nakuru: {
+                nakuru_town_west: ["Nakuru Town", "Rhonda", "Kaptembwa"],
+                nakuru_town_east: ["Kivumbini", "Menengai", "Bahati"],
+                rongai: ["Rongai", "Salgaa", "Visoi"],
+                naivasha: ["Naivasha Town", "Gilgil", "Kongoni"],
+                gilgil: ["Gilgil Town", "Elementaita", "Murindat"],
+                subukia: ["Subukia", "Waseges", "Githioro"]
+            },
+            nandi: {
+                nandi_hills: ["Nandi Hills", "Kapchorua", "Kaptumo"],
+                chesumei: ["Kapsabet", "Kipkaren", "Baraton"],
+                aldai: ["Kabiyet", "Kimondi", "Kabiemit"],
+                emgwen: ["Kapsabet", "Kapkangani", "Chepterit"],
+                tinderet: ["Songhor", "Chemelil", "Nandi Hills"],
+                mosop: ["Mosoriot", "Kabiyet", "Kamobo"]
+            },
+            narok: {
+                narok_north: ["Narok Town", "Ololulunga", "Nkareta"],
+                narok_south: ["Olpusimoru", "Ololulung’a", "Entasekera"],
+                narok_east: ["Ntulele", "Suswa", "Maji Moto"],
+                narok_west: ["Lolgorian", "Oloolmongi", "Kilgoris"],
+                transmara_west: ["Kilgoris", "Lolgorian", "Shartuka"],
+                transmara_east: ["Emarti", "Angata", "Sogoo"]
+            },
+            nyamira: {
+                nyamira_north: ["Ekerenyo", "Manga", "Mekenene"],
+                nyamira_south: ["Nyamira Town", "Gesima", "Kebirigo"],
+                borabu: ["Borabu Town", "Mekenene", "Kineni"],
+                manga: ["Manga Town", "Magombo", "Nyansiongo"],
+                masaba_north: ["Gesima", "Kijauri", "Sironga"]
+            },
+            nyandarua: {
+                kinangop: ["Engineer", "Njabini", "North Kinangop"],
+                kipipiri: ["Kipipiri", "Geta", "Miharati"],
+                ol_kalou: ["Ol Kalou Town", "Rurii", "Kaimbaga"],
+                mirangine: ["Mirangine", "Ol Jororok", "Ndunyu Njeru"],
+                ndaragwa: ["Ndaragwa", "Leshau", "Mairo Inya"]
+            },
+            nyeri: {
+                nyeri_town: ["Nyeri Town", "King'ong'o", "Ruring'u"],
+                kieni_east: ["Naro Moru", "Chaka", "Mwiyogo"],
+                kieni_west: ["Mweiga", "Endarasha", "Gatarakwa"],
+                othaaya: ["Othaya Town", "Chinga", "Mahiga"],
+                mathira_east: ["Karatina", "Karatina Town", "Gatitu"],
+                mathira_west: ["Karatina", "Mukurwe-ini", "Kiamariga"]
+            },
+            samburu: {
+                samburu_central: ["Maralal", "Lodungokwe", "Baawa"],
+                samburu_north: ["Baragoi", "Ngilai", "South Horr"],
+                samburu_east: ["Wamba", "Waso", "Ngurunit"]
+            },
+            siaya: {
+                gem: ["Yala", "Sega", "Nyamninia"],
+                alego_usonga: ["Siaya Town", "Karapul", "Nyandiwa"],
+                bondo: ["Bondo Town", "Usenge", "Yimbo"],
+                rarieda: ["Asembo Bay", "Luanda Kotieno", "Nyilima"],
+                ugenya: ["Ukwala", "Sega", "Bar Ober"],
+                ugunja: ["Ugunja Town", "Sigomere", "Sidindi"]
+            },
+            taita_taveta: {
+                taveta: ["Taveta Town", "Njukini", "Chala"],
+                voi: ["Voi Town", "Mwatate", "Wundanyi"],
+                mwatate: ["Mwatate Town", "Mwanda", "Wusi"],
+                wundanyi: ["Wundanyi Town", "Mghange", "Mbale"]
+            },
+            tana_river: {
+                galole: ["Hola", "Madogo", "Wayu"],
+                garsen: ["Garsen", "Kipini", "Tarasaa"],
+                bua: ["Bura", "Chewele", "Hirimani"]
+            },
+            tharaka_nithi: {
+                tharaka: ["Tunyai", "Marimanti", "Chiakariga"],
+                mwimbi: ["Chogoria", "Kibunga", "Muthambi"],
+                chuka: ["Chuka Town", "Magumoni", "Karingani"]
+            },
+            trans_nzoia: {
+                kiminini: ["Kiminini Town", "Kitale", "Nabiswa"],
+                saboti: ["Saboti", "Kitalale", "Endebess"],
+                chernagai: ["Cherangani", "Sinyerere", "Makutano"],
+                kilimili: ["Kilimili Town", "Motosiet", "Chepkoilel"],
+                bioni: ["Bioni Town", "Kiminini", "Bidii"]
+            },
+            turkana: {
+                turkana_central: ["Lodwar", "Nakurio", "Kerio"],
+                turkana_west: ["Kakuma", "Lokichoggio", "Lorugum"],
+                turkana_south: ["Katilu", "Lokichar", "Kaputir"],
+                turkana_east: ["Lokori", "Lokichar", "Kapedo"],
+                turkana_north: ["Kalokol", "Lokitaung", "Lapur"],
+                loima: ["Loima Town", "Lokiriama", "Lorugum"]
+            },
+            uasin_gishu: {
+                ainabkoi: ["Kapsoya", "Cheptiret", "Kipkorgot"],
+                moiben: ["Moiben Town", "Sergoit", "Ziwa"],
+                kapseret: ["Eldoret", "Langas", "Cheplaskei"],
+                turbo: ["Turbo Town", "Ngenyilel", "Kamagut"],
+                kesses: ["Kesses Town", "Kipkaren", "Chepkoilel"],
+                soy: ["Soy Town", "Tapsagoi", "Kuinet"]
+            },
+            vihiga: {
+                vihiga: ["Majengo", "Chavakali", "Mbale"],
+                sabatia: ["Wodanga", "Sabatia", "Gisambai"],
+                hamisi: ["Hamisi Town", "Jebrok", "Muhudu"],
+                emuhaya: ["Ebusakami", "Luanda", "Ebusiratsi"],
+                luanda: ["Luanda Town", "Esirulo", "Ebusakami"]
+            },
+            wajir: {
+                wajir_east: ["Wajir Town", "Wajir Bor", "Khorof Harar"],
+                wajir_north: ["Bute", "Buna", "Godoma"],
+                wajir_west: ["Habaswein", "Eldas", "Griftu"],
+                wajir_south: ["Diff", "Dadajabula", "Habassan"],
+                tarbaj: ["Tarbaj Town", "Leheley", "Lagh Boghol"]
+            },
+            west_pokot: {
+                kapenguria: ["Kapenguria Town", "Makutano", "Murkwijit"],
+                sigor: ["Sigor", "Lelan", "Sook"],
+                pokot_north: ["Alale", "Kacheliba", "Kiwawa"],
+                pokot_south: ["Chepareria", "Kapsait", "Kamla"]
+            }
+        };
+
+
+        document.getElementById('county').addEventListener('change', function () {
+            const county = this.value;
+            const subCountySelect = document.getElementById('subcounty');
+            const areaSelect = document.getElementById('area');
+
+            subCountySelect.innerHTML = '<option value="">Select Sub-County</option>';
+            areaSelect.innerHTML = '<option value="">Select Area</option>';
+
+            if (county && subCountyData[county]) {
+                Object.keys(subCountyData[county]).forEach(subCounty => {
+                    subCountySelect.innerHTML += `<option value="${subCounty}">${capitalize(subCounty)}</option>`;
+                });
+            }
+        });
+
+        document.getElementById('subcounty').addEventListener('change', function () {
+            const subCounty = this.value;
+            const county = document.getElementById('county').value;
+            const areaSelect = document.getElementById('area');
+
+            areaSelect.innerHTML = '<option value="">Select Area</option>';
+
+            if (county && subCounty && subCountyData[county][subCounty]) {
+                subCountyData[county][subCounty].forEach(area => {
+                    areaSelect.innerHTML += `<option value="${area.toLowerCase().replace(' ', '_')}">${area}</option>`;
+                });
+            }
+        });
+
+        function capitalize(str) {
+            return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
+        }
+
     </script>
-    
+
 </body>
 
 </html>
