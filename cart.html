@@ -380,10 +380,6 @@
     background-color: rgba(0,0,0,0.5); /* Black with opacity */
 }
 
-
-.modal-footer{
-    width: 100px;
-}
 /* HTML: <div class="loader"></div> */
 .loader {
     width: 45px;
@@ -407,7 +403,7 @@
 svg {
         width: 70px;
         display: block;
-        margin: 40px auto 0;
+        margin: 20px auto 0;
     }
     
     .path {
@@ -446,6 +442,29 @@ svg {
             stroke-dashoffset: 900;
             }
         }
+        .modal-footer .btn {
+    display: inline-block;
+    visibility: visible;
+}
+
+.modal-footer {
+    text-align: center;
+}
+
+.btn-okay {
+    background-color: #007bff; /* Bootstrap primary color */
+    color: white;
+    border: none;
+    padding: 10px 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 16px;
+    color: #000;
+}
+
+.btn-okay:hover {
+    background-color: #0056b3; /* Darker color on hover */
+}
 
 </style>
 </head>
@@ -674,11 +693,15 @@ svg {
                         <polyline class="path check" fill="none" stroke="#73AF55" stroke-width="6" stroke-linecap="round" stroke-miterlimit="10" points="100.2,40.2 51.5,88.8 29.8,67.5 "/>
                     </svg>
                     <h4 class="modal-title mt-3">Success</h4>
-                    <p class="mt-2">Your Address have been saved succssfully</p>
+                    <p class="mt-2">Your Address have been saved successfully</p>
+                    <div class="modal-foot flex justify-center mt-4">
+                        <button type="button" class="btn btn-okay bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded-md shadow-md transition duration-300" data-bs-dismiss="modal">
+                            OK
+                        </button>
+                    </div>
+                    
                 </div>
-                <div class="modal-footer border-0 justify-content-center">
-                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">OK</button>
-                </div>
+                
             </div>
         </div>
     </div>
