@@ -16,6 +16,11 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
 
+<!-- Bootstrap CSS -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<!-- Bootstrap Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
@@ -362,6 +367,44 @@
         width: 100%;
         /* Prevents layout shift */
     }
+   /* General Modal Styling */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1050; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgba(0,0,0,0.5); /* Black with opacity */
+}
+
+/* Modal Content */
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; /* Could be more or less, depending on screen size */
+}
+
+/* Close Button */
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+
 </style>
 </head>
 
@@ -580,117 +623,140 @@
             </form>
         </div>
     </div>
+<!-- Modal structure -->
+<!-- Modal structure -->
+<div class="modal fade" id="successModal" tabindex="-1" aria-labelledby="successModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="successModalLabel">Success</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Your form has been submitted successfully!
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">OK</button>
+            </div>
+        </div>
+    </div>
+</div>
 
     <script src="cart.js"></script> <!-- Link to your JavaScript file -->
     <script>
-        // Get the modal
-        var modal = document.getElementById("addressModal");
 
-        // Get the button that opens the modal
-        var btn = document.getElementById("btn-link");
+// Get the modal elements
+var modal = document.getElementById("addressModal");
+var successModalElement = document.getElementById('successModal');
 
-        // Get the <span> element that closes the modal
-        var span = document.getElementsByClassName("close")[0];
+// Get the button that opens the modal
+var btn = document.getElementById("btn-link");
 
-        // Function to disable scrolling
-        function disableScroll() {
-            document.body.classList.add('no-scroll');
-        }
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
 
-        // Function to enable scrolling
-        function enableScroll() {
-            document.body.classList.remove('no-scroll');
-        }
+// Function to disable scrolling
+function disableScroll() {
+    document.body.classList.add('no-scroll');
+}
 
-        // When the user clicks the button, open the modal and disable scrolling
-        btn.onclick = function () {
-            modal.style.display = "flex";
-            disableScroll();
-        }
+// Function to enable scrolling
+function enableScroll() {
+    document.body.classList.remove('no-scroll');
+}
 
-        // When the user clicks on <span> (x), close the modal and enable scrolling
-        span.onclick = function () {
-            modal.style.display = "none";
-            enableScroll();
-        }
+// When the user clicks the button, open the modal and disable scrolling
+btn.onclick = function () {
+    modal.style.display = "flex";
+    disableScroll();
+}
 
-        // When the user clicks anywhere outside of the modal, close it and enable scrolling
-        window.onclick = function (event) {
-            if (event.target == modal) {
-                modal.style.display = "none";
-                enableScroll();
-            }
-        }
+// When the user clicks on <span> (x), close the modal and enable scrolling
+span.onclick = function () {
+    modal.style.display = "none";
+    enableScroll();
+}
 
-        document.getElementById('addressForm').addEventListener('submit', function(event) {
-        event.preventDefault(); // Prevent form submission
-
-        // Clear all previous errors
-        const errors = document.querySelectorAll('.form-error');
-        errors.forEach(error => error.style.display = 'none');
-
-        let isValid = true;
-
-        // Check if first name is filled
-        const firstName = document.getElementById('firstName');
-        if (firstName.value.trim() === '') {
-            isValid = false;
-            firstName.nextElementSibling.style.display = 'block';
-        }
-
-        // Check if last name is filled
-        const lastName = document.getElementById('lastName');
-        if (lastName.value.trim() === '') {
-            isValid = false;
-            lastName.nextElementSibling.style.display = 'block';
-        }
-
-        // Check if phone number is filled
-        const phoneNumber = document.getElementById('phoneNumber');
-        if (phoneNumber.value.trim() === '') {
-            isValid = false;
-            phoneNumber.nextElementSibling.style.display = 'block';
-        }
-
-        // Check if county is selected
-        const county = document.getElementById('county');
-        if (county.value === '') {
-            isValid = false;
-            county.nextElementSibling.style.display = 'block';
-        }
-
-        // Check if sub-county is selected
-        const subCounty = document.getElementById('subcounty');
-        if (subCounty.value === '') {
-            isValid = false;
-            subCounty.nextElementSibling.style.display = 'block';
-        }
-
-        // Check if area is selected
-        const area = document.getElementById('area');
-        if (area.value === '') {
-            isValid = false;
-            area.nextElementSibling.style.display = 'block';
-        }
-
-        // Check if address details are filled
-        const addressDetails = document.getElementById('addressDetails');
-        if (addressDetails.value.trim() === '') {
-            isValid = false;
-            addressDetails.nextElementSibling.style.display = 'block';
-        }
-
-         // If the form is valid, you can proceed with form submission
-    if (isValid) {
-               // Dismiss the modal
-        const modalElement = document.querySelector('.modal'); // Assuming your modal has the class 'modal'
-        const modalInstance = bootstrap.Modal.getInstance(modalElement);
-        modalInstance.hide();
-
-        // Optionally, reset the form fields
-        this.reset();
+// When the user clicks anywhere outside of the modal, close it and enable scrolling
+window.onclick = function (event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+        enableScroll();
     }
-    });
+}
+
+// Form submission logic
+document.getElementById('addressForm').addEventListener('submit', function(event) {
+    event.preventDefault(); // Prevent form submission
+
+    // Clear all previous errors
+    const errors = document.querySelectorAll('.form-error');
+    errors.forEach(error => error.style.display = 'none');
+
+    let isValid = true;
+
+    // Validation logic
+    const firstName = document.getElementById('firstName');
+    if (firstName.value.trim() === '') {
+        isValid = false;
+        firstName.nextElementSibling.style.display = 'block';
+    }
+
+    const lastName = document.getElementById('lastName');
+    if (lastName.value.trim() === '') {
+        isValid = false;
+        lastName.nextElementSibling.style.display = 'block';
+    }
+
+    const phoneNumber = document.getElementById('phoneNumber');
+    if (phoneNumber.value.trim() === '') {
+        isValid = false;
+        phoneNumber.nextElementSibling.style.display = 'block';
+    }
+
+    const county = document.getElementById('county');
+    if (county.value === '') {
+        isValid = false;
+        county.nextElementSibling.style.display = 'block';
+    }
+
+    const subCounty = document.getElementById('subcounty');
+    if (subCounty.value === '') {
+        isValid = false;
+        subCounty.nextElementSibling.style.display = 'block';
+    }
+
+    const area = document.getElementById('area');
+    if (area.value === '') {
+        isValid = false;
+        area.nextElementSibling.style.display = 'block';
+    }
+
+    const addressDetails = document.getElementById('addressDetails');
+    if (addressDetails.value.trim() === '') {
+        isValid = false;
+        addressDetails.nextElementSibling.style.display = 'block';
+    }
+
+    // If the form is valid, proceed with showing the success modal
+    if (isValid) {
+        // Hide the current modal (address modal)
+        modal.style.display = "none";
+        enableScroll(); // Re-enable scrolling after closing the modal
+
+        // Ensure the success modal element exists before trying to show it
+        if (successModalElement) {
+            const successModal = new bootstrap.Modal(successModalElement);
+            successModal.show();
+
+            // Optionally, reset the form fields
+            this.reset();
+        } else {
+            console.error("Success modal element not found!");
+        }
+    }
+});
+
 
         const subCountyData = {
             baringo: {
@@ -776,8 +842,8 @@
             },
             kericho: {
                 ainamoi: ["Kericho Town", "Ainamoi Centre", "Kiptere"],
-                kipkelion_west: ["Kipkelion Town", "Londiani", "Chilchila"],
-                kipkelion_east: ["Fort Ternan", "Chepseon", "Tendeno"],
+                kipkelion_west: ["Kipkelion Town", "Fort Ternan", "Chilchila"],
+                kipkelion_east: ["Londiani", "Chepseon", "Tendeno"],
                 belgut: ["Sosiot", "Kabianga", "Kapsuser"],
                 sigowet_soin: ["Sigowet", "Soin", "Kapkatet"],
                 bureti: ["Litein", "Roret", "Kapkatet"]
