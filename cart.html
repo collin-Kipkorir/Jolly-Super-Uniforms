@@ -103,7 +103,16 @@
         font-size: 11px;
     }
 
-    .payment-method,
+    .payment-method{
+        display: flex;
+        justify-content: space-between;
+        padding: 10px 0;
+        border-top: 1px solid #fff;
+        border-bottom: 1px solid #fff;
+        margin-top: 15px;
+        font-size: 11px;
+        color: rgb(3, 186, 113);
+    }
     .shipping-info {
         display: flex;
         justify-content: space-between;
@@ -124,17 +133,17 @@
     }
 
     .btn-primary {
-        background-color: #007bff;
+        background-color: #0878f0;
         color: white;
         border: none;
-        padding: 10px 20px;
+        padding: 5px 10px;
         cursor: pointer;
         border-radius: 5px;
-        font-size: 16px;
+        font-size: 13px;
     }
 
     .btn-primary:hover {
-        background-color: #0056b3;
+        background-color: #0a4a8e;
     }
 
     .price-delete-container {
@@ -147,8 +156,6 @@
     .modal-footer {
         display: flex;
         justify-content: flex-end;
-        /* Aligns content to the right */
-        padding: 1rem;
         /* Optional: Adjust padding as needed */
         border-top: 1px solid #fff;
         border-bottom: 1px solid #fff;
@@ -338,7 +345,7 @@
     }
 
     .btn-submit {
-        background-color: #1f83c6;
+        background-color: #084974;
         color: #fff;
         font-size: smaller;
     }
@@ -447,10 +454,6 @@ svg {
     visibility: visible;
 }
 
-.modal-footer {
-    text-align: center;
-}
-
 .btn-okay {
     background-color: #007bff; /* Bootstrap primary color */
     color: white;
@@ -534,11 +537,23 @@ svg {
     </nav>
 
     <div class="container-outer">
+       
         <div class="container">
             <div class="cart-header">
                 <label>Cart</label>
             </div>
-
+            <div class="shipping-info">
+                <span>Shipping Information</span>
+                <button type="button" class="btn btn-link" id="btn-link">Add Shipping Address</button>
+            </div>
+        </div>
+        <div class="container">
+            <span>Payment Method</span>
+            <div class="payment-method">
+                <p style="font-family: background-origin; font-weight: bold;">M-PESA</p>
+            </div>
+        </div>
+        <div class="container">
             <div id="cart-items-list">
                 <!-- Cart items will be injected here by JavaScript -->
             </div>
@@ -552,22 +567,8 @@ svg {
                 <span>Total:</span>
                 <span id="total-amount" class="total-amount">KSh 0</span>
             </div>
-        </div>
-        <div class="container">
-            <div class="shipping-info">
-                <span>Shipping Information</span>
-                <button type="button" class="btn btn-link" id="btn-link">Add Shipping Address</button>
-            </div>
-        </div>
-        <div class="container">
-            <span>Payment Method</span>
-            <div class="payment-method">
-                <p style="font-family: background-origin; font-weight: bold;">M-PESA</p>
-            </div>
-        </div>
-        <div class="container">
             <div class="modal-footer">
-                <button type="button" class="btn btn-primary" id="checkout-button">Place Order</button>
+                <button type="button-order" class="btn btn-primary" id="checkout-button">Place Order</button>
             </div>
         </div>
     </div>
