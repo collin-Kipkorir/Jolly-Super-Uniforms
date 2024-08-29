@@ -152,13 +152,17 @@
     }
 
     .modal-footer {
-        display: flex;
-        justify-content: flex-end;
-        /* Optional: Adjust padding as needed */
-        border-top: 1px solid #fff;
-        border-bottom: 1px solid #fff;
+    display: flex;
+    justify-content: flex-end;
+    border-top: 1px solid #fff;
+    border-bottom: 1px solid #fff;
+}
 
-    }
+.modal-footer .btn {
+    white-space: normal; /* Allow text to wrap within the button */
+    text-align: center; /* Center the text within the button */
+}
+
 
     @media (max-width: 767px) {
 
@@ -578,16 +582,14 @@ svg {
                 <span>Total:</span>
                 <span id="total-amount" class="total-amount">KSh 0</span>
             </div>
-            <div class="modal-footer">
-                <button type="button-order" class="btn" 
-                    style="background-color: #0a4a8e; color: white;"
+            <div class="modal-foot" style="display: flex; justify-content: flex-end;">
+                <button type="button-order" class="btn"
+                    style="background-color: #0a4a8e; color: white; white-space: normal; width: 100%; max-width: 200px;"
                     onmouseover="this.style.backgroundColor='#083e73';"
                     onmouseout="this.style.backgroundColor='#0a4a8e';">
                     Place Order
                 </button>
             </div>
-            
-            
         </div>
     </div>
     <!-- Modal -->
