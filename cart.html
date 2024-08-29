@@ -134,7 +134,6 @@
 
     .btn-primary {
         background-color: #0878f0;
-        color: white;
         border: none;
         padding: 5px 10px;
         cursor: pointer;
@@ -165,7 +164,7 @@
     @media (max-width: 767px) {
 
         .container-outer {
-            margin: 7px;
+            margin: 10px;
         }
 
         .discount-section,
@@ -342,14 +341,20 @@
         border: none;
         border-radius: 4px;
         cursor: pointer;
-    }
-
-    .btn-submit {
-        background-color: #084974;
-        color: #fff;
         font-size: smaller;
     }
+    
 
+    .btn-submit {
+        background-color: #007bff;
+        color: #fff;
+        font-size: small;
+        
+    }
+    .btn-submit:hover {
+    background-color: #0056b3; /* Darker color on hover */
+    color: #fff;
+}
     .btn-cancel {
         background-color: #cfcdcd;
         color: #333;
@@ -449,19 +454,15 @@ svg {
             stroke-dashoffset: 900;
             }
         }
-        .modal-footer .btn {
-    display: inline-block;
-    visibility: visible;
-}
+        
 
 .btn-okay {
     background-color: #007bff; /* Bootstrap primary color */
-    color: white;
     border: none;
     padding: 10px 10px;
     cursor: pointer;
     border-radius: 5px;
-    font-size: 16px;
+    font-size: 15px;
     color: #000;
 }
 
@@ -539,9 +540,7 @@ svg {
     <div class="container-outer">
        
         <div class="container">
-            <div class="cart-header">
-                <label>Cart</label>
-            </div>
+         
             <div class="shipping-info">
                 <span>Shipping Information</span>
                 <button type="button" class="btn btn-link" id="btn-link">Add Shipping Address</button>
@@ -554,6 +553,9 @@ svg {
             </div>
         </div>
         <div class="container">
+            <div class="cart-header">
+                <label>Cart</label>
+            </div>
             <div id="cart-items-list">
                 <!-- Cart items will be injected here by JavaScript -->
             </div>
@@ -568,7 +570,7 @@ svg {
                 <span id="total-amount" class="total-amount">KSh 0</span>
             </div>
             <div class="modal-footer">
-                <button type="button-order" class="btn btn-primary" id="checkout-button">Place Order</button>
+                <button type="button" class="btn btn-primary">Place Order</button>
             </div>
         </div>
     </div>
