@@ -610,7 +610,7 @@ html {
     .carousel-wrapper {
         display: flex;
         justify-content: center;
-        margin-top: 10px;
+        margin-top: 5px;
     }
 
     .carousel {
@@ -621,7 +621,7 @@ html {
         max-width: 1200px;
         margin: 0 auto;
         justify-content: center;
-        border-radius: 6px;
+        border-radius: 3px;
         padding-left: 1px;
         padding-right: 1px;
     }

@@ -105,16 +105,67 @@
        
     }
 
-    .payment-method{
-        display: flex;
-        justify-content: space-between;
-        padding: 10px 0;
-        border-top: 1px solid #fff;
-        border-bottom: 1px solid #fff;
-        margin-top: 15px;
-        font-size: 11px;
-        color: rgb(3, 186, 113);
-    }
+
+.payment-method-container {
+    border: 1px solid #e74c3c; /* Red border */
+    border-radius: 5px; /* Rounded corners */
+    padding: 10px;
+    display: flex;
+    align-items: center; /* Center content vertically */
+    width: fit-content; /* Adjust width as needed */
+    position: relative; /* Establishes positioning context */
+}
+
+.payment-method-container::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    margin-top: 5px;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    cursor: pointer; /* Changes cursor to pointer on hover */
+}
+
+.payment-method-link {
+    text-decoration: none; /* Removes default link underline */
+    color: inherit; /* Keeps the text color the same */
+}
+
+
+
+.payment-method {
+    display: flex;
+    align-items: center; /* Center items vertically */
+    margin-right: 10px; /* Spacing between M-PESA logo and description */
+}
+
+.payment-logo {
+    width: 60px; /* Adjust size as needed */
+    height: auto; /* Maintain aspect ratio */
+    margin-right: 5px; /* Space between logo and text */
+}
+
+.payment-text {
+    font-family: 'Arial', sans-serif;
+    font-weight: bold;
+    font-size: 12px;
+    margin: 0;
+}
+
+.payment-description {
+    display: flex;
+    align-items: center; /* Center content vertically */
+    font-family: 'Arial', sans-serif;
+}
+
+.check-icon {
+    width: 20px; /* Adjust size as needed */
+    height: auto; /* Maintain aspect ratio */
+    margin-left: 5px; /* Space between text and check icon */
+}
+
+
     .shipping-info {
         display: flex;
         justify-content: space-between;
@@ -563,9 +614,16 @@ svg {
         </div>
         <div class="container">
             <span>Payment Method</span>
-            <div class="payment-method">
-                <p style="font-family: background-origin; font-weight: bold;">M-PESA</p>
-            </div>
+
+                <div class="payment-method-container">
+                    <div class="payment-method">
+                        <img src="images/mpesa.webp" alt="M-Pesa Logo" class="payment-logo">
+                    </div>
+                    <div class="payment-description">
+                        Cards, M-PESA, Bank Transfer or Mobile Money
+                        <img src="images/check.png" alt="Check Icon" class="check-icon">
+                    </div>
+                </div>
         </div>
         <div class="container">
             <div class="cart-header">
