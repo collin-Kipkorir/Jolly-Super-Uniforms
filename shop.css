@@ -301,7 +301,6 @@ html {
     body {
         overflow-x: hidden;
     }
-
     .navbar-brand {
         justify-content: start;
         width: 100%;
@@ -309,7 +308,7 @@ html {
     }
 
     .navbar-brand img {
-        height: 50px;
+        height: 40px;
     }
 
     .desktop-view {
