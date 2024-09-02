@@ -604,7 +604,8 @@ svg {
     .container-outer{
     margin-top: 60px;
 
-    .payment-method-container {
+}
+.payment-method-container {
     border: 1px solid #e74c3c; /* Red border */
     border-radius: 5px; /* Rounded corners */
     padding: 10px;
@@ -625,7 +626,6 @@ svg {
     cursor: pointer; /* Changes cursor to pointer on hover */
 }
 }
-}
 
 @media (max-width: 480px) {
     .navbar-brand {
@@ -641,6 +641,26 @@ svg {
     .progress-line {
         width: 20px; /* Further adjust line width */
     }
+    .payment-method-container {
+    border: 1px solid #e74c3c; /* Red border */
+    border-radius: 5px; /* Rounded corners */
+    padding: 10px;
+    display: flex;
+    align-items: center; /* Center content vertically */
+   width: 100%;
+    position: relative; /* Establishes positioning context */
+}
+
+.payment-method-container::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    margin-top: 5px;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    cursor: pointer; /* Changes cursor to pointer on hover */
+}
 }
 
 </style>
