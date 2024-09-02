@@ -536,73 +536,125 @@ svg {
     background-color: #0056b3; /* Darker color on hover */
 }
 
+
+.custom-navbar-bg {
+    background-color: #fff;
+    border-bottom: 1px solid #ddd;
+}
+
+.nav-link {
+    font-size: 14px;
+    font-weight: 600;
+    color: #555;
+    text-align: center;
+}
+
+.progress-navigation {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.progress-line {
+    width: 30px;
+    height: 2px;
+    background-color: #d9534f;
+    margin: 0 5px;
+    flex-shrink: 0;
+}
+
+.progress-line.active {
+    background-color: #d9534f;
+}
+
+.progress-line:not(.active) {
+    background-color: #ddd;
+}
+
+.text-center {
+    text-align: center;
+    flex: 1;
+}
+
+.container-outer{
+    margin-top: 70px;
+}
+
+.progress-line {
+        width: 100px; /* Adjust line width for smaller screens */
+    }
+.nav-link {
+    font-size: 16px;
+}
+
+/* Responsive styling */
+@media (max-width: 768px) {
+    .navbar-brand {
+        font-size: 12px; /* Smaller font size for the brand name */
+    }
+
+    .nav-link {
+        font-size: 12px; /* Smaller font size for the navigation links */
+    }
+
+    .progress-line {
+        width: 20px; /* Adjust line width for smaller screens */
+    }
+    .container-outer{
+    margin-top: 50px;
+}
+}
+
+@media (max-width: 480px) {
+    .navbar-brand {
+        font-size: 12px; /* Further reduced font size for extra small screens */
+    }
+    .container-outer{
+    margin-top: 50px;
+}
+    .nav-link {
+        font-size: 10px; /* Further reduced font size for extra small screens */
+    }
+    
+    .progress-line {
+        width: 20px; /* Further adjust line width */
+    }
+}
+
 </style>
 </head>
 
 <body>
-    <nav id="navbar" class="navbar navbar-expand-lg navbar-light custom-navbar-bg"
-        style="background-color: rgb(12, 12, 48)">
-        <div class="d-flex align-items-center w-100 justify-content-between">
-            <div class="d-flex align-items-center w-100">
-
-                <button id="navbar-toggler" class="navbar-toggler" type="button" data-toggle="collapse"
-                    data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                    aria-label="Toggle navigation" style="background-color: #fff;">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-brand ml-2" style="color: #fff;">
-                    <img src="images/icon.png" alt="Logo">
-                    JOLLY UNIFORMS
-                </div>
-
-                <div class="collapse navbar-collapse justify-content-between align-items-center"
-                    id="navbarSupportedContent">
-
-                    <ul class="navbar-nav flex-grow-1 justify-content-center">
-                        <form class="form-inline my-2 my-lg-0">
-                            <input class="form-control mr-sm-2 justify-content-center" type="search"
-                                placeholder="Search" aria-label="Search">
-                            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-                        </form>
-                        <li class="nav-item active">
-                            <a class="nav-link" href="index.html" style="color: #fff;">Home <span
-                                    class="sr-only">(current)</span></a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="index.html" style="padding-right: 10px; color:#fff;">Products</a>
-                        </li>
-                        <li class="nav-item">
-                            <div class="dropdown" onmouseover="showDropdown()" onmouseout="hideDropdown()">
-                                <a class="nav-link" href="#" id="navbarDropdown" role="button" aria-haspopup="true"
-                                    aria-expanded="false" style="color: #fff;">
-                                    Our Branches
-                                </a>
-                                <div class="dropdown-menu" id="dropdownMenu" aria-labelledby="navbarDropdown"
-                                    style="color: #fff;">
-                                    <a class="dropdown-item" href="#">Roret Branch</a>
-                                    <a class="dropdown-item" href="#">Kapsuser Branch</a>
-                                    <a class="dropdown-item" href="index.html">Kericho Town Branch</a>
-                                </div>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-                <div class="navbar-nav ml-auto">
-                    <div class="cart-container">
-                        <a class="nav-item nav-link" href="cart.html" style="padding-right: 20px;">
-                            <i class="cart-icon">🛒</i>
-                            <div class="cart-counter" id="cart-counter">0</div>
-                            <!-- Ensure the counter is inside the anchor tag -->
-                        </a>
+    <nav id="navbar" class="navbar navbar-expand-lg navbar-light custom-navbar-bg">
+        <div class="d-flex flex-column w-100">
+            <!-- Middle Section: Logo and Progress Navigation -->
+            <div class="d-flex align-items-center justify-content-between px-3 py-2 w-100 flex-wrap">
+                <!-- Logo Section -->
+                <div class="d-flex align-items-center">
+                    <img src="images/icon.png" alt="Logo" style="height: 40px; margin-right: 10px;">
+                    <div class="d-flex flex-column">
+                        <div class="navbar-brand" style="font-weight: bold; color: #d9534f; font-size: 15px;background-color: white;">
+                            JOLLY UNIFORMS
+                        </div>
+                        <div style="font-size: 12px; color: #777; margin-top: -4px;">Affordable Online Shopping</div>
                     </div>
                 </div>
-
+    
+                <!-- Progress Navigation -->
+                <div class="progress-navigation d-flex align-items-center justify-content-center flex-grow-1">
+                    <a class="nav-link text-center" href="#" style="color: #d9534f; flex: 1;">Cart</a>
+                    <span class="progress-line active"></span>
+                    <a class="nav-link text-center" href="#" style="color: #d9534f; flex: 1;">Details</a>
+                    <span class="progress-line"></span>
+                    <a class="nav-link text-center" href="#" style="color: #999; flex: 1;">Payment</a>
+                    <span class="progress-line"></span>
+                    <a class="nav-link text-center" href="#" style="color: #999; flex: 1;">Complete</a>
+                </div>
             </div>
         </div>
-        </div>
-
     </nav>
-
+    
     <div class="container-outer">
        
         <div class="container">
@@ -620,7 +672,7 @@ svg {
                         <img src="images/mpesa.webp" alt="M-Pesa Logo" class="payment-logo">
                     </div>
                     <div class="payment-description">
-                        Cards, M-PESA, Bank Transfer or Mobile Money
+                        M-PESA or Mobile Money
                         <img src="images/check.png" alt="Check Icon" class="check-icon">
                     </div>
                 </div>
