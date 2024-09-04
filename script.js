@@ -173,7 +173,7 @@ function loadCartItems() {
     listItem.classList.add("media", "mb-3");
     listItem.innerHTML = `
         <div class="d-flex align-items-center w-100">
-            <img src="${item.image}" class="mr-3" alt="${item.name}" style="width: 64px; height: 64px; object-fit: contain;">
+            <img src="${item.image}" class="mr-3" alt="${item.name}" style="width: 60px; height: 64px; object-fit: contain;">
             <div class="media-body flex-grow-1">
                 <h6 class="mt-0 mb-1">${item.name}</h6>
                 <p>Price: Kshs. ${item.price}</p>

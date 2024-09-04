@@ -16,11 +16,11 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
 
-<!-- Bootstrap CSS -->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 
-<!-- Bootstrap Bundle with Popper -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
@@ -68,14 +68,14 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
-        padding: 5px 0;
+        padding: 10px 5px;
         border-bottom: 1px solid #ddd;
     }
 
     .item-image-container {
         width: 80px;
         height: 80px;
-        margin-right: 10px;
+        margin-right: 5px;
     }
 
     .item-image {
@@ -103,74 +103,91 @@
         margin-top: 10px;
         font-size: 12px;
         color: #e74c3c;
-       
+
     }
 
 
-.payment-method-container {
-    border: 1px solid red; /* Red border */
-    border-radius: 5px; /* Rounded corners */
-    padding: 10px;
-    display: flex;
-    align-items: center; /* Center content vertically */
-    width: fit-content; /* Adjust width as needed */
-    position: relative; /* Establishes positioning context */
-    font-size: 12px;
-}
+    .payment-method-container {
+        border: 1px solid red;
+        /* Red border */
+        border-radius: 5px;
+        /* Rounded corners */
+        padding: 10px;
+        display: flex;
+        align-items: center;
+        /* Center content vertically */
+        width: fit-content;
+        /* Adjust width as needed */
+        position: relative;
+        /* Establishes positioning context */
+        font-size: 12px;
+    }
 
-.payment-method-container::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    margin-top: 5px;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    cursor: pointer; /* Changes cursor to pointer on hover */
-}
+    .payment-method-container::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        margin-top: 5px;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        cursor: pointer;
+        /* Changes cursor to pointer on hover */
+    }
 
-.payment-method-link {
-    text-decoration: none; /* Removes default link underline */
-    color: inherit; /* Keeps the text color the same */
-    font-size: 11px;
-}
+    .payment-method-link {
+        text-decoration: none;
+        /* Removes default link underline */
+        color: inherit;
+        /* Keeps the text color the same */
+        font-size: 11px;
+    }
 
-.payment{
-    font-size: 12px;
+    .payment {
+        font-size: 12px;
 
-}
+    }
 
-.payment-method {
-    display: flex;
-    align-items: center; /* Center items vertically */
-    margin-right: 10px; /* Spacing between M-PESA logo and description */
-    font-size: 11px;
-}
+    .payment-method {
+        display: flex;
+        align-items: center;
+        /* Center items vertically */
+        margin-right: 10px;
+        /* Spacing between M-PESA logo and description */
+        font-size: 11px;
+    }
 
-.payment-logo {
-    width: 60px; /* Adjust size as needed */
-    height: auto; /* Maintain aspect ratio */
-    margin-right: 5px; /* Space between logo and text */
-}
+    .payment-logo {
+        width: 60px;
+        /* Adjust size as needed */
+        height: auto;
+        /* Maintain aspect ratio */
+        margin-right: 5px;
+        /* Space between logo and text */
+    }
 
-.payment-text {
-    font-family: 'Arial', sans-serif;
-    font-weight: bold;
-    font-size: 11px;
-    margin: 0;
-}
+    .payment-text {
+        font-family: 'Arial', sans-serif;
+        font-weight: bold;
+        font-size: 11px;
+        margin: 0;
+    }
 
-.payment-description {
-    display: flex;
-    align-items: center; /* Center content vertically */
-    font-family: 'Arial', sans-serif;
-}
+    .payment-description {
+        display: flex;
+        align-items: center;
+        /* Center content vertically */
+        font-family: 'Arial', sans-serif;
+    }
 
-.check-icon {
-    width: 20px; /* Adjust size as needed */
-    height: auto; /* Maintain aspect ratio */
-    margin-left: 5px; /* Space between text and check icon */
-}
+    .check-icon {
+        width: 20px;
+        /* Adjust size as needed */
+        height: auto;
+        /* Maintain aspect ratio */
+        margin-left: 5px;
+        /* Space between text and check icon */
+    }
 
 
     .shipping-info {
@@ -212,16 +229,18 @@
     }
 
     .modal-footer {
-    display: flex;
-    justify-content: flex-end;
-    border-top: 1px solid #fff;
-    border-bottom: 1px solid #fff;
-}
+        display: flex;
+        justify-content: flex-end;
+        border-top: 1px solid #fff;
+        border-bottom: 1px solid #fff;
+    }
 
-.modal-footer .btn {
-    white-space: normal; /* Allow text to wrap within the button */
-    text-align: center; /* Center the text within the button */
-}
+    .modal-footer .btn {
+        white-space: normal;
+        /* Allow text to wrap within the button */
+        text-align: center;
+        /* Center the text within the button */
+    }
 
 
     @media (max-width: 767px) {
@@ -240,20 +259,20 @@
         }
 
         .item-price {
-            font-size: 12px;
+            font-size: 11px;
             font-weight: bold;
         }
 
         .item-details h6 {
-            font-size: 0.85rem;
+            font-size: 0.65rem;
             /* Smaller font size for mobile */
         }
 
         .item-details p {
-            font-size: 0.75rem;
+            font-size: 0.55rem;
             /* Smaller font size for mobile */
         }
-        
+
     }
 
     /* Modal styles */
@@ -407,27 +426,33 @@
         cursor: pointer;
         font-size: smaller;
     }
-    
+
 
     .btn-submit {
         background-color: #007bff;
         color: #fff;
         font-size: small;
-        
+
     }
+
     .btn-submit:hover {
-    background-color: #0056b3; /* Darker color on hover */
-    color: #fff;
-}
-.button-order{
-    background-color: #007bff;
+        background-color: #0056b3;
+        /* Darker color on hover */
+        color: #fff;
+    }
+
+    .button-order {
+        background-color: #007bff;
         color: #fff;
         font-size: small;
-}
-.button-order:hover {
-    background-color: #0056b3; /* Darker color on hover */
-    color: #fff;
-}
+    }
+
+    .button-order:hover {
+        background-color: #0056b3;
+        /* Darker color on hover */
+        color: #fff;
+    }
+
     .btn-cancel {
         background-color: #cfcdcd;
         color: #333;
@@ -452,225 +477,273 @@
         width: 100%;
         /* Prevents layout shift */
     }
-   /* General Modal Styling */
-.modal {
-    display: none; /* Hidden by default */
-    position: fixed; /* Stay in place */
-    z-index: 1050; /* Sit on top */
-    left: 0;
-    top: 0;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
-    background-color: rgba(0,0,0,0.5); /* Black with opacity */
-}
 
-/* HTML: <div class="loader"></div> */
-.loader {
-    width: 45px;
-    aspect-ratio: 1;
-    --c: no-repeat linear-gradient(#fff 0 0);
-    background: 
-    var(--c) 0%   50%,
-    var(--c) 50%  50%,
-    var(--c) 100% 50%;
-    background-size: 20% 100%;
-    animation: l1 1s infinite linear;
-}
-@keyframes l1 {
-0%  {background-size: 20% 100%,20% 100%,20% 100%}
-33% {background-size: 20% 10% ,20% 100%,20% 100%}
-50% {background-size: 20% 100%,20% 10% ,20% 100%}
-66% {background-size: 20% 100%,20% 100%,20% 10% }
-100%{background-size: 20% 100%,20% 100%,20% 100%}
-}
+    /* General Modal Styling */
+    .modal {
+        display: none;
+        /* Hidden by default */
+        position: fixed;
+        /* Stay in place */
+        z-index: 1050;
+        /* Sit on top */
+        left: 0;
+        top: 0;
+        width: 100%;
+        /* Full width */
+        height: 100%;
+        /* Full height */
+        overflow: auto;
+        /* Enable scroll if needed */
+        background-color: rgba(0, 0, 0, 0.5);
+        /* Black with opacity */
+    }
 
-svg {
+    /* HTML: <div class="loader"></div> */
+    .loader {
+        width: 45px;
+        aspect-ratio: 1;
+        --c: no-repeat linear-gradient(#fff 0 0);
+        background:
+            var(--c) 0% 50%,
+            var(--c) 50% 50%,
+            var(--c) 100% 50%;
+        background-size: 20% 100%;
+        animation: l1 1s infinite linear;
+    }
+
+    @keyframes l1 {
+        0% {
+            background-size: 20% 100%, 20% 100%, 20% 100%
+        }
+
+        33% {
+            background-size: 20% 10%, 20% 100%, 20% 100%
+        }
+
+        50% {
+            background-size: 20% 100%, 20% 10%, 20% 100%
+        }
+
+        66% {
+            background-size: 20% 100%, 20% 100%, 20% 10%
+        }
+
+        100% {
+            background-size: 20% 100%, 20% 100%, 20% 100%
+        }
+    }
+
+    svg {
         width: 70px;
         display: block;
         margin: 20px auto 0;
     }
-    
+
     .path {
         stroke-dasharray: 1000;
         stroke-dashoffset: 0;
     }
-    
+
     .path.circle {
         animation: dash .9s ease-in-out;
     }
-    
+
     .path.line {
         stroke-dashoffset: 1000;
         animation: dash .9s .35s ease-in-out forwards;
     }
-    
+
     .path.check {
         stroke-dashoffset: -100;
         animation: dash-check .9s .35s ease-in-out forwards;
     }
 
-        @keyframes dash {
-            0% {
+    @keyframes dash {
+        0% {
             stroke-dashoffset: 1000;
-            }
-            100% {
+        }
+
+        100% {
             stroke-dashoffset: 0;
-            }
         }
-        
-        @keyframes dash-check {
-            0% {
+    }
+
+    @keyframes dash-check {
+        0% {
             stroke-dashoffset: -100;
-            }
-            100% {
-            stroke-dashoffset: 900;
-            }
         }
-        
 
-.btn-okay {
-    background-color: #007bff; /* Bootstrap primary color */
-    border: none;
-    padding: 10px 10px;
-    cursor: pointer;
-    border-radius: 5px;
-    font-size: 15px;
-    color: #000;
-}
-
-.btn-okay:hover {
-    background-color: #0056b3; /* Darker color on hover */
-}
-
-
-.custom-navbar-bg {
-    background-color: #fff;
-    border-bottom: 1px solid #ddd;
-}
-
-.nav-link {
-    font-size: 14px;
-    font-weight: 600;
-    color: #555;
-    text-align: center;
-}
-
-.progress-navigation {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-}
-
-.progress-line {
-    width: 30px;
-    height: 2px;
-    background-color: #d9534f;
-    margin: 0 5px;
-    flex-shrink: 0;
-}
-
-.progress-line.active {
-    background-color: #d9534f;
-}
-
-.progress-line:not(.active) {
-    background-color: #ddd;
-}
-
-.text-center {
-    text-align: center;
-    flex: 1;
-}
-
-.container-outer{
-    margin-top: 70px;
-}
-
-.progress-line {
-        width: 100px; /* Adjust line width for smaller screens */
+        100% {
+            stroke-dashoffset: 900;
+        }
     }
-.nav-link {
-    font-size: 16px;
-}
 
-/* Responsive styling */
-@media (max-width: 768px) {
-    .navbar-brand {
-        font-size: 12px; /* Smaller font size for the brand name */
+
+    .btn-okay {
+        background-color: #007bff;
+        /* Bootstrap primary color */
+        border: none;
+        padding: 10px 10px;
+        cursor: pointer;
+        border-radius: 5px;
+        font-size: 15px;
+        color: #000;
+    }
+
+    .btn-okay:hover {
+        background-color: #0056b3;
+        /* Darker color on hover */
+    }
+
+
+    .custom-navbar-bg {
+        background-color: #fff;
+        border-bottom: 1px solid #ddd;
     }
 
     .nav-link {
-        font-size: 12px; /* Smaller font size for the navigation links */
+        font-size: 14px;
+        font-weight: 600;
+        color: #555;
+        text-align: center;
+    }
+
+    .progress-navigation {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
     }
 
     .progress-line {
-        width: 20px; /* Adjust line width for smaller screens */
+        width: 30px;
+        height: 2px;
+        background-color: #d9534f;
+        margin: 0 5px;
+        flex-shrink: 0;
     }
-    .container-outer{
-    margin-top: 70px;
 
-}
-.payment-method-container {
-    border: 1px solid #e74c3c; /* Red border */
-    border-radius: 5px; /* Rounded corners */
-    padding: 10px;
-    display: flex;
-    align-items: center; /* Center content vertically */
-   width: 100%;
-    position: relative; /* Establishes positioning context */
-}
-
-.payment-method-container::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    margin-top: 5px;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    cursor: pointer; /* Changes cursor to pointer on hover */
-}
-}
-
-@media (max-width: 480px) {
-    .navbar-brand {
-        font-size: 12px; /* Further reduced font size for extra small screens */
+    .progress-line.active {
+        background-color: #d9534f;
     }
-    .container-outer{
-    margin-top: 70px;
-}
+
+    .progress-line:not(.active) {
+        background-color: #ddd;
+    }
+
+    .text-center {
+        text-align: center;
+        flex: 1;
+    }
+
+    .container-outer {
+        margin-top: 70px;
+    }
+
+    .progress-line {
+        width: 100px;
+        /* Adjust line width for smaller screens */
+    }
+
     .nav-link {
-        font-size: 10px; /* Further reduced font size for extra small screens */
+        font-size: 16px;
     }
-    
-    .progress-line {
-        width: 20px; /* Further adjust line width */
+
+    /* Responsive styling */
+    @media (max-width: 768px) {
+        .navbar-brand {
+            font-size: 12px;
+            /* Smaller font size for the brand name */
+        }
+
+        .nav-link {
+            font-size: 12px;
+            /* Smaller font size for the navigation links */
+        }
+
+        .progress-line {
+            width: 20px;
+            /* Adjust line width for smaller screens */
+        }
+
+        .container-outer {
+            margin-top: 70px;
+
+        }
+
+        .payment-method-container {
+            border: 1px solid #e74c3c;
+            /* Red border */
+            border-radius: 5px;
+            /* Rounded corners */
+            padding: 10px;
+            display: flex;
+            align-items: center;
+            /* Center content vertically */
+            width: 100%;
+            position: relative;
+            /* Establishes positioning context */
+        }
+
+        .payment-method-container::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            margin-top: 5px;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            cursor: pointer;
+            /* Changes cursor to pointer on hover */
+        }
     }
-    .payment-method-container {
-    border: 1px solid #e74c3c; /* Red border */
-    border-radius: 5px; /* Rounded corners */
-    padding: 10px;
-    display: flex;
-    align-items: center; /* Center content vertically */
-   width: 100%;
-    position: relative; /* Establishes positioning context */
-}
 
-.payment-method-container::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    margin-top: 5px;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    cursor: pointer; /* Changes cursor to pointer on hover */
-}
-}
+    @media (max-width: 480px) {
+        .navbar-brand {
+            font-size: 12px;
+            /* Further reduced font size for extra small screens */
+        }
 
+        .container-outer {
+            margin-top: 70px;
+        }
 
+        .nav-link {
+            font-size: 10px;
+            /* Further reduced font size for extra small screens */
+        }
+
+        .progress-line {
+            width: 20px;
+            /* Further adjust line width */
+        }
+
+        .payment-method-container {
+            border: 1px solid #e74c3c;
+            /* Red border */
+            border-radius: 5px;
+            /* Rounded corners */
+            padding: 10px;
+            display: flex;
+            align-items: center;
+            /* Center content vertically */
+            width: 100%;
+            position: relative;
+            /* Establishes positioning context */
+        }
+
+        .payment-method-container::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            margin-top: 5px;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            cursor: pointer;
+            /* Changes cursor to pointer on hover */
+        }
+    }
 </style>
 </head>
 
@@ -683,7 +756,8 @@ svg {
                 <div class="d-flex align-items-center">
                     <img src="images/icon.png" alt="Logo" style="height: 40px; margin-right: 10px;">
                     <div class="d-flex flex-column">
-                        <div class="navbar-brand" style="font-weight: bold; color: #d9534f; font-size: 15px;background-color: white;">
+                        <div class="navbar-brand"
+                            style="font-weight: bold; color: #d9534f; font-size: 15px;background-color: white;">
                             JOLLY UNIFORMS
                         </div>
                         <div style="font-size: 12px; color: #777; margin-top: -4px;">Reliable Online Shopping</div>
@@ -691,7 +765,7 @@ svg {
                 </div>
                 <div class="navbar-nav ml-auto">
                     <div class="cart-container">
-                        <a class="nav-item nav-link" href="cart.html"style="padding-right: 20px;">
+                        <a class="nav-item nav-link" href="cart.html" style="padding-right: 10px;">
                             <i class="cart-icon">🛒</i>
                             <div class="cart-counter" id="cart-counter">0</div>
                             <!-- Ensure the counter is inside the anchor tag -->
@@ -711,11 +785,11 @@ svg {
             </div>
         </div>
     </nav>
-   
+
     <div class="container-outer">
-       
+
         <div class="container">
-         
+
             <div class="shipping-info">
                 <span>Shipping Information</span>
                 <button type="button" class="btn btn-link" id="btn-link">Add Shipping Address</button>
@@ -724,15 +798,15 @@ svg {
         <div class="container">
             <span class="payment">Payment Method</span>
 
-                <div class="payment-method-container">
-                    <div class="payment-method">
-                        <img src="images/mpesa.webp" alt="M-Pesa Logo" class="payment-logo">
-                    </div>
-                    <div class="payment-description">
-                        M-PESA or Mobile Money
-                        <img src="images/check.png" alt="Check Icon" class="check-icon">
-                    </div>
+            <div class="payment-method-container">
+                <div class="payment-method">
+                    <img src="images/mpesa.webp" alt="M-Pesa Logo" class="payment-logo">
                 </div>
+                <div class="payment-description">
+                    M-PESA or Mobile Money
+                    <img src="images/check.png" alt="Check Icon" class="check-icon">
+                </div>
+            </div>
         </div>
         <div class="container">
             <div class="cart-header">
@@ -784,7 +858,8 @@ svg {
                 <div class="form-group">
                     <div class="phone-input">
                         <input type="text" id="phoneCode" class="form-control phone-code" value="+254" readonly>
-                        <input type="text" id="phoneNumber" class="form-control phone-number" placeholder="E.g. 700200100">
+                        <input type="text" id="phoneNumber" class="form-control phone-number"
+                            placeholder="E.g. 700200100">
                         <small class="form-error">Please enter phone number.</small>
                     </div>
                 </div>
@@ -878,140 +953,145 @@ svg {
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content d-flex flex-column align-items-center text-center">
                 <div class="modal-body d-flex flex-column align-items-center">
-                    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 130.2 130.2" width="50" height="50">
-                        <circle class="path circle" fill="none" stroke="#73AF55" stroke-width="6" stroke-miterlimit="10" cx="65.1" cy="65.1" r="62.1"/>
-                        <polyline class="path check" fill="none" stroke="#73AF55" stroke-width="6" stroke-linecap="round" stroke-miterlimit="10" points="100.2,40.2 51.5,88.8 29.8,67.5 "/>
+                    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 130.2 130.2" width="50"
+                        height="50">
+                        <circle class="path circle" fill="none" stroke="#73AF55" stroke-width="6" stroke-miterlimit="10"
+                            cx="65.1" cy="65.1" r="62.1" />
+                        <polyline class="path check" fill="none" stroke="#73AF55" stroke-width="6"
+                            stroke-linecap="round" stroke-miterlimit="10" points="100.2,40.2 51.5,88.8 29.8,67.5 " />
                     </svg>
                     <h4 class="modal-title mt-3">Success</h4>
                     <p class="mt-2">Your Address have been saved successfully</p>
                     <div class="modal-foot flex justify-center mt-4">
-                        <button type="button" class="btn btn-okay bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded-md shadow-md transition duration-300" data-bs-dismiss="modal">
+                        <button type="button"
+                            class="btn btn-okay bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded-md shadow-md transition duration-300"
+                            data-bs-dismiss="modal">
                             OK
                         </button>
                     </div>
-                    
+
                 </div>
-                
+
             </div>
         </div>
     </div>
-    
-    
+
+
 
     <script src="cart.js"></script> <!-- Link to your JavaScript file -->
     <script>
 
-// Get the modal elements
-var modal = document.getElementById("addressModal");
-var successModalElement = document.getElementById('successModal');
+        // Get the modal elements
+        var modal = document.getElementById("addressModal");
+        var successModalElement = document.getElementById('successModal');
 
-// Get the button that opens the modal
-var btn = document.getElementById("btn-link");
+        // Get the button that opens the modal
+        var btn = document.getElementById("btn-link");
 
-// Get the <span> element that closes the modal
-var span = document.getElementsByClassName("close")[0];
+        // Get the <span> element that closes the modal
+        var span = document.getElementsByClassName("close")[0];
 
-// Function to disable scrolling
-function disableScroll() {
-    document.body.classList.add('no-scroll');
-}
-
-// Function to enable scrolling
-function enableScroll() {
-    document.body.classList.remove('no-scroll');
-}
-
-// When the user clicks the button, open the modal and disable scrolling
-btn.onclick = function () {
-    modal.style.display = "flex";
-    disableScroll();
-}
-
-// When the user clicks on <span> (x), close the modal and enable scrolling
-span.onclick = function () {
-    modal.style.display = "none";
-    enableScroll();
-}
-
-// When the user clicks anywhere outside of the modal, close it and enable scrolling
-window.onclick = function (event) {
-    if (event.target == modal) {
-        modal.style.display = "none";
-        enableScroll();
-    }
-}
-
-// Form submission logic
-document.getElementById('addressForm').addEventListener('submit', function(event) {
-    event.preventDefault(); // Prevent form submission
-
-    // Clear all previous errors
-    const errors = document.querySelectorAll('.form-error');
-    errors.forEach(error => error.style.display = 'none');
-
-    let isValid = true;
-
-    // Validation logic
-    const firstName = document.getElementById('firstName');
-    if (firstName.value.trim() === '') {
-        isValid = false;
-        firstName.nextElementSibling.style.display = 'block';
-    }
-
-    const lastName = document.getElementById('lastName');
-    if (lastName.value.trim() === '') {
-        isValid = false;
-        lastName.nextElementSibling.style.display = 'block';
-    }
-
-    const phoneNumber = document.getElementById('phoneNumber');
-    if (phoneNumber.value.trim() === '') {
-        isValid = false;
-        phoneNumber.nextElementSibling.style.display = 'block';
-    }
-
-    const county = document.getElementById('county');
-    if (county.value === '') {
-        isValid = false;
-        county.nextElementSibling.style.display = 'block';
-    }
-
-    const subCounty = document.getElementById('subcounty');
-    if (subCounty.value === '') {
-        isValid = false;
-        subCounty.nextElementSibling.style.display = 'block';
-    }
-
-    const area = document.getElementById('area');
-    if (area.value === '') {
-        isValid = false;
-        area.nextElementSibling.style.display = 'block';
-    }
-
-    const addressDetails = document.getElementById('addressDetails');
-    if (addressDetails.value.trim() === '') {
-        isValid = false;
-        addressDetails.nextElementSibling.style.display = 'block';
-    }
-
-    // If the form is valid, proceed with showing the success modal
-    if (isValid) {
-        // Hide the current modal (address modal)
-        modal.style.display = "none";
-        enableScroll(); // Re-enable scrolling after closing the modal
-
-        // Ensure the success modal element exists before trying to show it
-        if (successModalElement) {
-            const successModal = new bootstrap.Modal(successModalElement);
-            successModal.show();
-
-            // Optionally, reset the form fields
-            this.reset();
-        } else {
-            console.error("Success modal element not found!");
+        // Function to disable scrolling
+        function disableScroll() {
+            document.body.classList.add('no-scroll');
         }
-    }
-});
+
+        // Function to enable scrolling
+        function enableScroll() {
+            document.body.classList.remove('no-scroll');
+        }
+
+        // When the user clicks the button, open the modal and disable scrolling
+        btn.onclick = function () {
+            modal.style.display = "flex";
+            disableScroll();
+        }
+
+        // When the user clicks on <span> (x), close the modal and enable scrolling
+        span.onclick = function () {
+            modal.style.display = "none";
+            enableScroll();
+        }
+
+        // When the user clicks anywhere outside of the modal, close it and enable scrolling
+        window.onclick = function (event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+                enableScroll();
+            }
+        }
+
+        // Form submission logic
+        document.getElementById('addressForm').addEventListener('submit', function (event) {
+            event.preventDefault(); // Prevent form submission
+
+            // Clear all previous errors
+            const errors = document.querySelectorAll('.form-error');
+            errors.forEach(error => error.style.display = 'none');
+
+            let isValid = true;
+
+            // Validation logic
+            const firstName = document.getElementById('firstName');
+            if (firstName.value.trim() === '') {
+                isValid = false;
+                firstName.nextElementSibling.style.display = 'block';
+            }
+
+            const lastName = document.getElementById('lastName');
+            if (lastName.value.trim() === '') {
+                isValid = false;
+                lastName.nextElementSibling.style.display = 'block';
+            }
+
+            const phoneNumber = document.getElementById('phoneNumber');
+            if (phoneNumber.value.trim() === '') {
+                isValid = false;
+                phoneNumber.nextElementSibling.style.display = 'block';
+            }
+
+            const county = document.getElementById('county');
+            if (county.value === '') {
+                isValid = false;
+                county.nextElementSibling.style.display = 'block';
+            }
+
+            const subCounty = document.getElementById('subcounty');
+            if (subCounty.value === '') {
+                isValid = false;
+                subCounty.nextElementSibling.style.display = 'block';
+            }
+
+            const area = document.getElementById('area');
+            if (area.value === '') {
+                isValid = false;
+                area.nextElementSibling.style.display = 'block';
+            }
+
+            const addressDetails = document.getElementById('addressDetails');
+            if (addressDetails.value.trim() === '') {
+                isValid = false;
+                addressDetails.nextElementSibling.style.display = 'block';
+            }
+
+            // If the form is valid, proceed with showing the success modal
+            if (isValid) {
+                // Hide the current modal (address modal)
+                modal.style.display = "none";
+                enableScroll(); // Re-enable scrolling after closing the modal
+
+                // Ensure the success modal element exists before trying to show it
+                if (successModalElement) {
+                    const successModal = new bootstrap.Modal(successModalElement);
+                    successModal.show();
+
+                    // Optionally, reset the form fields
+                    this.reset();
+                } else {
+                    console.error("Success modal element not found!");
+                }
+            }
+        });
 
 
         const subCountyData = {
