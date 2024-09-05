@@ -243,29 +243,25 @@ function displayProducts() {
                   showNavbar();
 
                   // Create product card for each product
-                  const productCard = document.createElement("div");
-                  productCard.classList.add("col-6", "col-md-4", "col-lg-2", "product-card"); // Adjusted for 5 cards in a row
-                  productCard.setAttribute("data-product-id", childData.key); // Set data attribute
-                  productCard.innerHTML = `
-                      <div class="card mb-4 shadow-sm">
-                          <div class="d-flex justify-content-center">
-                              <a href="#" onclick="getProductDetails('${childData.key}')">
-                                  <img src="${childData.image}" class="card-img-top" alt="${childData.name}" style="height: 180px; object-fit: contain;"> <!-- Set fixed height and object-fit -->
-                              </a>
-                          </div>
-                          <div class="card-body d-flex flex-column">
-                              <div class="card-title-box"><h7 class="card-title">${childData.name}</h7></div>
-                              <div><p class="card-text"><span style="color: red; font-size: 12px; font-weight: bold;">From Kshs. ${childData.price}</span></p></div> <!-- Apply styling to price text -->
-                              <div class="d-flex justify-content-end align-items-end mt-auto" style="margin-top: 1px;">
-                                  <span class="cart-icon">
-                                      <!-- Add event listener to cart icon -->
-                                      <a onclick="addItemtoCart('${childData.key}', '${childData.image}', '${childData.name}', '${childData.price}')">
-                                      </a>
-                                  </span> <!-- Cart Icon -->
-                              </div>
-                          </div>
-                      </div>`;
-                  productList.appendChild(productCard);
+const productCard = document.createElement("div");
+productCard.classList.add("col-6", "col-md-4", "col-lg-2", "product-card");
+productCard.setAttribute("data-product-id", childData.key);
+productCard.innerHTML = `
+    <div class="card mb-2 shadow-sm border-0"> <!-- Removed card border for a cleaner look -->
+        <div class="d-flex justify-content-center">
+            <a href="#" onclick="getProductDetails('${childData.key}')" class="text-decoration-none">
+                <img src="${childData.image}" class="card-img-top" alt="${childData.name}" style="height: 160px; object-fit: contain; margin-bottom: 6px;"> <!-- Reduced height and margin-bottom -->
+            </a>
+        </div>
+        <div class="card-body d-flex flex-column p-1"> <!-- Reduced padding for a tighter layout -->
+            <div class="card-title-box mb-1"><h7 class="card-title fw-normal" style="font-size: 12px;">${childData.name}</h7></div> <!-- Adjusted font size and weight -->
+            <div><p class="card-text mb-1" style="font-size: 12px;"><span style="color: red; font-size: 12px; font-weight: bold;">From Kshs. ${childData.price}</span></p></div> <!-- Consistent margin and font size -->
+            <div class="d-flex justify-content-end align-items-end mt-auto">
+            </div>
+        </div>
+    </div>`;
+productList.appendChild(productCard);
+
               });
           } else {
               console.log("No data available");
