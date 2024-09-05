@@ -250,7 +250,7 @@ productCard.innerHTML = `
     <div class="card mb-2 shadow-sm border-0"> <!-- Removed card border for a cleaner look -->
         <div class="d-flex justify-content-center">
             <a href="#" onclick="getProductDetails('${childData.key}')" class="text-decoration-none">
-                <img src="${childData.image}" class="card-img-top" alt="${childData.name}" style="height: 160px; object-fit: contain; margin-bottom: 6px;"> <!-- Reduced height and margin-bottom -->
+                <img src="${childData.image}" class="card-img-top" alt="${childData.name}" style="height: 160px; object-fit: contain; margin-bottom: 3px;"> <!-- Reduced height and margin-bottom -->
             </a>
         </div>
         <div class="card-body d-flex flex-column p-1"> <!-- Reduced padding for a tighter layout -->
